@@ -10,13 +10,22 @@ type Props = {
   label: string;
   className?: string;
   trackClassName?: string;
+  barTrackClassName?: string;
+  barFillClassName?: string;
 };
 
 /**
  * Vertical scroll → horizontal travel on desktop (GSAP pin + scrub).
  * Everywhere else the track is a native, swipeable scroll-snap row.
  */
-export function HorizontalScroll({ children, label, className, trackClassName }: Props) {
+export function HorizontalScroll({
+  children,
+  label,
+  className,
+  trackClassName,
+  barTrackClassName,
+  barFillClassName,
+}: Props) {
   const root = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const bar = useRef<HTMLDivElement>(null);
@@ -77,8 +86,8 @@ export function HorizontalScroll({ children, label, className, trackClassName }:
         {children}
       </div>
       <div aria-hidden className="shell pointer-events-none mt-10 hidden lg:block">
-        <div className="h-px w-full bg-hs-cream/15">
-          <div ref={bar} className="h-px w-full origin-left scale-x-0 bg-hs-gold" />
+        <div className={cx("h-px w-full bg-hs-cream/15", barTrackClassName)}>
+          <div ref={bar} className={cx("h-px w-full origin-left scale-x-0 bg-hs-gold", barFillClassName)} />
         </div>
       </div>
     </section>

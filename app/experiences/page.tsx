@@ -20,8 +20,8 @@ export const metadata: Metadata = pageMetadata({
 
 const d = (s: number) => ({ "--d": `${s}s` }) as CSSProperties;
 
-// Page order: the six signature experiences with private events after corporate dining.
-const all: Experience[] = [...experiences.slice(0, 4), eventsExperience, ...experiences.slice(4)];
+// Page order: the six signature experiences followed by private events.
+const all: Experience[] = [...experiences, eventsExperience];
 
 function Meta({ exp, light }: { exp: Experience; light?: boolean }) {
   return (

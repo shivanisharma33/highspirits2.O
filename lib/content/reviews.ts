@@ -1,56 +1,54 @@
-/** Guest reviews as published in the High Spirits CMS. */
+/** Guest reviews as published in the High Spirits CMS & user screenshot. */
 export type Review = {
   quote: string;
   name: string;
   title: string;
   rating: number;
-  date: string;
+  date?: string;
 };
 
 export const reviews: Review[] = [
   {
-    quote: "Absolutely exquisite! The butter chicken was perfection, and the ambience transported us to luxury. Every bite was a journey through authentic Indian flavours.",
-    name: "Emma Thompson",
-    title: "Verified guest",
+    quote: "Every dish felt like a piece of art. The flavors, the presentation, the service — perfection",
+    name: "Farzana Rahman",
+    title: "Verified Diner",
     rating: 5,
-    date: "2025-12-19",
+  },
+  {
+    quote: "Dining at High Spirits is more than just enjoying exquisite food — it's a journey of taste, texture, and emotion. Every plate feels like a work of art, and every moment is curated with genuine care & passion",
+    name: "Nadia & Arif Hasan",
+    title: "Culinary Enthusiasts",
+    rating: 5,
+  },
+  {
+    quote: "Some of the best Indian food to be had in Bunbury. Definitely worth checking out. Buffet of delicious selections at the moment, with very friendly and accommodating staff.",
+    name: "Frans Buissink",
+    title: "Local Guide",
+    rating: 5,
   },
   {
     quote: "Amazing place. Food is delicious and the service is incredible. Highly recommended. Love love love. Well done Deep and Ish.",
     name: "Michelle Harris",
-    title: "Guest",
+    title: "Verified Guest",
     rating: 5,
-    date: "2026-01-20",
   },
   {
-    quote: "The most authentic Indian cuisine I've ever tasted outside of India. The biryani is absolutely divine and worth every penny.",
-    name: "David Chen",
-    title: "Verified guest",
+    quote: "Amazing food, five star service and the warmest welcome. Highly recommend the best authentic Indian in Bunbury.",
+    name: "Gemma Ainsworth",
+    title: "Verified Guest",
     rating: 5,
-    date: "2025-12-19",
   },
   {
-    quote: "Celebrated our anniversary here and it was absolutely perfect. The staff remembered our preferences and the surprise dessert was a lovely touch.",
-    name: "Lisa Anderson",
-    title: "Verified guest",
+    quote: "Incredible Indian food with bold, authentic flavours. Every dish is fresh, perfectly spiced, and full of character. Highly recommended!",
+    name: "Mohit Sharma",
+    title: "Verified Guest",
     rating: 5,
-    date: "2025-12-19",
-  },
-  {
-    quote: "A true fine dining experience. From the moment we walked in, we felt like royalty. The wine pairing suggestions were exceptional.",
-    name: "Sophia Martinez",
-    title: "Verified guest",
-    rating: 5,
-    date: "2025-12-19",
-  },
-  {
-    quote: "Best Indian restaurant in Australia. The attention to detail in every dish is remarkable. The service was impeccable and the entire experience unforgettable.",
-    name: "James Wilson",
-    title: "Verified guest",
-    rating: 5,
-    date: "2025-12-19",
   },
 ];
 
-/** Rating shown on the current highspirits.au homepage. Keep in sync with the live Google listing. */
-export const googleRating = { value: "5.0", label: "Google rating" };
+/** Rating shown on the current highspirits.au homepage & reference image. */
+export const googleRating = {
+  value: "4.5",
+  secondaryValue: "5.0",
+  label: "Based on 567 reviews",
+};

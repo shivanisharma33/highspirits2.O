@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { MenuBrowser } from "@/components/menu/MenuBrowser";
-import { FadeUp, IntroLines, TextReveal } from "@/components/motion/Reveal";
+import { MenuList } from "@/components/menu/MenuList";
+import { CountUp } from "@/components/motion/CountUp";
+import { FadeUp, ClipReveal, IntroLines, TextReveal } from "@/components/motion/Reveal";
 import { ReservationCTA } from "@/components/sections/ReservationCTA";
+import { Aurora } from "@/components/ui/Aurora";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Flame } from "@/components/ui/Icons";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -46,56 +48,68 @@ export default function MenuPage() {
       <JsonLd data={menuJsonLd} />
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Menu", path: "/menu" }])} />
 
-      {/* Hero — typographic masthead with a single plated image */}
-      <section aria-labelledby="menu-title" className="grain relative overflow-hidden bg-hs-green-deep pb-20 pt-[calc(var(--header-h)+5rem)] md:pb-28">
-        <div className="shell grid items-end gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <p className="eyebrow intro-rise" style={d(0.1)}>
-              À la carte · Buffet · Breads
+      {/* ═══════════════════════════════════════════════════════
+          PAGE TITLE — Centered editorial hero
+          ═══════════════════════════════════════════════════════ */}
+      <section aria-labelledby="menu-title" className="surface-light relative overflow-hidden bg-hs-cream pb-16 pt-[calc(var(--header-h)+5rem)] md:pb-20">
+        <div className="shell relative">
+          <div className="mx-auto max-w-3xl text-center">
+            <IntroLines
+              as="h1"
+              id="menu-title"
+              className="font-display text-h1 text-hs-green-deep"
+              lines={["Discover the art", <em key="m" className="italic">of flavour</em>]}
+              start={0.15}
+            />
+            <p className="intro-rise mx-auto mt-8 max-w-xl text-lead text-hs-muted" style={d(0.5)}>
+              A curated journey of taste — {menuItemCount} dishes crafted from authentic Punjabi recipes, inspired by heritage, and plated with precision.
             </p>
-            <IntroLines as="h1" id="menu-title" className="font-display mt-8 text-display" lines={["The", <em key="m" className="text-gold-gradient">Menu</em>]} start={0.2} />
-            <p className="intro-rise mt-10 max-w-lg text-lead text-hs-cream/75" style={d(0.6)}>
-              Punjabi roots, premium plates. {menuItemCount} dishes from the tandoor, the stove and the clay oven — plus a nightly buffet from {buffet.starts}.
-            </p>
-          </div>
-          <div className="relative lg:col-span-5">
-            <div className="intro-rise relative aspect-[4/5] overflow-hidden" style={d(0.4)}>
-              <Image src={media.heroDish2.src} alt={media.heroDish2.alt} fill preload sizes="(min-width: 1024px) 40vw, 100vw" placeholder="blur" className="intro-media object-cover" />
-            </div>
-            <div className="glass glass-edge intro-rise absolute -bottom-8 -left-4 max-w-[16rem] rounded-[1.5rem] p-6 md:-left-12" style={d(0.8)}>
-              <p className="text-[0.62rem] uppercase tracking-[0.28em] text-hs-gold">Dietary key</p>
-              <ul className="mt-4 grid gap-2 text-sm text-hs-cream/85">
-                <li className="flex items-center gap-3">
-                  <span className="diet text-hs-gold-pale">V</span> Vegetarian
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="diet text-hs-gold-pale">VG</span> Vegan
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="diet text-hs-gold-soft">
-                    <Flame size={11} />
-                  </span>
-                  Spicy
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Buffet — featured block */}
-      <section id="buffet" aria-labelledby="buffet-title" className="surface-light relative scroll-mt-28 overflow-hidden bg-hs-cream py-24 text-hs-text md:py-32">
-        <div className="shell grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-5">
+      {/* ═══════════════════════════════════════════════════════
+          BANNER — Full-width cinematic food image
+          ═══════════════════════════════════════════════════════ */}
+      <section aria-label="Featured banner" className="relative overflow-hidden bg-hs-cream">
+        <div className="shell pb-4">
+          <ClipReveal className="relative aspect-[21/9] overflow-hidden rounded-2xl md:rounded-3xl">
+            <Image
+              src={media.heroTableSpread.src}
+              alt={media.heroTableSpread.alt}
+              fill
+              sizes="100vw"
+              placeholder="blur"
+              className="object-cover"
+              priority
+            />
+            <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10" />
+          </ClipReveal>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          MENU SECTIONS — Aromix-style full-width item rows
+          ═══════════════════════════════════════════════════════ */}
+      <MenuList />
+
+      {/* ═══════════════════════════════════════════════════════
+          BUFFET — Featured spotlight
+          ═══════════════════════════════════════════════════════ */}
+      <section id="buffet" aria-labelledby="buffet-title" className="grain relative scroll-mt-28 overflow-hidden bg-hs-green-dark py-28 md:py-36">
+        <Aurora />
+
+        <div className="shell relative">
+          <div className="mx-auto max-w-2xl text-center">
             <FadeUp as="p" className="eyebrow">
               Nightly from {buffet.starts}
             </FadeUp>
-            <TextReveal as="h2" id="buffet-title" className="font-display mt-7 text-h2 text-hs-green" lines={["The Lavish", <em key="b">Buffet</em>]} />
-            <FadeUp delay={0.15} className="mt-8 flex items-end gap-4">
-              <span className="font-display text-6xl leading-none text-hs-green">{formatPrice(buffet.price)}</span>
-              <span className="pb-1 text-xs uppercase tracking-[0.2em] text-hs-muted">Unlimited servings</span>
+            <TextReveal as="h2" id="buffet-title" className="font-display mt-6 text-h2" lines={["The Lavish", <em key="b">Buffet</em>]} />
+            <FadeUp delay={0.15} className="mt-8 inline-flex items-end gap-3">
+              <CountUp value={formatPrice(buffet.price)} className="font-display text-7xl leading-none text-hs-gold md:text-8xl" />
+              <span className="mb-2 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-hs-cream/45">per person · unlimited</span>
             </FadeUp>
-            <FadeUp as="p" delay={0.2} className="mt-8 max-w-md leading-relaxed text-hs-muted">
+            <FadeUp as="p" delay={0.2} className="mx-auto mt-8 max-w-md text-sm leading-relaxed text-hs-cream/55">
               A wide spread of freshly prepared dishes with unlimited servings — perfect for families, groups and celebratory dining.
             </FadeUp>
             <FadeUp delay={0.25} className="mt-10">
@@ -104,39 +118,36 @@ export default function MenuPage() {
               </ButtonLink>
             </FadeUp>
           </div>
-          <div className="grid gap-10 sm:grid-cols-3 lg:col-span-7">
+
+          <div className="mt-20 grid gap-1 sm:grid-cols-3">
             {buffet.courses.map((course, i) => (
-              <FadeUp key={course.title} delay={i * 0.08}>
-                <h3 className="border-b border-hs-gold-deep/40 pb-4 text-[0.68rem] font-semibold uppercase tracking-[0.26em] text-hs-gold-deep">{course.title}</h3>
+              <FadeUp
+                key={course.title}
+                delay={i * 0.1}
+                className="group rounded-2xl border border-hs-cream/[0.06] bg-hs-cream/[0.02] p-8 transition-all duration-500 hover:border-hs-gold/20 hover:bg-hs-cream/[0.05]"
+              >
+                <h3 className="border-b border-hs-gold/25 pb-4 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-hs-gold">
+                  {course.title}
+                </h3>
                 <ul className="mt-5 grid gap-5">
                   {course.items.map((item) => (
                     <li key={item.name}>
-                      <p className="font-display text-lg text-hs-green">
+                      <p className="font-display text-lg text-hs-cream/90">
                         {item.name}
                         {item.diet?.map((dt) => (
-                          <span key={dt} className="diet ml-2 align-middle text-hs-gold-deep">
+                          <span key={dt} className="diet ml-2 align-middle text-hs-gold">
                             {dt === "S" ? <Flame size={10} /> : dt}
                             <span className="sr-only">{dt === "S" ? "Spicy" : dt === "V" ? "Vegetarian" : "Vegan"}</span>
                           </span>
                         ))}
                       </p>
-                      <p className="mt-1 text-sm text-hs-muted">{item.description}</p>
+                      <p className="mt-1 text-[0.78rem] text-hs-cream/45">{item.description}</p>
                     </li>
                   ))}
                 </ul>
               </FadeUp>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* À la carte */}
-      <section aria-label="À la carte menu" className="relative bg-hs-green-dark pb-32 pt-20 md:pt-28">
-        <div className="shell">
-          <MenuBrowser />
-          <p className="mt-20 max-w-2xl text-xs leading-relaxed text-hs-cream/55">
-            Please inform us of any allergies or dietary restrictions when ordering. While we take every care with food preparation, our kitchen handles nuts, dairy and gluten. Prices in AUD.
-          </p>
         </div>
       </section>
 

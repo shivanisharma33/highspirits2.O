@@ -6,6 +6,7 @@ import interiorLounge from "@/assets/images/interior-lounge.jpg";
 import heroDish1 from "@/assets/images/hero-dish-1.jpg";
 import heroDish2 from "@/assets/images/hero-dish-2.jpg";
 import heroDish3 from "@/assets/images/hero-dish-3.jpg";
+import heroTableSpread from "@/assets/images/hero-table-spread.jpg";
 import dishButterChicken from "@/assets/images/dish-butter-chicken.jpg";
 import dishTandooriGrill from "@/assets/images/dish-tandoori-grill.jpg";
 import dishLamb from "@/assets/images/dish-lamb.jpg";
@@ -16,6 +17,18 @@ import ingredientLentils from "@/assets/images/ingredient-lentils.jpg";
 import ingredientLamb from "@/assets/images/ingredient-lamb.jpg";
 import ingredientSpinach from "@/assets/images/ingredient-spinach.jpg";
 import ingredientFlour from "@/assets/images/ingredient-flour.jpg";
+import dishSamosa from "@/assets/images/dish-samosa.jpg";
+import dishButterChickenHd from "@/assets/images/dish-butter-chicken-hd.jpg";
+import dishTandooriChicken from "@/assets/images/dish-tandoori-chicken.jpg";
+import dishBiryaniHd from "@/assets/images/dish-biryani-hd.jpg";
+import dishLambRoganJosh from "@/assets/images/dish-lamb-rogan-josh.jpg";
+import dishPalakPaneerHd from "@/assets/images/dish-palak-paneer-hd.jpg";
+import dishDalMakhaniHd from "@/assets/images/dish-dal-makhani-hd.jpg";
+import dishGarlicNaan from "@/assets/images/dish-garlic-naan.jpg";
+import dishPrawnCurry from "@/assets/images/dish-prawn-curry.jpg";
+import dishOnionBhaji from "@/assets/images/dish-onion-bhaji.jpg";
+import dishChickenKorma from "@/assets/images/dish-chicken-korma.jpg";
+import dishGoatCurry from "@/assets/images/dish-goat-curry.jpg";
 import chefAmardeep from "@/assets/images/chef-amardeep.jpg";
 import chefKitchen from "@/assets/images/chef-amardeep-kitchen.jpg";
 import partnerIshpreet from "@/assets/images/partner-ishpreet.jpg";
@@ -31,6 +44,8 @@ import signage from "@/assets/images/signage.jpg";
 import foodCurry from "@/assets/images/food-curry.jpg";
 import foodBiryani from "@/assets/images/food-biryani.jpg";
 import foodBuffet from "@/assets/images/food-buffet.jpg";
+import foodBuffetHd from "@/assets/images/food-buffet-hd.jpg";
+import foodBuffetTrayHd from "@/assets/images/food-buffet-tray-hd.jpg";
 import foodSizzler from "@/assets/images/food-sizzler.jpg";
 import spices from "@/assets/images/spices.jpg";
 import guests1 from "@/assets/images/guests-1.jpg";
@@ -66,6 +81,7 @@ export const media = {
   heroDish1: m(heroDish1, "Golden chicken curry garnished with coriander in a copper bowl"),
   heroDish2: m(heroDish2, "Tandoori chicken and paneer tikka on a copper platter"),
   heroDish3: m(heroDish3, "Steaming saffron biryani in a copper handi"),
+  heroTableSpread: m(heroTableSpread, "Artisan feast with butter chicken, tandoori skewers, garlic naan and saffron drink on marble table"),
   dishButterChicken: m(dishButterChicken, "Butter chicken in a rich tomato and cream sauce"),
   dishTandooriGrill: m(dishTandooriGrill, "Tandoori mixed grill with seekh kebab, chicken tikka, prawns and lamb cutlets"),
   dishLamb: m(dishLamb, "Slow-cooked lamb in a deep red curry"),
@@ -76,6 +92,18 @@ export const media = {
   ingredientLamb: m(ingredientLamb, "Lamb rogan josh in a copper karahi"),
   ingredientSpinach: m(ingredientSpinach, "Palak paneer with cubes of cottage cheese in spinach"),
   ingredientFlour: m(ingredientFlour, "Butter naan in a woven basket"),
+  dishSamosa: m(dishSamosa, "Golden crispy vegetable samosas with mint and tamarind chutneys"),
+  dishButterChickenHd: m(dishButterChickenHd, "Rich and creamy butter chicken in a copper bowl garnished with cream and fresh coriander"),
+  dishTandooriChicken: m(dishTandooriChicken, "Smoky charred tandoori chicken served with lemon and onion rings"),
+  dishBiryaniHd: m(dishBiryaniHd, "Aromatic chicken biryani layered with basmati rice, fried onions and saffron"),
+  dishLambRoganJosh: m(dishLambRoganJosh, "Slow-cooked Kashmiri lamb rogan josh in a fragrant rich red gravy"),
+  dishPalakPaneerHd: m(dishPalakPaneerHd, "Fresh paneer cubes in vibrant spiced spinach gravy"),
+  dishDalMakhaniHd: m(dishDalMakhaniHd, "Slow-cooked creamy black lentils with a melting pat of butter"),
+  dishGarlicNaan: m(dishGarlicNaan, "Fresh tandoor-baked garlic naan brushed with butter and coriander"),
+  dishPrawnCurry: m(dishPrawnCurry, "Juicy prawns simmered in golden spiced coconut curry"),
+  dishOnionBhaji: m(dishOnionBhaji, "Crispy golden onion bhajis served with cool mint dip"),
+  dishChickenKorma: m(dishChickenKorma, "Tender chicken in a mild, velvety cashew nut and cream sauce"),
+  dishGoatCurry: m(dishGoatCurry, "Slow-braised Punjabi goat curry with ginger and whole spices"),
   chefAmardeep: m(chefAmardeep, "Executive Chef Amardeep Singh in the kitchen at the tandoor"),
   chefKitchen: m(chefKitchen, "Executive Chef Amardeep Singh lifting fresh naan from the tandoor"),
   partnerIshpreet: m(partnerIshpreet, "Business partner Ishpreet Bedi holding the grand opening buffet menu"),
@@ -91,6 +119,8 @@ export const media = {
   foodCurry: m(foodCurry, "Slow-cooked dal finished with a swirl of cream"),
   foodBiryani: m(foodBiryani, "Biryani topped with a boiled egg and fresh coriander"),
   foodBuffet: m(foodBuffet, "Buffet trays of pakoras and curries"),
+  foodBuffetHd: m(foodBuffetHd, "Remastered HD buffet trays of Indian curries and roasts"),
+  foodBuffetTrayHd: m(foodBuffetTrayHd, "HD spiced potato, egg and capsicum roast in stainless steel chafer tray"),
   foodSizzler: m(foodSizzler, "Tandoori chicken on a sizzling plate with onion and lemon"),
   spices: m(spices, "Mounds of vibrant ground spices at a market"),
   guests1: m(guests1, "Guests enjoying dinner together at High Spirits"),

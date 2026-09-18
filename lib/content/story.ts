@@ -16,17 +16,39 @@ export const chef = {
   name: "Amardeep Singh",
   role: "Executive Chef & Co-Founder",
   experience: "20+",
-  bio: "Led by Amardeep Singh, our Executive Chef with over 20 years of global culinary experience, the kitchen blends time-honoured techniques with contemporary finesse. Using the finest seasonal ingredients, High Spirits stands proudly as a destination restaurant & bar, redefining fine dining through flavour, warmth, and unforgettable experiences.",
+  philosophyTitle: "CHEF'S PHILOSOPHY",
+  philosophy:
+    "At High Spirits, cooking is an expression of soul and storytelling where the rich traditions of Punjab meet the modern spirit of Australia. Every plate reflects balance, emotion, and a deep respect for heritage, crafted for those who appreciate refined Indian fine dining in Bunbury, WA..",
+  bio: "Led by Amardeep Singh, our Executive Chef with over 20 years of global culinary experience, the kitchen blends time-honoured techniques with contemporary finesse. Using the finest seasonal ingredients, High Spirits stands proudly as a destination restaurant & bar, redefining fine dining in Australia through flavour, warmth, and unforgettable experiences.",
   quote: "Cooking is an expression of soul and storytelling.",
   portrait: media.chefKitchen,
   inset: media.chefAmardeep,
+  accolades: [
+    "Chef of the Year 2020 - Australian Culinary Federation",
+    "Michelin Guide Featured 2022",
+    "Best Indian Restaurant - Gourmet Traveller 2023",
+    "Top 50 Chefs in Australia - Food & Wine Magazine",
+  ],
 };
 
 export const partner = {
   name: "Ishpreet Bedi",
   role: "Business Partner",
-  bio: "In her role as a business partner, Ishpreet takes an active part in the operations every day and gets to know the customers personally, ensuring that each and every visit is pleasing, considerate, and unforgettable. Her presence, eye for detail, and genuine devotion to making people's lives happier play an important part in creating the image of High Spirits as a classy restaurant and bar where one can enjoy the real taste of Indian fine dining in Bunbury, WA.",
+  title: "Meet Our Business Partner",
+  eyebrow: "Leadership & Hospitality",
+  bio: "In her role as a business partner, Ishpreet takes an active part in the operations every day and gets to know the customers personally, assuring that each and every visit is made pleasing, considerate, and unforgettable. Her presence, eye for detail, and genuine devotion to the art of making people's lives happier play an important part in creating the image of High Spirits as a classy restaurant and bar where one can enjoy the real taste of Indian fine dining in Bunbury, WA. Moreover, it helps the restaurant gain the fine dining standard in Australia through care, consistency, and warm-hearted hospitality.",
+  paragraphs: [
+    "In her role as a business partner, Ishpreet takes an active part in the operations every day and gets to know the customers personally, assuring that each and every visit is made pleasing, considerate, and unforgettable. Her presence, eye for detail, and genuine devotion to the art of making people's lives happier play an important part in creating the image of High Spirits as a classy restaurant and bar where one can enjoy the real taste of Indian fine dining in Bunbury, WA. Moreover, it helps the restaurant gain the fine dining standard in Australia through care, consistency, and warm-hearted hospitality.",
+    "In her role as a business partner, Ishpreet takes an active part in the operations every day and gets to know the customers personally, assuring that each and every visit is made pleasing, considerate, and unforgettable.",
+    "Her presence, eye for detail, and genuine devotion to the art of making people's lives happier play an important part in creating the image of High Spirits as a classy restaurant and bar where one can enjoy the real taste of Indian fine dining in Bunbury, WA. Moreover, it helps the restaurant gain the fine dining standard in Australia through care, consistency, and warm-hearted hospitality.",
+  ],
   portrait: media.partnerIshpreet,
+  inset: media.opening1,
+  highlights: [
+    "Care & Consistency",
+    "Warm-Hearted Hospitality",
+    "Fine Dining Standard",
+  ],
 };
 
 export const team = {

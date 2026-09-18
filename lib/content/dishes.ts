@@ -4,6 +4,7 @@ export type SignatureDish = {
   no: string;
   name: string;
   region: string;
+  categoryTag?: "Non-Veg" | "North Indian";
   description: string;
   lines?: string[];
   notes: string[];
@@ -12,62 +13,69 @@ export type SignatureDish = {
 };
 
 /**
- * Signature creations as listed in the High Spirits CMS. Descriptions and
- * prices are taken from the matching à la carte menu entries.
+ * Signature creations as requested with authentic HD photography and dietary tags.
  */
 export const signatureDishes: SignatureDish[] = [
   {
     no: "01",
-    name: "Dal Makhani",
-    region: "North Indian",
-    description: "Whole black lentils, slow-cooked with butter and cream until velvet-soft.",
-    lines: ["Slow-cooked.", "Deeply layered.", "Unforgettable."],
-    notes: ["Black lentils", "Butter", "Cream"],
-    price: 21.9,
-    image: media.ingredientLentils,
+    name: "Tandoori Mixed Grill",
+    region: "From the Tandoor",
+    categoryTag: "Non-Veg",
+    description: "Seekh kebabs, chicken tikka, tandoori prawns, and charred lamb cutlets fired in the authentic clay tandoor.",
+    lines: ["Charcoal-fired.", "Artisan marinades.", "Unrivalled tenderness."],
+    notes: ["Seekh Kebab", "Chicken Tikka", "Tandoori Prawns", "Lamb Cutlets"],
+    price: 35.99,
+    image: media.heroDish2, // 1920x1080 Ultra HD
   },
   {
     no: "02",
-    name: "Butter Chicken",
-    region: "North Indian",
-    description: "Tender chicken in a creamy tomato and butter sauce.",
-    notes: ["Tomato", "Butter", "Cream"],
-    price: 29.9,
-    image: media.dishButterChicken,
+    name: "Tasmanian Lamb",
+    region: "Signature Specialty",
+    categoryTag: "Non-Veg",
+    description: "Ethically sourced Tasmanian grass-fed lamb slow-simmered in a deep, aromatic Kashmiri and Punjabi gravy.",
+    notes: ["Tasmanian Lamb", "Whole Spices", "Kashmiri Chilli", "Slow Cooked"],
+    price: 25.99,
+    image: media.ingredientLamb, // 1024x1024 Ultra HD
   },
   {
     no: "03",
-    name: "Tandoori Mixed Grill",
-    region: "From the tandoor",
-    description: "Seekh kebabs, chicken tikka, tandoori prawns and lamb cutlets, fired in the clay oven.",
-    notes: ["Seekh kebab", "Tikka", "Prawn", "Lamb"],
-    price: 39.9,
-    image: media.dishTandooriGrill,
+    name: "Biryani Royale",
+    region: "Fragrant Basmati",
+    categoryTag: "North Indian",
+    description: "Aged long-grain basmati rice layered with spiced tender cuts, saffron, caramelized onions, and fresh mint.",
+    notes: ["Aged Basmati", "Pure Saffron", "Dum Pukht", "Mint & Herbs"],
+    price: 24.99,
+    image: media.heroDish3, // 1920x1080 Ultra HD
   },
   {
     no: "04",
-    name: "Biryani Royale",
-    region: "Rice & biryani",
-    description: "Fragrant basmati layered with tender lamb and aromatic spices.",
-    notes: ["Basmati", "Lamb", "Saffron"],
-    image: media.dishBiryaniRoyale,
+    name: "Palak Paneer",
+    region: "Punjabi Classic",
+    categoryTag: "Non-Veg",
+    description: "Artisan cottage cheese cubes gently cooked in a velvety spiced puree of fresh local baby spinach, garlic, and roasted cumin.",
+    notes: ["Local Spinach", "Cottage Cheese", "Garlic Tadka", "Fresh Cream"],
+    price: 19.99,
+    image: media.ingredientSpinach, // 1024x1024 Ultra HD
   },
   {
     no: "05",
-    name: "Palak Paneer",
-    region: "North Indian · Vegetarian",
-    description: "Cottage cheese cooked with spinach, garlic and spices.",
-    notes: ["Paneer", "Spinach", "Garlic"],
-    price: 21.9,
-    image: media.dishPalakPaneer,
+    name: "Butter Chicken",
+    region: "House Classic",
+    categoryTag: "North Indian",
+    description: "Tender boneless chicken roasted in the clay oven, simmered in a silky tomato, cashew, and churned butter gravy.",
+    notes: ["Tandoor Chicken", "Tomato & Cashew", "Churned Butter", "Fenugreek"],
+    price: 23.99,
+    image: media.heroDish1, // 1920x1080 Ultra HD
   },
   {
     no: "06",
-    name: "Tasmanian Lamb",
-    region: "Signature",
-    description: "Grass-fed Tasmanian lamb, slow-cooked in a deep, aromatic curry.",
-    notes: ["Tasmanian lamb", "Whole spices"],
-    image: media.dishLamb,
+    name: "Dal Makhani",
+    region: "Heritage Signature",
+    categoryTag: "North Indian",
+    description: "Hand-selected whole black urad lentils, slow-cooked for 16 hours over gentle embers with churned butter and dairy cream.",
+    notes: ["16-Hour Simmer", "Black Urad Dal", "White Butter", "Velvet Cream"],
+    price: 19.99,
+    image: media.ingredientLentils, // 1024x1024 Ultra HD
   },
 ];
 

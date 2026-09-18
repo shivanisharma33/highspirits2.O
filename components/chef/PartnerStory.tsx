@@ -1,16 +1,15 @@
 import Image from "next/image";
-import { CountUp } from "@/components/motion/CountUp";
 import { ClipReveal, FadeUp } from "@/components/motion/Reveal";
-import { chef } from "@/lib/content/story";
+import { partner } from "@/lib/content/story";
 import { cx } from "@/lib/format";
 
-type Props = { className?: string; cta?: boolean };
+type Props = { className?: string };
 
-/** Executive Chef Amardeep Singh — matches user reference image. */
-export function ChefStory({ className, cta = true }: Props) {
+/** Business Partner Ishpreet Bedi — styled identically to ChefStory with cream background & frosted card. */
+export function PartnerStory({ className }: Props) {
   return (
     <section
-      aria-labelledby="chef-title"
+      aria-labelledby="partner-title"
       className={cx(
         "surface-light relative overflow-hidden bg-hs-cream py-20 md:py-32",
         className,
@@ -24,26 +23,26 @@ export function ChefStory({ className, cta = true }: Props) {
             data-cursor="View"
           >
             <Image
-              src={chef.portrait.src}
-              alt={chef.portrait.alt}
+              src={partner.portrait.src}
+              alt={partner.portrait.alt}
               fill
               sizes="(min-width: 1024px) 58vw, 100vw"
-              quality={90}
+              quality={80}
               priority
-              className="object-cover object-[50%_25%]"
+              className="object-cover object-[50%_20%]"
             />
           </ClipReveal>
 
           {/* Bottom-Left Overlapping Inset */}
-          {chef.inset && (
+          {partner.inset && (
             <ClipReveal
               delay={0.25}
               className="absolute -bottom-8 left-4 w-[38%] max-w-[15rem] overflow-hidden rounded-[1.75rem] border-[6px] border-white shadow-[0_30px_60px_-15px_rgba(0,0,0,0.35)] md:-left-6 md:-bottom-10"
             >
               <div className="relative aspect-[4/5]">
                 <Image
-                  src={chef.inset.src}
-                  alt={chef.inset.alt}
+                  src={partner.inset.src}
+                  alt={partner.inset.alt}
                   fill
                   sizes="15rem"
                   quality={80}
@@ -54,77 +53,69 @@ export function ChefStory({ className, cta = true }: Props) {
           )}
         </div>
 
-        {/* Right Side: Editorial Card Exactly Matching Reference Image */}
+        {/* Right Side: Editorial Card Exactly Matching ChefStory */}
         <div className="relative z-10 lg:col-span-6 lg:col-start-7 lg:row-start-1 lg:-ml-12 xl:-ml-16">
           <div className="relative rounded-[2.5rem] border border-white/80 bg-white/92 p-8 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.12)] backdrop-blur-xl sm:p-12 lg:p-14">
             {/* Top Eyebrow with gold dash */}
             <FadeUp as="div" className="flex items-center gap-3">
               <span className="h-px w-7 bg-hs-gold-deep" />
               <span className="text-[0.68rem] font-bold uppercase tracking-[0.28em] text-hs-gold-deep">
-                THE VISIONARY
+                LEADERSHIP &amp; HOSPITALITY
               </span>
             </FadeUp>
 
-            {/* Main Headline: "Meet the" in Green + "Visionary" in Gold Italic */}
-            <FadeUp as="h2" id="chef-title" delay={0.08} className="font-display mt-5 text-[clamp(2.8rem,5.2vw,4.6rem)] font-normal leading-[1] tracking-tight">
-              <span className="block text-hs-green">Meet the</span>
-              <span className="block font-normal italic text-hs-gold-deep">Visionary</span>
+            {/* Main Headline: "Meet Our" in Green + "Business Partner" in Gold Italic */}
+            <FadeUp as="h2" id="partner-title" delay={0.08} className="font-display mt-5 text-[clamp(2.8rem,5.2vw,4.6rem)] font-normal leading-[1] tracking-tight">
+              <span className="block text-hs-green">Meet Our</span>
+              <span className="block font-normal italic text-hs-gold-deep">Business Partner</span>
             </FadeUp>
 
-            {/* Chef Identity */}
+            {/* Partner Identity */}
             <FadeUp delay={0.14} className="mt-7">
               <h3 className="font-display text-2xl font-bold uppercase tracking-[0.06em] text-hs-green sm:text-3xl">
-                {chef.name}
+                {partner.name}
               </h3>
               <p className="mt-1 text-[0.68rem] font-bold uppercase tracking-[0.26em] text-hs-gold-deep">
-                {chef.role}
+                {partner.role}
               </p>
-            </FadeUp>
-
-            {/* Experience Metric: 20+ YEARS OF GLOBAL CULINARY EXPERIENCE */}
-            <FadeUp delay={0.18} className="mt-8 flex items-center gap-4">
-              <span className="font-display text-5xl font-bold text-hs-green leading-none sm:text-6xl">
-                <CountUp value={chef.experience} />
-              </span>
-              <span className="border-l border-hs-line pl-4 text-[0.65rem] font-semibold uppercase leading-tight tracking-[0.2em] text-hs-muted">
-                YEARS OF GLOBAL
-                <br />
-                CULINARY EXPERIENCE
-              </span>
             </FadeUp>
 
             {/* Divider Line */}
             <div className="my-8 h-px w-full bg-hs-line/70" />
 
-            {/* Chef's Philosophy Header with Golden Dot */}
-            <FadeUp delay={0.22} className="flex items-center justify-between">
+            {/* Hospitality Philosophy Header with Golden Dot */}
+            <FadeUp delay={0.18} className="flex items-center justify-between">
               <span className="text-[0.68rem] font-bold uppercase tracking-[0.26em] text-hs-gold-deep">
-                {chef.philosophyTitle}
+                HOSPITALITY PHILOSOPHY
               </span>
               <span className="h-2 w-2 rounded-full bg-hs-gold-deep" />
             </FadeUp>
 
-            {/* Paragraph 1 */}
-            <FadeUp delay={0.26} as="p" className="mt-4 text-xs sm:text-sm leading-relaxed text-hs-text/85">
-              {chef.philosophy}
-            </FadeUp>
+            {/* Narrative Paragraphs Exactly from Screenshot */}
+            <div className="mt-4 space-y-4">
+              {partner.paragraphs.map((para, idx) => (
+                <FadeUp
+                  key={idx}
+                  delay={0.22 + idx * 0.05}
+                  as="p"
+                  className="text-xs sm:text-sm leading-relaxed text-hs-text/85"
+                >
+                  {para}
+                </FadeUp>
+              ))}
+            </div>
 
-            {/* Paragraph 2 */}
-            <FadeUp delay={0.3} as="p" className="mt-4 text-xs sm:text-sm leading-relaxed text-hs-text/85">
-              {chef.bio}
-            </FadeUp>
-
-            {/* Accolades Section */}
-            {chef.accolades && chef.accolades.length > 0 && (
-              <FadeUp delay={0.35} className="mt-8 border-t border-hs-line/70 pt-6">
+            {/* Key Hospitality Pillars */}
+            {partner.highlights && partner.highlights.length > 0 && (
+              <FadeUp delay={0.38} className="mt-8 border-t border-hs-line/70 pt-6">
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-hs-gold-deep" />
                   <h4 className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-hs-green">
-                    Accolades
+                    Core Standards
                   </h4>
                 </div>
                 <ul className="mt-3.5 grid gap-2">
-                  {chef.accolades.map((item) => (
+                  {partner.highlights.map((item) => (
                     <li
                       key={item}
                       className="flex items-center gap-2.5 text-xs font-medium tracking-wide text-hs-text/80"

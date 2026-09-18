@@ -1,188 +1,223 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { CountUp } from "@/components/motion/CountUp";
-import { Aurora } from "@/components/ui/Aurora";
-import { ArrowLeft, ArrowRight, Pause, Play, Star } from "@/components/ui/Icons";
-import { googleRating, reviews } from "@/lib/content/reviews";
-import { cx, formatDate, initials } from "@/lib/format";
-import { site } from "@/lib/site";
+import Image from "next/image";
+import { HorizontalScroll } from "@/components/motion/HorizontalScroll";
+import { media } from "@/lib/images";
 
-const pad = (n: number) => String(n).padStart(2, "0");
-const AUTOPLAY_MS = 7000;
-
-function Stars({ count }: { count: number }) {
+function QuoteIcon({ className = "h-6 w-6" }: { className?: string }) {
   return (
-    <span className="flex gap-1 text-hs-gold" aria-label={`${count} out of 5 stars`} role="img">
-      {Array.from({ length: count }, (_, i) => (
-        <Star key={i} size={13} />
-      ))}
-    </span>
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+    </svg>
   );
 }
 
-/**
- * Large-quote testimonials: a glass carousel on desktop that advances on its
- * own while in view (paused on hover, focus, or with the pause button), and a
- * drag/swipe row on mobile.
- */
-export function ReviewsSlider() {
-  const [index, setIndex] = useState(0);
-  const [held, setHeld] = useState(false);
-  const [stopped, setStopped] = useState(false);
-  const [inView, setInView] = useState(false);
-  const region = useRef<HTMLDivElement>(null);
-  const running = inView && !held && !stopped;
-  const go = (dir: 1 | -1) => setIndex((i) => (i + dir + reviews.length) % reviews.length);
-
-  useEffect(() => {
-    const el = region.current;
-    if (!el) return;
-    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.35 });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!running || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = window.setTimeout(() => setIndex((i) => (i + 1) % reviews.length), AUTOPLAY_MS);
-    return () => window.clearTimeout(id);
-  }, [index, running]);
-
+function StarRow() {
   return (
-    <section aria-labelledby="reviews-title" className="grain relative overflow-hidden bg-hs-green py-28 md:py-40">
-      <Aurora />
-      <div aria-hidden className="font-display pointer-events-none absolute -left-6 -top-24 text-[34rem] leading-none text-hs-green-light/60 select-none">
-        “
-      </div>
+    <div className="flex items-center gap-1" aria-label="5 stars">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg key={i} className="h-3.5 w-3.5 fill-[#E5851D]" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
 
-      <div className="shell relative grid gap-16 lg:grid-cols-12 lg:items-center">
-        <div className="lg:col-span-4">
-          <p data-reveal="fade-up" className="eyebrow mb-7">
-            Guest voices
-          </p>
-          <h2 id="reviews-title" data-reveal="fade-up" className="font-display text-h2">
-            Said at <em className="text-gold-gradient">our table.</em>
+export function ReviewsSlider() {
+  return (
+    <div className="surface-light relative overflow-hidden bg-hs-cream py-20 lg:py-0">
+      <HorizontalScroll
+        label="Guest reviews"
+        trackClassName="gap-5 px-[var(--gutter)] md:gap-6 lg:items-center"
+        barTrackClassName="bg-black/10"
+        barFillClassName="bg-hs-gold-deep"
+      >
+        {/* Intro / Header Panel */}
+        <div
+          data-panel
+          className="flex w-[82vw] shrink-0 flex-col justify-center pr-6 sm:w-[50vw] lg:h-[76vh] lg:w-[26vw] lg:pr-10"
+        >
+          <p className="eyebrow mb-3">Guest voices</p>
+          <h2 id="reviews-title" className="font-display text-h2 text-hs-green">
+            What Our Guests <em className="italic text-hs-gold-deep">Say</em>
           </h2>
-
-          <div data-reveal="fade-up" className="glass glass-edge mt-12 flex items-center gap-5 rounded-[1.5rem] px-6 py-5">
-            <CountUp value={googleRating.value} className="font-display text-6xl leading-none text-hs-gold" />
-            <span className="grid gap-2">
-              <Stars count={5} />
-              <span className="text-[0.65rem] uppercase tracking-[0.24em] text-hs-cream/70">{googleRating.label}</span>
-            </span>
-          </div>
-          <div data-reveal="fade-up" className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-[0.2em] text-hs-cream/70">
-            <a className="link-line hover:text-hs-cream" href="https://www.google.com/search?q=High+Spirits+Bunbury+reviews" target="_blank" rel="noopener noreferrer">
-              Google
-            </a>
-            <a className="link-line hover:text-hs-cream" href={site.listings.tripadvisor} target="_blank" rel="noopener noreferrer">
-              Tripadvisor
-            </a>
-            <a className="link-line hover:text-hs-cream" href={site.listings.trustpilot} target="_blank" rel="noopener noreferrer">
-              Trustpilot
-            </a>
+          <p className="mt-6 max-w-xs text-sm leading-relaxed text-hs-text/75">
+            Every dish carries a story of heritage, passion, and uncompromising quality — as told by our valued diners.
+          </p>
+          <div className="mt-8 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-hs-gold-deep">
+            <span className="h-px w-8 bg-hs-gold-deep" />
+            <span>Scroll to explore</span>
           </div>
         </div>
 
-        {/* Desktop / tablet: glass carousel with crossfading quotes */}
+        {/* Item 1: Full-Height Food Image Card */}
         <div
-          ref={region}
-          className="glass glass-edge glass-spot hidden rounded-[2rem] p-10 md:block lg:col-span-7 lg:col-start-6 lg:p-14"
-          role="region"
-          aria-roledescription="carousel"
-          aria-label="Guest reviews"
-          onPointerEnter={() => setHeld(true)}
-          onPointerLeave={() => setHeld(false)}
-          onFocus={() => setHeld(true)}
-          onBlur={(e) => {
-            if (!e.currentTarget.contains(e.relatedTarget)) setHeld(false);
-          }}
+          data-panel
+          className="group relative h-[520px] w-[300px] shrink-0 overflow-hidden rounded-[2rem] border border-black/5 shadow-xl md:w-[340px] lg:h-[70vh]"
         >
-          <div className="grid">
-            {reviews.map((r, i) => {
-              const active = i === index;
-              return (
-                <figure
-                  key={r.name}
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label={`${i + 1} of ${reviews.length}`}
-                  aria-hidden={!active}
-                  inert={!active}
-                  className={cx(
-                    "[grid-area:1/1] transition-[opacity,transform] duration-1000 ease-luxe",
-                    active ? "opacity-100" : "pointer-events-none translate-y-6 opacity-0",
-                  )}
-                >
-                  <blockquote className="font-display text-[clamp(1.7rem,2.7vw,3rem)] italic leading-[1.2] tracking-tight">“{r.quote}”</blockquote>
-                  <figcaption className="mt-10 flex items-center gap-5">
-                    <span className="font-display grid h-14 w-14 place-items-center rounded-full border border-hs-gold/60 bg-hs-gold/10 text-lg text-hs-gold">{initials(r.name)}</span>
-                    <span>
-                      <span className="block text-sm font-medium tracking-wide">— {r.name}</span>
-                      <span className="mt-1 flex items-center gap-3 text-[0.68rem] uppercase tracking-[0.2em] text-hs-cream/60">
-                        <Stars count={r.rating} /> {r.title} · <time dateTime={r.date}>{formatDate(r.date, "short")}</time>
-                      </span>
-                    </span>
-                  </figcaption>
-                </figure>
-              );
-            })}
+          <Image
+            src={media.heroDish2.src}
+            alt={media.heroDish2.alt}
+            fill
+            sizes="340px"
+            quality={80}
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+          />
+        </div>
+
+        {/* Item 2: Split Column (Top Review Card + Bottom Terracotta Rating Card) */}
+        <div
+          data-panel
+          className="flex h-[520px] w-[290px] shrink-0 flex-col gap-4 md:w-[320px] lg:h-[70vh]"
+        >
+          {/* Top Dark Green Review Card */}
+          <div className="flex flex-1 flex-col justify-between rounded-[1.75rem] border border-white/5 bg-[#072419] p-6 text-white shadow-xl md:p-7">
+            <div>
+              <QuoteIcon className="h-6 w-6 text-emerald-500/80" />
+              <div className="mt-4">
+                <StarRow />
+              </div>
+              <p className="mt-4 text-xs leading-relaxed text-hs-cream/90 sm:text-sm">
+                Every dish felt like a piece of art. The flavors, the presentation, the service — perfection
+              </p>
+            </div>
+            <p className="mt-4 text-[0.72rem] font-medium tracking-wide text-hs-cream/70">
+              Farzana Rahman
+            </p>
           </div>
 
-          <div className="mt-12 flex items-center gap-4">
-            <button type="button" onClick={() => go(-1)} aria-label="Previous review" className="grid h-12 w-12 place-items-center rounded-full border border-hs-cream/25 transition-colors hover:border-hs-gold hover:text-hs-gold">
-              <ArrowLeft size={18} />
-            </button>
-            <button type="button" onClick={() => go(1)} aria-label="Next review" className="grid h-12 w-12 place-items-center rounded-full border border-hs-cream/25 transition-colors hover:border-hs-gold hover:text-hs-gold">
-              <ArrowRight size={18} />
-            </button>
-            <button
-              type="button"
-              onClick={() => setStopped((s) => !s)}
-              aria-label={stopped ? "Play reviews automatically" : "Pause automatic reviews"}
-              className="grid h-12 w-12 place-items-center rounded-full border border-hs-cream/25 text-hs-cream/80 transition-colors hover:border-hs-gold hover:text-hs-gold"
-            >
-              {stopped ? <Play size={16} /> : <Pause size={16} />}
-            </button>
-            <p className="ml-2 text-xs tracking-[0.3em] text-hs-cream/60" aria-live={running ? "off" : "polite"}>
-              <span className="text-hs-gold">{pad(index + 1)}</span> / {pad(reviews.length)}
-            </p>
-            <div aria-hidden className="ml-auto flex flex-1 gap-2">
-              {reviews.map((r, i) => (
-                <span key={r.name} className="h-px flex-1 overflow-hidden bg-hs-cream/20">
-                  <span
-                    key={`${index}-${running}`}
-                    className={cx("block h-px origin-left bg-hs-gold", i === index ? (running ? "progress-run" : "scale-x-100") : "scale-x-0")}
-                    style={{ "--progress-dur": `${AUTOPLAY_MS}ms` } as CSSProperties}
-                  />
-                </span>
-              ))}
+          {/* Bottom Terracotta Rating Card */}
+          <div className="flex h-[180px] shrink-0 flex-col justify-between rounded-[1.75rem] border border-white/5 bg-[#8B3E2F] p-6 text-[#FDF8F3] shadow-xl">
+            <span className="font-display text-4xl font-bold tracking-tight text-[#FDF8F3] sm:text-5xl">
+              4.5
+            </span>
+            <div>
+              <StarRow />
+              <p className="mt-2 text-[0.68rem] font-medium tracking-wide text-white/80">
+                Based on 567 review
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Mobile: horizontal drag */}
-        <ul className="swipe-row -mx-[var(--gutter)] gap-4 px-[var(--gutter)] md:hidden" aria-label="Guest reviews">
-          {reviews.map((r) => (
-            <li key={r.name} className="w-[84vw]">
-              <figure className="glass glass-edge h-full rounded-[1.75rem] p-7">
-                <Stars count={r.rating} />
-                <blockquote className="font-display mt-5 text-[1.45rem] italic leading-snug">“{r.quote}”</blockquote>
-                <figcaption className="mt-7 flex items-center gap-4">
-                  <span className="font-display grid h-11 w-11 place-items-center rounded-full border border-hs-gold/60 text-hs-gold">{initials(r.name)}</span>
-                  <span className="text-sm">
-                    — {r.name}
-                    <span className="block text-[0.65rem] uppercase tracking-[0.18em] text-hs-cream/60">
-                      <time dateTime={r.date}>{formatDate(r.date, "short")}</time>
-                    </span>
-                  </span>
-                </figcaption>
-              </figure>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+        {/* Item 3: Tall Full-Height Dark Green Review Card */}
+        <div
+          data-panel
+          className="flex h-[520px] w-[310px] shrink-0 flex-col justify-between rounded-[2rem] border border-white/5 bg-[#072419] p-8 text-white shadow-xl md:w-[340px] lg:h-[70vh]"
+        >
+          <div>
+            <QuoteIcon className="h-7 w-7 text-emerald-500/80" />
+            <div className="mt-5">
+              <StarRow />
+            </div>
+            <p className="mt-6 text-sm leading-relaxed text-hs-cream/90 sm:text-base">
+              Dining at High Spirits is more than just enjoying exquisite food — it&apos;s a journey of taste, texture, and emotion. Every plate feels like a work of art, and every moment is curated with genuine care &amp; passion
+            </p>
+          </div>
+          <p className="mt-6 text-xs font-medium tracking-wide text-hs-cream/70">
+            Nadia &amp; Arif Hasan
+          </p>
+        </div>
+
+        {/* Item 4: Full-Height Food Image Card (Plated Dish) */}
+        <div
+          data-panel
+          className="group relative h-[520px] w-[300px] shrink-0 overflow-hidden rounded-[2rem] border border-black/5 shadow-xl md:w-[340px] lg:h-[70vh]"
+        >
+          <Image
+            src={media.foodSizzler.src}
+            alt={media.foodSizzler.alt}
+            fill
+            sizes="340px"
+            quality={80}
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+          />
+        </div>
+
+        {/* Item 5: Split Column (Top Review Card + Bottom Terracotta Rating Card) */}
+        <div
+          data-panel
+          className="flex h-[520px] w-[290px] shrink-0 flex-col gap-4 md:w-[320px] lg:h-[70vh]"
+        >
+          {/* Top Dark Green Review Card */}
+          <div className="flex flex-1 flex-col justify-between rounded-[1.75rem] border border-white/5 bg-[#072419] p-6 text-white shadow-xl md:p-7">
+            <div>
+              <QuoteIcon className="h-6 w-6 text-emerald-500/80" />
+              <div className="mt-4">
+                <StarRow />
+              </div>
+              <p className="mt-4 text-xs leading-relaxed text-hs-cream/90 sm:text-sm">
+                Every dish felt like a piece of art. The flavors, the presentation, the service — perfection
+              </p>
+            </div>
+            <p className="mt-4 text-[0.72rem] font-medium tracking-wide text-hs-cream/70">
+              Farzana Rahman
+            </p>
+          </div>
+
+          {/* Bottom Terracotta Rating Card */}
+          <div className="flex h-[180px] shrink-0 flex-col justify-between rounded-[1.75rem] border border-white/5 bg-[#8B3E2F] p-6 text-[#FDF8F3] shadow-xl">
+            <span className="font-display text-4xl font-bold tracking-tight text-[#FDF8F3] sm:text-5xl">
+              4.5
+            </span>
+            <div>
+              <StarRow />
+              <p className="mt-2 text-[0.68rem] font-medium tracking-wide text-white/80">
+                Based on 567 review
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Item 6: Tall Full-Height Dark Green Review Card (Frans Buissink) */}
+        <div
+          data-panel
+          className="flex h-[520px] w-[310px] shrink-0 flex-col justify-between rounded-[2rem] border border-white/5 bg-[#072419] p-8 text-white shadow-xl md:w-[340px] lg:h-[70vh]"
+        >
+          <div>
+            <QuoteIcon className="h-7 w-7 text-emerald-500/80" />
+            <div className="mt-5">
+              <StarRow />
+            </div>
+            <p className="mt-6 text-sm leading-relaxed text-hs-cream/90 sm:text-base">
+              Some of the best Indian food to be had in Bunbury. Definitely worth checking out. Buffet of delicious selections at the moment, with very friendly and accommodating staff.
+            </p>
+          </div>
+          <p className="mt-6 text-xs font-medium tracking-wide text-hs-cream/70">
+            Frans Buissink
+          </p>
+        </div>
+
+        {/* Item 7: Full-Height Food Image Card (Plated Curry) */}
+        <div
+          data-panel
+          className="group relative h-[520px] w-[300px] shrink-0 overflow-hidden rounded-[2rem] border border-black/5 shadow-xl md:w-[340px] lg:h-[70vh]"
+        >
+          <Image
+            src={media.heroDish1.src}
+            alt={media.heroDish1.alt}
+            fill
+            sizes="340px"
+            quality={80}
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+          />
+        </div>
+
+        <div aria-hidden className="w-[4vw] shrink-0" />
+      </HorizontalScroll>
+    </div>
   );
 }
