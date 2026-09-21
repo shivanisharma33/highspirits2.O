@@ -32,7 +32,7 @@ export function Intro() {
             <TextReveal
               id="intro-title"
               delay={0.15}
-              className="intro-title font-display mt-6 text-[clamp(2.75rem,13vw,6rem)] leading-[0.98] tracking-[-0.03em] text-hs-green lg:mt-7 lg:text-[clamp(4.25rem,7vw,8.25rem)] [&_.tr-line]:block"
+              className="intro-title font-display mt-6 text-[clamp(2.2rem,5.5vw,3.5rem)] leading-[1.02] tracking-[-0.025em] text-hs-green lg:mt-7 lg:text-[clamp(2.75rem,4vw,4.5rem)] [&_.tr-line]:block"
               lineClassName="whitespace-nowrap"
               lines={[
                 <span key="l1">

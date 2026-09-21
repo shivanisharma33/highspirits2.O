@@ -33,10 +33,18 @@ export function HomeHero() {
           AUTHENTIC INDIAN RESTAURANT
         </p>
 
+        {/* Description Paragraph */}
+        <p
+          className="intro-rise mt-5 max-w-2xl text-[clamp(0.95rem,1.4vw,1.15rem)] font-normal leading-relaxed text-hs-cream/90 drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] sm:mt-6"
+          style={d(0.65)}
+        >
+          Discover authentic Punjabi, North Indian, and tandoori specialties crafted with traditional flavors &mdash; served in a luxurious fine-dining atmosphere.
+        </p>
+
         {/* Action Buttons */}
         <div
           className="intro-rise mt-8 flex flex-wrap items-center justify-center gap-4 sm:mt-10"
-          style={d(0.65)}
+          style={d(0.8)}
         >
           <ButtonLink href="/menu" variant="ghost">
             Explore Menu

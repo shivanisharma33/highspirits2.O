@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useRef, type MouseEvent, type ReactNode } from "react";
+import { FadeUp, TextReveal } from "@/components/motion/Reveal";
 import { site } from "@/lib/site";
 
 type PortalItem = {
@@ -309,7 +310,7 @@ function TiltPortalCard({ item, index }: { item: PortalItem; index: number }) {
             {item.iconRender}
           </div>
 
-          <h3 className="font-display text-2xl font-bold tracking-tight text-hs-cream transition-colors duration-300 group-hover:text-hs-gold-pale sm:text-2xl">
+          <h3 className="font-display text-2xl tracking-tight text-hs-cream transition-colors duration-300 group-hover:text-hs-gold-pale sm:text-2xl">
             {item.title}
           </h3>
 
@@ -367,43 +368,28 @@ export function AccoladesPortals() {
       <div className="shell relative z-10">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.28em] text-hs-gold"
-          >
-            <span className="h-px w-6 bg-hs-gold/60" />
-            <span>Recognitions & Partners</span>
-            <span className="h-px w-6 bg-hs-gold/60" />
-          </motion.div>
+          <FadeUp as="p" className="eyebrow justify-center mb-6">
+            Recognitions &amp; Partners
+          </FadeUp>
 
-          <motion.h2
+          <TextReveal
+            as="h2"
             id="accolades-portals-title"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-display text-3xl font-bold tracking-tight text-hs-cream sm:text-4xl md:text-5xl lg:text-6xl"
-          >
-            Our Accolades{" "}
-            <em className="font-normal italic text-transparent bg-clip-text bg-gradient-to-r from-hs-gold via-hs-gold-pale to-hs-gold">
-              &amp;
-            </em>{" "}
-            Online Portals
-          </motion.h2>
+            className="font-display text-h2"
+            lines={[
+              "Our Accolades",
+              <em key="k" className="text-gold-gradient">
+                &amp; Online Portals.
+              </em>,
+            ]}
+          />
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-hs-cream/70 sm:text-base md:text-lg"
-          >
-            Explore our verified credentials, read dining reviews, or order directly
-            to your door.
-          </motion.p>
+          <FadeUp delay={0.2}>
+            <p className="mx-auto mt-6 max-w-xl text-lead text-hs-cream/80">
+              Explore our verified credentials, read dining reviews, or order directly
+              to your door.
+            </p>
+          </FadeUp>
         </div>
 
         {/* 5-Card Grid */}
