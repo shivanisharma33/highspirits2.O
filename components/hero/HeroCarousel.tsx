@@ -14,40 +14,28 @@ export type HeroSlide = {
 
 const HERO_SLIDES: HeroSlide[] = [
   {
-    id: "interior-luxe",
-    media: media.interiorLuxe,
-    caption: "The Grand Dining Room & Velvet Banquettes",
-    tag: "Dining Room",
-    subtitle: "Emerald Velvet & Candlelit Splendour",
+    id: "dining-hall",
+    media: media.heroDiningHall,
+    caption: "The Grand Dining Room & Evening Lounge",
+    tag: "Dining Lounge",
+    subtitle: "Warm Chandeliers & Victoria Street Hospitality",
   },
   {
-    id: "tandoori-grill",
-    media: media.dishTandooriGrill,
-    caption: "Artisan Tandoori Sizzlers & Charred Specialties",
-    tag: "Tandoori Grill",
-    subtitle: "Charcoal-Fired Artisan Mastery",
-  },
-  {
-    id: "food-buffet",
-    media: media.foodBuffet,
-    caption: "Lavish All-You-Can-Eat Buffet Nightly from 5:00 PM",
-    tag: "Evening Buffet",
-    subtitle: "Unlimited Multi-Course Selection",
-  },
-  {
-    id: "biryani-handi",
-    media: media.heroDish3,
-    caption: "Fragrant Dum Biryanis & Slow-Cooked Curries",
+    id: "dum-biryani",
+    media: media.heroDumBiryani,
+    caption: "Steaming Royal Dum Biryani with Saffron Basmati",
     tag: "Dum Biryani",
-    subtitle: "Saffron Spiced Heritage Recipes",
+    subtitle: "Slow-Cooked Punjabi Heritage Recipe",
   },
   {
-    id: "dining-room",
-    media: media.interiorDiningRoom,
-    caption: "Fine Indian Dining on Victoria Street, Bunbury",
-    tag: "Private Lounge",
-    subtitle: "Bunbury's Premier Culinary Address",
+    id: "palak-paneer",
+    media: media.heroPalakPaneer,
+    caption: "Artisan Palak Paneer & Fresh Tandoori Garlic Naan",
+    tag: "Signature Curries",
+    subtitle: "Velvety Spinach & Clay Oven Baked Naan",
   },
+ 
+
 ];
 
 const DURATION_MS = 6000;

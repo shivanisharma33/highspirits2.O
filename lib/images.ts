@@ -1,5 +1,8 @@
 import type { StaticImageData } from "next/image";
 
+import heroDiningHall from "@/assets/images/hero-dining-hall.jpg";
+import heroPalakPaneer from "@/assets/images/hero-palak-paneer.jpg";
+import heroDumBiryani from "@/assets/images/hero-dum-biryani.jpg";
 import interiorLuxe from "@/assets/images/interior-luxe.jpg";
 import interiorDiningRoom from "@/assets/images/interior-dining-room.jpg";
 import interiorLounge from "@/assets/images/interior-lounge.jpg";
@@ -75,6 +78,9 @@ const m = (src: StaticImageData, alt: string): Media => ({ src, alt });
 
 /** Every photograph used on the site, all sourced from highspirits.au and its CMS. */
 export const media = {
+  heroDiningHall: m(heroDiningHall, "The grand dining room at High Spirits with warm chandeliers and table spread"),
+  heroPalakPaneer: m(heroPalakPaneer, "Velvety spiced palak paneer with freshly baked garlic naan in copper bowl and candle glow"),
+  heroDumBiryani: m(heroDumBiryani, "Steaming saffron dum biryani garnished with spiced chicken leg, fresh mint and star anise"),
   interiorLuxe: m(interiorLuxe, "Candle-lit dining room with emerald velvet banquettes, a crystal chandelier and gilt-framed art"),
   interiorDiningRoom: m(interiorDiningRoom, "The High Spirits dining room set with emerald chairs and pale timber tables"),
   interiorLounge: m(interiorLounge, "Dining room with emerald chairs, a leather lounge and chandeliers"),

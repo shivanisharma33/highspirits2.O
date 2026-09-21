@@ -1107,6 +1107,812 @@ html.lenis body {
   transform: rotate(180deg);
 }
 
+/* ==========================================================================
+   The Journey — sticky story panel beside one drawn vertical timeline
+   ========================================================================== */
+@layer components {
+  .journey {
+    overflow-x: clip;
+  }
+
+  .jn-title-em {
+    /* Room for the italic overhang inside the gradient clip. */
+    padding-right: 0.08em;
+  }
+
+  .jn-cue-arrow {
+    animation: jn-nudge 2.8s var(--ease-inout) infinite;
+  }
+
+  /* Chapter index in the story panel */
+  .jn-index-link {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: 1.1rem;
+    padding: 0.42rem 0 0.42rem 1.25rem;
+    color: hsl(40 45% 94% / 0.36);
+    transition: color 0.7s var(--ease-luxe);
+  }
+
+  .jn-index-link::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 22%;
+    bottom: 22%;
+    width: 1px;
+    background: var(--hs-gold);
+    transform: scaleY(0);
+    transition: transform 0.9s var(--ease-luxe);
+  }
+
+  .jn-index-link:hover {
+    color: hsl(40 45% 94% / 0.8);
+  }
+
+  .jn-index-link[aria-current] {
+    color: var(--hs-gold);
+  }
+
+  .jn-index-link[aria-current]::before {
+    transform: scaleY(1);
+  }
+
+  .jn-index-title {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+  }
+
+  /* The rail, its drawn gold fill and the travelling marker */
+  .jn-rail {
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    bottom: 0;
+    width: 1px;
+    background: hsl(40 45% 94% / 0.1);
+  }
+
+  .jn-rail-fill {
+    position: absolute;
+    inset: 0;
+    transform-origin: top;
+    background: linear-gradient(to bottom, hsl(42 78% 51% / 0.2), var(--hs-gold) 8%, var(--hs-gold) 92%, hsl(42 78% 51% / 0.5));
+  }
+
+  .jn-marker {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: var(--hs-gold-soft);
+    box-shadow: 0 0 0 4px hsl(42 78% 51% / 0.14);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* Chapters */
+  .jn-chapter {
+    padding-bottom: 3rem;
+  }
+
+  .jn-chapter::after {
+    content: "";
+    display: block;
+    height: 1px;
+    margin-top: 3rem;
+    background: linear-gradient(90deg, hsl(42 78% 51% / 0.4), hsl(40 45% 94% / 0.08) 55%, transparent);
+  }
+
+  .jn-chapter:last-child {
+    padding-bottom: 3.5rem;
+  }
+
+  .jn-chapter:last-child::after {
+    display: none;
+  }
+
+  .jn-node {
+    position: absolute;
+    left: -5px;
+    top: 0.14rem;
+    width: 11px;
+    height: 11px;
+    border-radius: 999px;
+    border: 1px solid hsl(40 45% 94% / 0.32);
+    background: var(--hs-green-dark);
+    transition:
+      border-color 0.9s var(--ease-luxe),
+      background-color 0.9s var(--ease-luxe),
+      box-shadow 0.9s var(--ease-luxe);
+  }
+
+  .jn-chapter[data-passed] .jn-node,
+  .jn-chapter[data-active] .jn-node {
+    border-color: var(--hs-gold);
+  }
+
+  .jn-chapter[data-active] .jn-node {
+    background: var(--hs-gold);
+    box-shadow: 0 0 0 5px hsl(42 78% 51% / 0.12);
+  }
+
+  .jn-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .jn-year {
+    margin-top: 0.9rem;
+    font-size: clamp(3.25rem, 6vw, 6.75rem);
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    font-variant-numeric: lining-nums;
+    color: var(--hs-gold);
+    transform-origin: left bottom;
+    transition:
+      color 1.2s var(--ease-luxe),
+      transform 1.2s var(--ease-luxe);
+  }
+
+  .jn-figure {
+    margin-top: 1.75rem;
+  }
+
+  .jn-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    background: var(--hs-green);
+  }
+
+  /* Fine gold hairline inside the frame */
+  .jn-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px hsl(42 78% 60% / 0.16);
+    pointer-events: none;
+  }
+
+  /* 8% taller than the frame so parallax never exposes an edge */
+  .jn-media {
+    position: absolute;
+    inset: -4% 0;
+  }
+
+  .jn-body {
+    margin-top: 1.75rem;
+  }
+
+  /* Faint editorial year in the story panel, one layer per chapter */
+  .jn-ghosts {
+    display: none;
+  }
+
+  .jn-ghost {
+    grid-area: 1 / 1;
+    font-size: clamp(5.5rem, 8vw, 10rem);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    font-variant-numeric: lining-nums;
+    white-space: nowrap;
+    color: hsl(42 78% 60% / 0.035);
+    -webkit-text-stroke: 1px hsl(42 78% 60% / 0.16);
+    opacity: 0;
+    transform: translateY(18%);
+    transition:
+      opacity 1.4s var(--ease-luxe),
+      transform 1.8s var(--ease-luxe);
+    user-select: none;
+  }
+
+  .jn-ghost[data-active] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Coda */
+  .jn-coda-mark {
+    position: absolute;
+    left: -4px;
+    top: 0.2rem;
+    width: 9px;
+    height: 9px;
+    transform: rotate(45deg);
+    border: 1px solid var(--hs-gold);
+    background: var(--hs-green-dark);
+  }
+
+  @media (min-width: 768px) {
+    .jn-chapter {
+      padding-bottom: 5rem;
+    }
+
+    .jn-chapter::after {
+      display: none;
+    }
+
+    .jn-ghosts {
+      display: grid;
+      overflow: hidden;
+      padding-block: 1.5rem;
+    }
+
+    .jn-figure--portrait {
+      max-width: 22rem;
+    }
+
+    /* Focus: the chapter on the reading line leads, the rest recede */
+    .journey.is-live .jn-dim {
+      transition: opacity 1.2s var(--ease-luxe);
+    }
+
+    .journey.is-live .jn-chapter:not([data-active]) .jn-dim {
+      opacity: 0.5;
+    }
+
+    .journey.is-live .jn-chapter:not([data-active]) .jn-year {
+      color: hsl(40 45% 94% / 0.4);
+      transform: scale(0.86);
+    }
+
+    .journey.is-live .jn-frame img {
+      transition:
+        transform 1.4s var(--ease-luxe),
+        filter 1.4s var(--ease-luxe);
+    }
+
+    .journey.is-live .jn-chapter:not([data-active]) .jn-frame img {
+      filter: saturate(0.6) brightness(0.72);
+    }
+  }
+
+  /* Short viewports: keep the panel to intro + index, no overlap */
+  @media (min-width: 768px) and (max-height: 820px) {
+    .jn-ghosts {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) and (max-height: 720px) {
+    .jn-index ol {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .jn-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      /* A tall photograph grows the copy row, never the gap under the title. */
+      grid-template-rows: auto 1fr;
+      column-gap: 1.5rem;
+      align-items: start;
+    }
+
+    .jn-head {
+      grid-column: 1 / 7;
+      grid-row: 1;
+    }
+
+    .jn-body {
+      grid-column: 1 / 7;
+      grid-row: 2;
+      margin-top: 2rem;
+    }
+
+    .jn-figure,
+    .jn-figure--portrait {
+      grid-column: 7 / 13;
+      grid-row: 1 / 3;
+      margin-top: 0;
+      max-width: none;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .jn-chapter {
+      padding-bottom: 6.5rem;
+    }
+
+    .jn-chapter:last-child {
+      padding-bottom: 5rem;
+    }
+  }
+}
+
+@keyframes jn-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+/* ==========================================================================
+   Signature Creations — a featured plate on stage beside a staggered gallery
+   ========================================================================== */
+@layer components {
+  .sg-title-em {
+    padding-right: 0.08em;
+  }
+
+  /* Editorial filter: small caps, hairline separators, a drawn gold underline */
+  .sg-filter {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
+  }
+
+  .sg-filter-btn {
+    --pr: 0.75rem;
+    position: relative;
+    margin-right: var(--pr);
+    padding: 0 var(--pr) 1.05rem 0;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: hsl(40 45% 94% / 0.45);
+    transition: color 0.6s var(--ease-luxe);
+  }
+
+  .sg-filter-btn:last-child {
+    --pr: 0rem;
+    margin-right: 0;
+  }
+
+  /* Separator: a short hairline after every item but the last */
+  .sg-filter-btn:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0.1rem;
+    height: 0.75rem;
+    width: 1px;
+    background: hsl(40 45% 94% / 0.16);
+  }
+
+  .sg-filter-btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: var(--pr);
+    bottom: -1px;
+    height: 1px;
+    background: var(--hs-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.9s var(--ease-luxe);
+  }
+
+  .sg-filter-btn:hover {
+    color: hsl(40 45% 94% / 0.85);
+  }
+
+  .sg-filter-btn[aria-pressed="true"] {
+    color: var(--hs-gold);
+  }
+
+  .sg-filter-btn[aria-pressed="true"]::after {
+    transform: scaleX(1);
+  }
+
+  /* Counts join the labels once there is room for one line */
+  .sg-filter-count {
+    display: none;
+    margin-left: 0.4em;
+    font-size: 0.8em;
+    letter-spacing: 0.08em;
+    color: hsl(42 78% 51% / 0.6);
+  }
+
+  /* Photograph frames */
+  .sg-frame {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 1.25rem;
+    background: var(--hs-green);
+  }
+
+  .sg-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px hsl(42 78% 60% / 0.14);
+    pointer-events: none;
+  }
+
+  /* Taller than the frame so the parallax drift never shows an edge */
+  .sg-parallax {
+    position: absolute;
+    inset: -16px 0;
+  }
+
+  /* The stage */
+  .sg-stage {
+    margin-top: 3rem;
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .sg-stage-info {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .sg-layer {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+  }
+
+  .sg-layer[data-state] {
+    visibility: visible;
+  }
+
+  .sg-layer[data-state="prev"] {
+    z-index: 1;
+  }
+
+  .sg-layer[data-state="active"] {
+    z-index: 2;
+  }
+
+  /* Featured-plate change: the new photograph wipes across the old one */
+  .sg[data-swapped] .sg-layer[data-state="active"] {
+    animation: sg-wipe 1.35s var(--ease-luxe) both;
+  }
+
+  .sg[data-swapped] .sg-layer[data-state="active"] img {
+    animation: sg-settle 2s var(--ease-luxe) both;
+  }
+
+  .sg[data-swapped] .sg-rise {
+    animation: sg-rise 1.05s var(--ease-luxe) both;
+    animation-delay: calc(0.12s + var(--i, 0) * 0.065s);
+  }
+
+  .sg-ghost {
+    display: none;
+  }
+
+  .sg-view {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--hs-gold);
+  }
+
+  .sg-view-circle {
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 999px;
+    border: 1px solid hsl(42 78% 51% / 0.4);
+    transition:
+      background-color 0.6s var(--ease-luxe),
+      color 0.6s var(--ease-luxe),
+      border-color 0.6s var(--ease-luxe);
+  }
+
+  .sg-view-circle svg {
+    transition: transform 0.6s var(--ease-luxe);
+  }
+
+  .sg-view:hover .sg-view-circle,
+  .sg-view:focus-visible .sg-view-circle {
+    background: var(--hs-gold);
+    border-color: var(--hs-gold);
+    color: var(--hs-green-deep);
+  }
+
+  .sg-view:hover .sg-view-circle svg {
+    transform: translateX(2px);
+  }
+
+  /* The collection */
+  .sg-collection {
+    margin-top: 5.5rem;
+  }
+
+  .sg-gallery {
+    margin-top: 2.75rem;
+    display: grid;
+    row-gap: 3.75rem;
+  }
+
+  .sg-item {
+    position: relative;
+  }
+
+  .sg-item-no {
+    display: inline-block;
+    transition: transform 0.8s var(--ease-luxe);
+  }
+
+  .sg-item-rule {
+    display: block;
+    height: 1px;
+    width: 1.5rem;
+    background: hsl(42 78% 51% / 0.55);
+    transition: width 0.8s var(--ease-luxe);
+  }
+
+  .sg-item-title {
+    display: inline-block;
+    transition:
+      transform 0.8s var(--ease-luxe),
+      color 0.8s var(--ease-luxe);
+  }
+
+  .sg-item-title:focus-visible {
+    outline: none;
+  }
+
+  .sg-item:has(.sg-item-title:focus-visible) .sg-frame {
+    outline: 1px solid var(--hs-gold);
+    outline-offset: 5px;
+  }
+
+  .sg-item-arrow {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-top: 0.1rem;
+    border-radius: 999px;
+    border: 1px solid hsl(40 45% 94% / 0.14);
+    color: var(--hs-gold);
+    transition:
+      border-color 0.8s var(--ease-luxe),
+      transform 0.8s var(--ease-luxe);
+  }
+
+  /* After the reveal has played, the photograph answers hover instead */
+  .js .sg-item [data-reveal].is-in .sg-item-img {
+    transition: transform 1.3s var(--ease-luxe);
+  }
+
+  @media (hover: hover) {
+    .js .sg-item:hover [data-reveal].is-in .sg-item-img {
+      transform: scale(1.04);
+    }
+
+    .sg-item:hover .sg-item-no {
+      transform: translateX(3px);
+    }
+
+    .sg-item:hover .sg-item-rule {
+      width: 2.75rem;
+    }
+
+    .sg-item:hover .sg-item-title {
+      transform: translateX(0.3rem);
+      color: var(--hs-gold-pale);
+    }
+
+    .sg-item:hover .sg-item-arrow {
+      border-color: hsl(42 78% 51% / 0.6);
+      transform: rotate(45deg);
+    }
+  }
+
+  @media (min-width: 480px) {
+    .sg-filter-btn {
+      --pr: 1.6rem;
+      letter-spacing: 0.26em;
+    }
+
+    .sg-filter-count {
+      display: inline;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .sg-stage {
+      margin-top: 3.5rem;
+    }
+
+    .sg-collection {
+      margin-top: 7rem;
+    }
+
+    /*
+     * Two staggered columns. The right column rides --sg-offset lower: the
+     * first right plate drops by it and every later left plate rises by it.
+     * Keeping the offset no larger than the row gap means plates never touch.
+     */
+    .sg-gallery {
+      --sg-offset: 4.5rem;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 1.75rem;
+      row-gap: var(--sg-offset);
+      align-items: start;
+    }
+
+    .sg-item:nth-child(odd) {
+      grid-column: 1 / 7;
+    }
+
+    .sg-item:nth-child(even) {
+      grid-column: 7 / 13;
+    }
+
+    .sg-item:nth-child(2) {
+      margin-top: var(--sg-offset);
+    }
+
+    .sg-item:nth-child(odd):not(:first-child) {
+      margin-top: calc(var(--sg-offset) * -1);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sg-stage {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 3rem;
+      align-items: center;
+    }
+
+    .sg-stage-figure {
+      grid-column: 1 / 8;
+    }
+
+    .sg-stage-info {
+      grid-column: 8 / 13;
+      padding-block: 1.5rem;
+    }
+
+    /* Hairline and marker between photograph and type */
+    .sg-stage-info::before {
+      content: "";
+      position: absolute;
+      left: -1.5rem;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, hsl(42 78% 51% / 0.35) 20%, hsl(42 78% 51% / 0.35) 80%, transparent);
+    }
+
+    .sg-stage-info::after {
+      content: "";
+      position: absolute;
+      left: calc(-1.5rem - 3px);
+      top: 1.9rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--hs-gold);
+    }
+
+    /* Large faint plate number behind the type */
+    .sg-ghost {
+      display: block;
+      position: absolute;
+      z-index: -1;
+      right: -0.04em;
+      bottom: -0.1em;
+      font-size: clamp(11rem, 17vw, 19rem);
+      line-height: 0.8;
+      letter-spacing: -0.05em;
+      font-variant-numeric: lining-nums;
+      color: hsl(42 78% 60% / 0.02);
+      -webkit-text-stroke: 1px hsl(42 78% 60% / 0.1);
+      pointer-events: none;
+      user-select: none;
+      animation: sg-ghost-in 1.6s var(--ease-luxe) both;
+    }
+
+    .sg-gallery {
+      --sg-offset: 7.5rem;
+      column-gap: 2.5rem;
+    }
+
+    /* Asymmetric widths: the columns breathe instead of forming a grid */
+    .sg-item:nth-child(odd) {
+      grid-column: 1 / 6;
+    }
+
+    .sg-item:nth-child(4n + 3) {
+      grid-column: 2 / 7;
+    }
+
+    .sg-item:nth-child(even) {
+      grid-column: 8 / 13;
+    }
+
+    .sg-item:nth-child(4n) {
+      grid-column: 7 / 12;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .sg-stage {
+      column-gap: 5rem;
+    }
+
+    .sg-stage-info::before {
+      left: -2.5rem;
+    }
+
+    .sg-stage-info::after {
+      left: calc(-2.5rem - 3px);
+    }
+
+    .sg-collection {
+      margin-top: 9rem;
+    }
+  }
+}
+
+@keyframes sg-wipe {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes sg-settle {
+  from {
+    transform: scale(1.08);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes sg-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+    clip-path: inset(0 0 100% 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(-20% -10% -30% -10%);
+  }
+}
+
+@keyframes sg-ghost-in {
+  from {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (max-width: 767px) {
   :root {
     --reveal-distance: 24px;
