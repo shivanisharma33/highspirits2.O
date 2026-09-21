@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
-import { ArticleMeta } from "@/components/journal/ArticleCard";
+import { ArticleCard, ArticleMeta } from "@/components/journal/ArticleCard";
 import { IntroLines } from "@/components/motion/Reveal";
 import { ReservationCTA } from "@/components/sections/ReservationCTA";
 import { ArrowLeft } from "@/components/ui/Icons";
@@ -59,7 +59,7 @@ export default async function ArticlePage({ params }: PageProps<"/blogs/[slug]">
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Journal", path: "/blogs" },
+          { name: "Blogs", path: "/blogs" },
           { name: article.title, path: `/blogs/${article.slug}` },
         ])}
       />
@@ -67,7 +67,7 @@ export default async function ArticlePage({ params }: PageProps<"/blogs/[slug]">
       <article className="surface-light bg-hs-cream text-hs-text">
         <header className="shell pb-14 pt-[calc(var(--header-h)+3.5rem)]">
           <Link href="/blogs" className="intro-rise link-line text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-hs-green" style={d(0.05)}>
-            <ArrowLeft size={14} /> The Journal
+            <ArrowLeft size={14} /> Back to Blogs
           </Link>
           <div className="intro-rise mt-12" style={d(0.15)}>
             <ArticleMeta article={article} className="text-hs-muted" />
@@ -98,6 +98,37 @@ export default async function ArticlePage({ params }: PageProps<"/blogs/[slug]">
             <Markdown source={article.content} />
           </div>
         </div>
+
+        {/* More Stories from the Blog */}
+        {articles.filter((a) => a.slug !== article.slug).length > 0 && (
+          <section aria-labelledby="more-stories-title" className="border-t border-hs-line py-20 md:py-28">
+            <div className="shell">
+              <div className="flex items-end justify-between gap-6">
+                <div>
+                  <p className="eyebrow">Continue Reading</p>
+                  <h2 id="more-stories-title" className="font-display mt-3 text-3xl text-hs-green">
+                    More from the Blog
+                  </h2>
+                </div>
+                <Link
+                  href="/blogs"
+                  className="hidden text-xs font-semibold uppercase tracking-[0.2em] text-hs-gold-deep hover:underline sm:inline-block"
+                >
+                  All Blogs →
+                </Link>
+              </div>
+
+              <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                {articles
+                  .filter((a) => a.slug !== article.slug)
+                  .slice(0, 3)
+                  .map((item) => (
+                    <ArticleCard key={item.slug} article={item} />
+                  ))}
+              </div>
+            </div>
+          </section>
+        )}
       </article>
 
       <ReservationCTA />

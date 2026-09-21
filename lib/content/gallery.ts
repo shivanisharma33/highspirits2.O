@@ -30,7 +30,7 @@ export const galleryItems: GalleryItem[] = [
   g(media.foodBuffet, "Food"),
   g(media.opening3, "Grand Opening"),
   g(media.guests5, "Guests"),
-  g(media.fathersDay, "Celebrations"),
+  g(media.guests10, "Celebrations"),
   g(media.heroDish2, "Food"),
   g(media.signage, "Spaces"),
   g(media.teamWithGuests, "Kitchen"),

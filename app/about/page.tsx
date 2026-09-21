@@ -1,210 +1,436 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import type { CSSProperties } from "react";
+import { AboutHero } from "@/components/about/AboutHero";
 import { ChefStory } from "@/components/chef/ChefStory";
-import { Parallax } from "@/components/motion/Parallax";
-import { ClipReveal, FadeUp, ImageReveal, IntroLines, TextReveal } from "@/components/motion/Reveal";
+import { ClipReveal, FadeUp, ImageReveal, TextReveal } from "@/components/motion/Reveal";
 import { ReservationCTA } from "@/components/sections/ReservationCTA";
-import { Timeline } from "@/components/timeline/Timeline";
 import { Aurora } from "@/components/ui/Aurora";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { mission, partner, philosophy, team, values } from "@/lib/content/story";
-import { media } from "@/lib/images";
+import {
+  aboutMilestones,
+  mission,
+  partner,
+  recognitionAwards,
+  team,
+  values,
+} from "@/lib/content/story";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { accolade, site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About | Indian Fine Dining in Bunbury",
-  description: "Learn about High Spirits, a Bunbury Indian dining destination known for its curated buffet, refined flavours and welcoming hospitality.",
+  title: "About Us | High Spirits — Authentic Indian Fine Dining in Bunbury",
+  description:
+    "At High Spirits, where tradition meets luxury in every bite. Discover our mission, core values, culinary team, and legacy of excellence in Bunbury, WA.",
   path: "/about",
 });
 
-const d = (s: number) => ({ "--d": `${s}s` }) as CSSProperties;
-
 export default function AboutPage() {
-  const fusion = philosophy[2];
-
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About Us", path: "/about" },
+        ])}
+      />
 
-      {/* 1. Hero — vertical editorial: headline, then a cinematic band */}
-      <section aria-labelledby="about-title" className="grain relative overflow-hidden bg-hs-green-deep pt-[calc(var(--header-h)+5rem)]">
-        <div className="shell">
-          <div className="flex flex-wrap items-end justify-between gap-8">
-            <p className="eyebrow intro-rise" style={d(0.1)}>
-              About High Spirits
-            </p>
-            <p className="intro-rise max-w-xs text-sm text-hs-cream/60" style={d(0.2)}>
-              A destination restaurant & bar at 1/57 Victoria Street, Bunbury.
-            </p>
-          </div>
-          <IntroLines
-            as="h1"
-            id="about-title"
-            className="font-display mt-10 text-h1"
-            start={0.25}
-            lines={["Where tradition", <span key="2" className="pl-[10vw]">meets <em className="text-gold-gradient">luxury</em></span>, "in every bite."]}
-          />
-        </div>
-        <div className="intro-rise relative mt-16 aspect-[16/10] w-full overflow-hidden md:mt-24 md:aspect-[21/9]" style={d(0.6)}>
-          <Image src={media.teamFamily.src} alt={media.teamFamily.alt} fill preload sizes="100vw" placeholder="blur" className="intro-media object-cover" />
-          <div aria-hidden className="absolute inset-0 bg-linear-to-b from-hs-green-deep/40 via-transparent to-hs-green-deep/50" />
-        </div>
-      </section>
+      {/* ─── 1. HERO: Interactive & Engaging About Us ─── */}
+      <AboutHero />
 
-      {/* 2. Brand story */}
-      <section aria-labelledby="mission-title" className="surface-light bg-hs-cream py-28 text-hs-text md:py-40">
-        <div className="shell grid gap-14 lg:grid-cols-12">
+      {/* ─── 2. OUR MISSION ─── */}
+      <section
+        aria-labelledby="mission-title"
+        className="surface-light bg-hs-cream py-24 text-hs-text md:py-36"
+      >
+        <div className="shell grid gap-14 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-4">
-            <FadeUp as="p" className="eyebrow">
-              Our mission
-            </FadeUp>
-            <TextReveal as="h2" id="mission-title" className="font-display mt-7 text-h2 text-hs-green" lines={["The soul", "of India,", <em key="e">in Bunbury.</em>]} />
+            <div className="flex items-center gap-2">
+              <span className="h-px w-6 bg-hs-gold-deep" />
+              <FadeUp as="p" className="eyebrow text-hs-gold-deep">
+                Our Mission
+              </FadeUp>
+            </div>
+            <TextReveal
+              as="h2"
+              id="mission-title"
+              className="font-display mt-6 text-h2 text-hs-green"
+              lines={["The Soul of India,", <em key="e" className="text-hs-gold-deep italic">in Bunbury.</em>]}
+            />
+            <div className="mt-8 hidden lg:block">
+              <span className="block h-px w-20 bg-hs-gold-deep/30" />
+              <p className="mt-6 text-xs uppercase tracking-[0.2em] text-hs-muted">
+                Fine Dining · Authentic Recipes · Elevated Moments
+              </p>
+            </div>
           </div>
-          <div className="lg:col-span-7 lg:col-start-6">
-            <FadeUp as="p" className="text-lead text-hs-text/85 first-letter:font-display first-letter:float-left first-letter:mr-3 first-letter:text-7xl first-letter:leading-[0.8] first-letter:text-hs-green">
+
+          <div className="lg:col-span-8 lg:pl-6">
+            <FadeUp
+              as="p"
+              className="text-lead text-hs-text/90 first-letter:font-display first-letter:float-left first-letter:mr-3 first-letter:text-7xl first-letter:leading-[0.8] first-letter:text-hs-green"
+            >
               {mission[0]}
             </FadeUp>
-            <FadeUp as="p" delay={0.1} className="mt-8 leading-relaxed text-hs-muted">
+
+            <FadeUp as="p" delay={0.12} className="mt-8 leading-relaxed text-hs-muted text-base md:text-lg">
               {mission[1]}
             </FadeUp>
-            <FadeUp as="blockquote" delay={0.15} className="font-display mt-14 border-l-2 border-hs-gold-deep pl-6 text-[clamp(1.6rem,2.6vw,2.4rem)] italic leading-snug text-hs-green">
-              “Every dish carries a story of heritage, passion, and uncompromising quality.”
+
+            <FadeUp
+              as="blockquote"
+              delay={0.2}
+              className="font-display mt-12 rounded-2xl border-l-4 border-hs-gold-deep bg-hs-sand/40 p-6 md:p-8 text-[clamp(1.35rem,2.2vw,1.9rem)] italic leading-snug text-hs-green shadow-sm"
+            >
+              “Every dish carries a story of heritage, passion, and uncompromising quality, designed to be savoured slowly and remembered fondly.”
             </FadeUp>
           </div>
         </div>
       </section>
 
-      {/* 3. Philosophy — values */}
-      <section aria-labelledby="values-title" className="grain relative overflow-hidden bg-hs-green-dark py-28 md:py-36">
+      {/* ─── 3. OUR PHILOSOPHY — CORE VALUES ─── */}
+      <section
+        aria-labelledby="values-title"
+        className="grain relative overflow-hidden bg-hs-green-dark py-24 md:py-36 text-white"
+      >
         <Aurora />
-        <div className="shell relative">
-          <FadeUp as="p" className="eyebrow">
-            Our philosophy
-          </FadeUp>
-          <FadeUp as="h2" id="values-title" className="font-display mt-7 max-w-3xl text-h2">
-            Four promises on <em className="text-gold-gradient">every plate.</em>
-          </FadeUp>
-          <ol className="mt-20 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="shell relative z-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <FadeUp as="p" className="eyebrow justify-center text-hs-gold">
+              Our Philosophy
+            </FadeUp>
+            <FadeUp as="h2" id="values-title" className="font-display mt-4 text-h2">
+              Core <em className="text-gold-gradient">Values</em>
+            </FadeUp>
+            <FadeUp as="p" delay={0.1} className="mt-4 text-sm leading-relaxed text-hs-cream/70 md:text-base">
+              Four foundational commitments guiding every plate and every guest interaction at High Spirits.
+            </FadeUp>
+          </div>
+
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((v, i) => (
-              <FadeUp as="li" key={v.title} delay={i * 0.08}>
-                <div className="glass glass-edge glass-spot h-full rounded-[1.75rem] p-8 transition-transform duration-700 ease-luxe hover:-translate-y-2">
-                  <span className="glass-chip">
-                    <span className="text-hs-gold">{String(i + 1).padStart(2, "0")}</span>
-                  </span>
-                  <h3 className="font-display mt-10 text-4xl">{v.title}</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-hs-cream/70">{v.body}</p>
+              <FadeUp key={v.title} delay={i * 0.1}>
+                <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-[#082218]/90 p-8 shadow-xl backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-hs-gold/50 hover:shadow-[0_20px_45px_-10px_rgba(0,0,0,0.6)]">
+                  {/* Glowing background sheen on hover */}
+                  <div className="pointer-events-none absolute -inset-1 bg-gradient-to-br from-hs-gold/15 to-transparent opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
+
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between">
+                      <span className="font-display text-sm font-semibold text-hs-gold">
+                        0{i + 1}
+                      </span>
+                      <span className="h-2 w-2 rounded-full bg-hs-gold/40 transition-transform duration-300 group-hover:scale-150 group-hover:bg-hs-gold" />
+                    </div>
+
+                    <h3 className="font-display mt-8 text-3xl font-bold text-hs-cream transition-colors duration-300 group-hover:text-hs-gold-pale">
+                      {v.title}
+                    </h3>
+
+                    <p className="mt-4 text-sm leading-relaxed text-hs-cream/75 transition-colors duration-300 group-hover:text-hs-cream/90">
+                      {v.body}
+                    </p>
+                  </div>
+
+                  <div className="relative z-10 mt-8 pt-4 border-t border-white/10">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-hs-gold-soft">
+                      High Spirits Standard
+                    </span>
+                  </div>
                 </div>
               </FadeUp>
             ))}
-          </ol>
+          </div>
         </div>
       </section>
 
-      {/* 4. Punjab → Australia */}
-      <section aria-labelledby="journey-title" className="surface-light relative overflow-hidden bg-hs-sand py-28 text-hs-text md:py-40">
+      {/* ─── 4. THE TEAM: Passionate Professionals ─── */}
+      <section
+        aria-labelledby="team-title"
+        className="surface-light bg-hs-sand py-24 text-hs-text md:py-36"
+      >
         <div className="shell">
-          <h2 id="journey-title" className="sr-only">
-            From Punjab to Australia
-          </h2>
-          <div className="grid items-center gap-8 md:grid-cols-[1fr_auto_1fr]">
-            <FadeUp as="p" className="font-display text-[clamp(3.5rem,10vw,10rem)] leading-none text-hs-green">
-              Punjab
-            </FadeUp>
-            <ClipReveal aria-hidden className="flex items-center gap-3 text-hs-gold-deep md:flex-col">
-              <span className="h-px w-16 bg-hs-gold-deep md:h-24 md:w-px" />
-              <span className="font-display text-3xl italic">to</span>
-              <span className="h-px w-16 bg-hs-gold-deep md:h-24 md:w-px" />
-            </ClipReveal>
-            <FadeUp as="p" delay={0.1} className="font-display text-[clamp(3.5rem,10vw,10rem)] italic leading-none text-hs-gold-deep md:text-right">
-              Australia
-            </FadeUp>
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-5">
+              <div className="flex items-center gap-2">
+                <span className="h-px w-6 bg-hs-gold-deep" />
+                <FadeUp as="p" className="eyebrow text-hs-gold-deep">
+                  {team.eyebrow}
+                </FadeUp>
+              </div>
+              <TextReveal
+                as="h2"
+                id="team-title"
+                className="font-display mt-6 text-h2 text-hs-green"
+                lines={["Passionate", <em key="p" className="italic text-hs-gold-deep">Professionals</em>]}
+              />
+            </div>
+
+            <div className="lg:col-span-7">
+              <FadeUp as="p" className="text-lead text-hs-text/90">
+                {team.lead}
+              </FadeUp>
+              <FadeUp as="p" delay={0.15} className="mt-6 font-display text-xl italic leading-relaxed text-hs-green">
+                “{team.body}”
+              </FadeUp>
+            </div>
           </div>
 
-          <div className="mt-20 grid gap-12 lg:grid-cols-12 lg:items-center">
-            <ImageReveal className="relative aspect-[4/3] overflow-hidden lg:col-span-5" data-cursor="View">
-              <Parallax speed={0.12} className="absolute -inset-y-[8%] inset-x-0">
-                <Image src={media.spices.src} alt={media.spices.alt} fill sizes="(min-width: 1024px) 40vw, 100vw" placeholder="blur" className="object-cover" />
-              </Parallax>
-            </ImageReveal>
-            <FadeUp className="lg:col-span-3 lg:px-4">
-              <h3 className="font-display text-h3 italic text-hs-green">{fusion.title}</h3>
-              <p className="mt-5 leading-relaxed text-hs-muted">{fusion.body}</p>
-            </FadeUp>
-            <ImageReveal delay={0.1} className="relative aspect-[3/4] overflow-hidden lg:col-span-4 lg:mt-24" data-cursor="View">
-              <Image src={media.exteriorDay.src} alt={media.exteriorDay.alt} fill sizes="(min-width: 1024px) 32vw, 100vw" placeholder="blur" className="object-cover" />
-            </ImageReveal>
+          {/* Curated Team Photo Gallery */}
+          <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+            {team.images.map((img, i) => (
+              <ImageReveal
+                key={img.alt}
+                delay={i * 0.1}
+                className={`relative overflow-hidden rounded-2xl md:rounded-3xl shadow-lg ${
+                  i === 0 ? "row-span-2 aspect-[3/4] md:row-span-1" : "aspect-[4/3]"
+                } ${i === 2 ? "col-span-2 md:col-span-1" : ""}`}
+                data-cursor="View"
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 50vw"
+                  placeholder="blur"
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </ImageReveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 5. Chef */}
-      <ChefStory cta={false} />
-
-      {/* 6. Team */}
-      <section aria-labelledby="team-title" className="bg-hs-green py-28 md:py-40">
-        <div className="shell grid gap-16 lg:grid-cols-12">
+      {/* ─── 5. FROM PUNJAB TO AUSTRALIA — CHEF ISHPREET BEDI ─── */}
+      <section
+        aria-labelledby="partner-title"
+        className="bg-hs-green py-24 text-white md:py-36"
+      >
+        <div className="shell grid gap-16 lg:grid-cols-12 lg:items-center">
+          {/* Portrait Column */}
           <div className="lg:col-span-5">
-            <ClipReveal className="relative aspect-[2/3] max-w-md overflow-hidden" data-cursor="View">
-              <Image src={partner.portrait.src} alt={partner.portrait.alt} fill sizes="(min-width: 1024px) 30vw, 100vw" placeholder="blur" className="object-cover" />
+            <ClipReveal
+              className="relative aspect-[3/4] max-w-md overflow-hidden rounded-[2.5rem] shadow-2xl ring-1 ring-hs-gold/20"
+              data-cursor="View"
+            >
+              <Image
+                src={partner.portrait.src}
+                alt={partner.portrait.alt}
+                fill
+                sizes="(min-width: 1024px) 35vw, 100vw"
+                placeholder="blur"
+                className="object-cover"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-gradient-to-t from-hs-green-deep/70 via-transparent to-transparent"
+              />
+              <div className="absolute bottom-6 left-6 right-6 rounded-xl border border-white/10 bg-hs-green-deep/80 p-4 backdrop-blur-md">
+                <p className="font-display text-lg font-bold text-hs-cream">Chef Ishpreet Bedi</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-hs-gold">Business Partner &amp; Co-Founder</p>
+              </div>
             </ClipReveal>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7 lg:pt-16">
-            <FadeUp as="p" className="eyebrow">
-              Meet our business partner
+
+          {/* Narrative Column */}
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-2.5">
+              <span className="h-px w-6 bg-hs-gold" />
+              <FadeUp as="p" className="eyebrow text-hs-gold">
+                {partner.title}
+              </FadeUp>
+            </div>
+
+            <TextReveal
+              as="h2"
+              id="partner-title"
+              className="font-display mt-6 text-h2"
+              lines={["Chef Ishpreet", <em key="e" className="text-gold-gradient italic">Bedi</em>]}
+            />
+
+            <FadeUp as="p" delay={0.1} className="mt-3 text-xs font-semibold uppercase tracking-[0.24em] text-hs-gold-soft">
+              {partner.role} · {partner.eyebrow}
             </FadeUp>
-            <TextReveal as="h2" id="team-title" className="font-display mt-7 text-h2" lines={["Ishpreet", <em key="e" className="text-gold-gradient">Bedi</em>]} />
-            <FadeUp as="p" delay={0.1} className="mt-4 text-xs font-semibold uppercase tracking-[0.26em] text-hs-gold">
-              {partner.role}
-            </FadeUp>
-            <FadeUp as="p" delay={0.15} className="mt-8 leading-relaxed text-hs-cream/80">
+
+            <FadeUp as="p" delay={0.15} className="mt-8 text-lead leading-relaxed text-hs-cream/90">
               {partner.bio}
             </FadeUp>
-            <FadeUp as="p" delay={0.2} className="font-display mt-10 text-2xl italic leading-snug text-hs-cream/90">
-              {team.body}
+
+            <FadeUp as="p" delay={0.22} className="mt-6 leading-relaxed text-hs-cream/75 text-base md:text-lg">
+              {partner.secondBio}
+            </FadeUp>
+
+            <FadeUp delay={0.3} className="mt-8 flex flex-wrap gap-2.5">
+              {partner.highlights.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-hs-gold/30 bg-hs-gold/10 px-4 py-1.5 text-xs font-medium text-hs-gold-pale backdrop-blur-sm"
+                >
+                  ✦ {tag}
+                </span>
+              ))}
             </FadeUp>
           </div>
-        </div>
-
-        <div className="shell mt-24 grid grid-cols-2 gap-4 md:grid-cols-3">
-          {team.images.map((img, i) => (
-            <ImageReveal key={img.alt} delay={i * 0.08} className={`relative overflow-hidden ${i === 0 ? "row-span-2 aspect-[3/4] md:row-span-1" : "aspect-[4/3]"} ${i === 2 ? "col-span-2 md:col-span-1" : ""}`} data-cursor="View">
-              <Image src={img.src} alt={img.alt} fill sizes="(min-width: 768px) 33vw, 50vw" placeholder="blur" className="object-cover" />
-            </ImageReveal>
-          ))}
         </div>
       </section>
 
-      {/* 7. Timeline */}
-      <Timeline />
+      {/* ─── 6. EXECUTIVE CHEF STORY ─── */}
+      <ChefStory cta={false} />
 
-      {/* 8. Recognition */}
-      <section aria-labelledby="awards-title" className="surface-light bg-hs-cream py-24 text-hs-text md:py-32">
-        <div className="shell grid items-center gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <FadeUp as="p" className="eyebrow">
-              Recognition
+      {/* ─── 7. OUR JOURNEY: Milestones & Achievements ─── */}
+      <section
+        aria-labelledby="journey-section-title"
+        className="grain relative overflow-hidden bg-[#041710] py-24 text-white md:py-36"
+      >
+        <Aurora />
+        <div className="shell relative z-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.28em] text-hs-gold">
+              <span className="h-px w-6 bg-hs-gold/60" />
+              <span>Our Journey</span>
+              <span className="h-px w-6 bg-hs-gold/60" />
+            </div>
+
+            <FadeUp as="h2" id="journey-section-title" className="font-display mt-4 text-h2 text-white">
+              Milestones <em className="italic text-gold-gradient">&amp;</em> Achievements
             </FadeUp>
-            <FadeUp as="h2" id="awards-title" className="font-display mt-7 text-h2 text-hs-green">
-              Voted by <em>our guests.</em>
+
+            <FadeUp as="p" delay={0.1} className="mt-4 text-sm leading-relaxed text-hs-cream/70 md:text-base">
+              From our founding vision to becoming Australia&apos;s celebrated benchmark for luxury Indian gastronomy.
             </FadeUp>
           </div>
-          <FadeUp delay={0.1} className="glass-light glass-spot flex flex-col gap-8 rounded-[2rem] p-8 sm:flex-row sm:items-center md:p-12 lg:col-span-6 lg:col-start-7">
-            <Image src={accolade.badge} alt="Australian Good Food Guide Readers' Choice Winner 2026 badge" width={250} height={150} className="h-auto w-44 shrink-0" />
-            <div>
-              <p className="font-display text-3xl text-hs-green">{accolade.title}</p>
-              <p className="mt-2 text-hs-muted">{accolade.body}</p>
-              <ButtonLink href={site.listings.agfg} external variant="outline-dark" className="mt-6">
-                View on AGFG
-              </ButtonLink>
+
+          {/* Timeline Grid */}
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {aboutMilestones.map((m, idx) => (
+              <FadeUp key={m.year} delay={idx * 0.1}>
+                <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-[#082218]/85 p-6 shadow-xl backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-hs-gold/50">
+                  {/* Subtle hover backlight */}
+                  <div className="pointer-events-none absolute -inset-1 bg-gradient-to-b from-hs-gold/15 to-transparent opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
+
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between">
+                      <span className="font-display text-3xl font-bold tracking-tight text-hs-gold">
+                        {m.year}
+                      </span>
+                      <span className="rounded-full border border-hs-gold/30 bg-hs-gold/10 px-2.5 py-0.5 text-[10px] font-semibold text-hs-gold-pale">
+                        Step 0{idx + 1}
+                      </span>
+                    </div>
+
+                    <h3 className="font-display mt-6 text-xl font-bold text-hs-cream group-hover:text-hs-gold-pale transition-colors duration-300">
+                      {m.title}
+                    </h3>
+
+                    <p className="mt-3 text-xs leading-relaxed text-hs-cream/75 group-hover:text-hs-cream/90 transition-colors duration-300">
+                      {m.description}
+                    </p>
+                  </div>
+
+                  <div className="relative z-10 mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+                    <span className="h-1 w-8 bg-hs-gold/40 group-hover:w-16 transition-all duration-500 group-hover:bg-hs-gold" />
+                    <span className="text-[10px] uppercase tracking-wider text-hs-cream/50">Milestone</span>
+                  </div>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 8. RECOGNITION: Awards & Accolades ─── */}
+      <section
+        aria-labelledby="awards-section-title"
+        className="surface-light bg-hs-cream py-24 text-hs-text md:py-36"
+      >
+        <div className="shell">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.28em] text-hs-gold-deep">
+              <span className="h-px w-6 bg-hs-gold-deep/60" />
+              <span>Recognition</span>
+              <span className="h-px w-6 bg-hs-gold-deep/60" />
             </div>
+
+            <FadeUp as="h2" id="awards-section-title" className="font-display mt-4 text-h2 text-hs-green">
+              Awards <em className="italic text-hs-gold-deep">&amp;</em> Accolades
+            </FadeUp>
+
+            <FadeUp as="p" delay={0.1} className="mt-4 text-sm leading-relaxed text-hs-muted md:text-base">
+              Honoured by industry critics and cherished by our wonderful diners across Western Australia.
+            </FadeUp>
+          </div>
+
+          {/* 3 Prominent Stat Cards */}
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {recognitionAwards.map((item, idx) => (
+              <FadeUp key={item.title} delay={idx * 0.12}>
+                <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-black/5 bg-white p-8 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                  <div className="flex items-center justify-between">
+                    <span className="inline-block rounded-full bg-hs-sand/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-hs-gold-deep">
+                      {item.badge}
+                    </span>
+                    <span className="font-display text-2xl text-hs-gold-deep">✦</span>
+                  </div>
+
+                  <div className="my-6">
+                    <p className="font-display text-4xl font-bold tracking-tight text-hs-green sm:text-5xl">
+                      {item.metric}
+                    </p>
+                    <h3 className="font-display mt-3 text-xl font-bold text-hs-green">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-hs-muted">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <div className="h-1 w-12 bg-hs-gold-deep/30 group-hover:w-full group-hover:bg-hs-gold-deep transition-all duration-500" />
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+
+          {/* Official AGFG 2026 Readers' Choice Banner */}
+          <FadeUp
+            delay={0.3}
+            className="glass-light glass-spot mt-12 flex flex-col gap-8 rounded-[2.5rem] border border-black/5 bg-white/90 p-8 shadow-xl sm:flex-row sm:items-center md:p-12"
+          >
+            <div className="relative flex h-28 w-44 shrink-0 items-center justify-center rounded-2xl bg-white p-2 shadow-md">
+              <Image
+                src={accolade.badge}
+                alt="Australian Good Food Guide Readers' Choice Winner 2026 badge"
+                width={200}
+                height={120}
+                className="h-auto w-36 object-contain"
+              />
+            </div>
+
+            <div className="flex-1">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-800">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 animate-pulse" />
+                Verified Credential
+              </span>
+              <h3 className="font-display mt-2 text-2xl font-bold text-hs-green sm:text-3xl">
+                {accolade.title}
+              </h3>
+              <p className="mt-1 text-sm text-hs-muted">{accolade.body}</p>
+              <p className="mt-3 text-xs leading-relaxed text-hs-text/75 sm:text-sm">
+                Voted by the guests we proudly cook for, acknowledging High Spirits as Bunbury&apos;s leading destination for authentic Punjabi and Indian fine dining.
+              </p>
+            </div>
+
+            <ButtonLink
+              href={site.listings.agfg}
+              external
+              variant="outline-dark"
+              className="shrink-0"
+            >
+              View on AGFG
+            </ButtonLink>
           </FadeUp>
         </div>
       </section>
 
-      {/* 9. CTA */}
+      {/* ─── 9. RESERVATION CTA ─── */}
       <ReservationCTA />
     </>
   );

@@ -96,7 +96,8 @@ And that story begins with the perfect blend.`,
   },
 ];
 
-export const journalCategories = ["Cuisine", "Chef Tips", "Stories", "Dining"];
+export const blogCategories = ["Cuisine"];
+export const journalCategories = blogCategories;
 
 export function getArticle(slug: string) {
   return articles.find((a) => a.slug === slug);

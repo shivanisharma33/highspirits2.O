@@ -8,6 +8,7 @@ import { Aurora } from "@/components/ui/Aurora";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Mail, Phone } from "@/components/ui/Icons";
 import { JsonLd } from "@/components/ui/JsonLd";
+import { RecentCelebrations } from "@/components/events/RecentCelebrations";
 import { eventServices } from "@/lib/content/events";
 import { media } from "@/lib/images";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
@@ -25,14 +26,6 @@ const d = (s: number) => ({ "--d": `${s}s` }) as CSSProperties;
 function perthToday() {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "Australia/Perth" }).format(new Date());
 }
-
-const moments = [
-  { item: media.valentines1, label: "Valentine's Day" },
-  { item: media.fathersDay, label: "Father's Day" },
-  { item: media.opening4, label: "Grand opening" },
-  { item: media.guests5, label: "Celebrations" },
-  { item: media.valentines3, label: "Valentine's Day" },
-];
 
 export default function EventsPage() {
   return (
@@ -139,30 +132,8 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* Celebrations strip */}
-      <section aria-labelledby="moments-title" className="bg-hs-green-deep py-24">
-        <div className="shell flex items-end justify-between gap-6">
-          <FadeUp as="h2" id="moments-title" className="font-display text-[clamp(2rem,3.4vw,3.2rem)] leading-none">
-            Recent celebrations
-          </FadeUp>
-          <ButtonLink href="/gallery" variant="ghost" className="hidden sm:inline-flex">
-            Gallery
-          </ButtonLink>
-        </div>
-        {/* One reveal for the whole row: cards off to the side never intersect the viewport. */}
-        <FadeUp className="mt-12">
-          <ul className="swipe-row gap-4 px-[var(--gutter)]">
-            {moments.map(({ item, label }) => (
-              <li key={item.alt} className="w-[72vw] sm:w-[40vw] lg:w-[24vw]">
-                <div className="media-zoom relative aspect-[3/4] overflow-hidden rounded-[1.5rem]">
-                  <Image src={item.src} alt={item.alt} fill sizes="(min-width: 1024px) 24vw, 72vw" placeholder="blur" className="object-cover" />
-                  <p className="glass-chip absolute bottom-4 left-4">{label}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </FadeUp>
-      </section>
+      {/* Interactive Celebrations Section */}
+      <RecentCelebrations />
 
       {/* Enquiry */}
       <section id="enquire" aria-labelledby="enquire-title" className="grain relative scroll-mt-20 overflow-hidden bg-hs-green py-28 md:py-36">

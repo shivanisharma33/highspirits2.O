@@ -36,6 +36,8 @@ export const site = {
       "https://www.tripadvisor.com/Restaurant_Review-g255364-d34217398-Reviews-High_Spirits-Bunbury_Western_Australia.html",
     trustpilot: "https://www.trustpilot.com/review/highspirits.au",
     uberEats: "https://www.ubereats.com/au/store/high-spirits-indian-restaurant/XWZcSeKdV4Snw8JDlsLpyw",
+    google:
+      "https://www.google.com/search?q=High+Spirits+%E2%80%93+Bunbury%E2%80%99s+Luxury+Indian+Fine+Dining",
   },
   buffet: { price: 39.99, starts: "5:00 PM" },
 } as const;
@@ -80,7 +82,7 @@ export const primaryNav: NavItem[] = [
   { href: "/experiences", label: "Experiences" },
   { href: "/gallery", label: "Gallery" },
   { href: "/events", label: "Events" },
-  { href: "/blogs", label: "Journal" },
+  { href: "/blogs", label: "Blogs" },
   { href: "/contact", label: "Contact" },
 ];
 

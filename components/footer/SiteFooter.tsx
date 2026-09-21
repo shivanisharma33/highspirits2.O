@@ -112,18 +112,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="gold-rule mt-24" />
-
-        <p
-          aria-hidden
-          className="font-display select-none pb-2 pt-10 text-center text-[clamp(4.2rem,20.5vw,21rem)] leading-[0.8] tracking-[-0.045em] text-hs-cream/[0.92]"
-        >
-          HIGH
-          {/* Bottom padding keeps the descender inside the gradient's paint box. */}
-          <span className="block pb-[0.18em] text-gold-gradient italic">Spirits</span>
-        </p>
-
-        <div className="flex flex-col items-start justify-between gap-4 border-t border-hs-cream/10 py-8 text-xs tracking-[0.12em] text-hs-cream/55 sm:flex-row sm:items-center">
+        <div className="mt-20 flex flex-col items-start justify-between gap-4 border-t border-hs-cream/10 py-8 text-xs tracking-[0.12em] text-hs-cream/55 sm:flex-row sm:items-center">
           <p>© {year} High Spirits. All rights reserved.</p>
           <ul className="flex gap-6">
             {legalNav.map((item) => (

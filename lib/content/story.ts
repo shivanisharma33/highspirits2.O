@@ -9,7 +9,7 @@ export const intro = {
 
 export const mission = [
   "At High Spirits, we bring the soul of India to the heart of Bunbury, WA, crafting an experience that goes far beyond a meal. As a refined restaurant & bar, our vision is rooted in authenticity, honouring time-loved Indian recipes while presenting them with modern elegance and thoughtful detail.",
-  "We see food as an art form and a celebration of culture, connection, and life's finest moments. Every dish carries a story of heritage, passion, and uncompromising quality, designed to be savoured slowly and remembered fondly. From warm hospitality to elevated flavours, High Spirits proudly represents Indian fine dining at its most expressive, right here in Bunbury.",
+  "We see food as an art form and a celebration of culture, connection, and life’s finest moments. Every dish carries a story of heritage, passion, and uncompromising quality, designed to be savoured slowly and remembered fondly. From warm hospitality to elevated flavours, High Spirits proudly represents Indian fine dining at its most expressive, setting a new benchmark for fine dining Australia can truly be proud of right here in Bunbury.",
 ];
 
 export const chef = {
@@ -32,15 +32,16 @@ export const chef = {
 };
 
 export const partner = {
-  name: "Ishpreet Bedi",
+  name: "Chef Ishpreet Bedi",
   role: "Business Partner",
-  title: "Meet Our Business Partner",
+  title: "From Punjab to Australia",
   eyebrow: "Leadership & Hospitality",
-  bio: "In her role as a business partner, Ishpreet takes an active part in the operations every day and gets to know the customers personally, assuring that each and every visit is made pleasing, considerate, and unforgettable. Her presence, eye for detail, and genuine devotion to the art of making people's lives happier play an important part in creating the image of High Spirits as a classy restaurant and bar where one can enjoy the real taste of Indian fine dining in Bunbury, WA. Moreover, it helps the restaurant gain the fine dining standard in Australia through care, consistency, and warm-hearted hospitality.",
+  bio: "Our business partner, Ishpreet Bedi, grew up in the heart of Punjab, where hospitality is a way of life. From an early age, she learned that successful businesses are built on care, consistency, and attention to detail—values she brings into every aspect of operations and guest experience.",
+  secondBio:
+    "With a refined vision shaped by hospitality experience across India and Australia, Ishpreet Bedi leads the brand with a focus on operational excellence, cultural authenticity, and elevated guest experiences.",
   paragraphs: [
-    "In her role as a business partner, Ishpreet takes an active part in the operations every day and gets to know the customers personally, assuring that each and every visit is made pleasing, considerate, and unforgettable. Her presence, eye for detail, and genuine devotion to the art of making people's lives happier play an important part in creating the image of High Spirits as a classy restaurant and bar where one can enjoy the real taste of Indian fine dining in Bunbury, WA. Moreover, it helps the restaurant gain the fine dining standard in Australia through care, consistency, and warm-hearted hospitality.",
-    "In her role as a business partner, Ishpreet takes an active part in the operations every day and gets to know the customers personally, assuring that each and every visit is made pleasing, considerate, and unforgettable.",
-    "Her presence, eye for detail, and genuine devotion to the art of making people's lives happier play an important part in creating the image of High Spirits as a classy restaurant and bar where one can enjoy the real taste of Indian fine dining in Bunbury, WA. Moreover, it helps the restaurant gain the fine dining standard in Australia through care, consistency, and warm-hearted hospitality.",
+    "Our business partner, Ishpreet Bedi, grew up in the heart of Punjab, where hospitality is a way of life. From an early age, she learned that successful businesses are built on care, consistency, and attention to detail—values she brings into every aspect of operations and guest experience.",
+    "With a refined vision shaped by hospitality experience across India and Australia, Ishpreet Bedi leads the brand with a focus on operational excellence, cultural authenticity, and elevated guest experiences.",
   ],
   portrait: media.partnerIshpreet,
   inset: media.opening1,
@@ -52,7 +53,10 @@ export const partner = {
 };
 
 export const team = {
-  body: "From our executive chef to our front-of-house team, everyone at High Spirits shares a common goal: to exceed your expectations and create memories that last a lifetime.",
+  eyebrow: "The Team",
+  title: "Passionate Professionals",
+  lead: "Our team of expert chefs, sommeliers, and hospitality professionals work in perfect harmony to create an unforgettable experience. Each member brings years of expertise and a deep commitment to excellence.",
+  body: "From our executive chef to our front-of-house team, everyone at High Spirit shares a common goal: to exceed your expectations and create memories that last a lifetime.",
   images: [media.teamCelebration, media.teamFamily, media.teamWithGuests],
 };
 
@@ -78,10 +82,71 @@ export const philosophy = [
 ];
 
 export const values = [
-  { title: "Passion", body: "Every dish is crafted with love and dedication to authentic flavours." },
-  { title: "Excellence", body: "We pursue perfection in every aspect of the dining experience." },
-  { title: "Quality", body: "Only the finest ingredients meet our exacting standards." },
-  { title: "Innovation", body: "Tradition meets modern culinary artistry in every creation." },
+  {
+    title: "Passion",
+    body: "Every dish is crafted with love and dedication to authentic flavors",
+  },
+  {
+    title: "Excellence",
+    body: "We pursue perfection in every aspect of the dining experience",
+  },
+  {
+    title: "Quality",
+    body: "Only the finest ingredients meet our exacting standards",
+  },
+  {
+    title: "Innovation",
+    body: "Tradition meets modern culinary artistry in every creation",
+  },
+];
+
+export const aboutMilestones = [
+  {
+    year: "2003",
+    title: "The Beginning",
+    description: "High Spirit was founded with a vision to bring authentic Indian luxury dining to Australia",
+  },
+  {
+    year: "2008",
+    title: "First Award",
+    description: "Recognized as Best Indian Restaurant in Sydney by the Australian Culinary Awards",
+  },
+  {
+    year: "2015",
+    title: "Expansion",
+    description: "Opened our second location and introduced our signature tasting menu",
+  },
+  {
+    year: "2020",
+    title: "Global Recognition",
+    description: "Featured in the World's 50 Best Restaurants list for Indian cuisine",
+  },
+  {
+    year: "2024",
+    title: "Continued Excellence",
+    description: "Celebrating over 50,000 satisfied guests and numerous culinary accolades",
+  },
+];
+
+export const recognitionAwards = [
+  {
+    metric: "15+",
+    title: "15+ Culinary Awards",
+    description: "Recognition from prestigious organizations",
+    badge: "Accredited",
+  },
+  {
+    metric: "Top 3",
+    title: "Top 3 in Sydney",
+    description: "Consistently ranked among the best",
+    badge: "Ranked",
+  },
+  {
+    metric: "50,000+",
+    title: "50,000+ Happy Guests",
+    description: "Creating memories since 2003",
+    badge: "Milestone",
+  },
 ];
 
 /** Story chapters — deliberately undated except where a date is on record. */
