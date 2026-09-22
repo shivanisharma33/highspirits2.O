@@ -15,7 +15,7 @@ export const reviews: Review[] = [
     rating: 5,
   },
   {
-    quote: "Dining at High Spirits is more than just enjoying exquisite food — it's a journey of taste, texture, and emotion. Every plate feels like a work of art, and every moment is curated with genuine care & passion",
+    quote: "Dining at High Spirits is more than just enjoying exquisite food — it's a journey of taste, texture and emotion. Every plate feels like a work of art and every moment is curated with genuine care & passion",
     name: "Nadia & Arif Hasan",
     title: "Culinary Enthusiasts",
     rating: 5,
@@ -39,7 +39,7 @@ export const reviews: Review[] = [
     rating: 5,
   },
   {
-    quote: "Incredible Indian food with bold, authentic flavours. Every dish is fresh, perfectly spiced, and full of character. Highly recommended!",
+    quote: "Incredible Indian food with bold, authentic flavours. Every dish is fresh, perfectly spiced and full of character. Highly recommended!",
     name: "Mohit Sharma",
     title: "Verified Guest",
     rating: 5,

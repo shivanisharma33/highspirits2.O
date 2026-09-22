@@ -75,7 +75,7 @@ export function JournalHero({ featured }: Props) {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mx-auto mt-6 max-w-2xl text-base md:text-lead text-hs-cream/75 leading-relaxed"
           >
-            Dive into stories, recipes, and insights from the world of fine Indian dining.
+            Dive into stories, recipes and insights from the world of fine Indian dining.
           </motion.p>
         </div>
 

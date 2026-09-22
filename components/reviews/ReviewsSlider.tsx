@@ -137,7 +137,7 @@ export function ReviewsSlider() {
             What Our Guests <em className="italic text-hs-gold-deep">Say</em>
           </h2>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-hs-text/75">
-            Every dish carries a story of heritage, passion, and uncompromising quality — as told by our valued diners.
+            Every dish carries a story of heritage, passion and uncompromising quality — as told by our valued diners.
           </p>
           <div className="mt-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-hs-gold-deep">
             <span className="h-px w-8 bg-hs-gold-deep" />

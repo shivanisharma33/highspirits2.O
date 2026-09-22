@@ -9,7 +9,7 @@ import { absoluteUrl, breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Blogs | High Spirits Indian Restaurant",
   description:
-    "Explore our blog for insights into Indian cuisine, chef tips, restaurant stories, and dining experiences at High Spirits.",
+    "Explore our blog for insights into Indian cuisine, chef tips, restaurant stories and dining experiences at High Spirits.",
   path: "/blogs",
 });
 

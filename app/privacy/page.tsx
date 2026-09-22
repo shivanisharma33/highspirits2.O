@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         {
           title: "Information We Collect",
           intro:
-            "At High Spirits, we collect information that you provide directly to us when making reservations, contacting us, or using our services. This may include your name, email address, phone number, and dining preferences.",
+            "At High Spirits, we collect information that you provide directly to us when making reservations, contacting us, or using our services. This may include your name, email address, phone number and dining preferences.",
         },
         {
           title: "How We Use Your Information",

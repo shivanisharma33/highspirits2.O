@@ -25,7 +25,7 @@ export function Philosophy() {
             />
           </div>
           <FadeUp as="p" delay={0.1} className="text-lead text-hs-cream/75 lg:col-span-4 lg:col-start-9">
-            Three ideas behind every plate — the recipes we inherited, the hours we give them, and the way we bring them to Bunbury.
+            Three ideas behind every plate — the recipes we inherited, the hours we give them and the way we bring them to Bunbury.
           </FadeUp>
         </div>
 

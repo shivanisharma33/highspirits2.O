@@ -29,7 +29,7 @@ const CELEBRATIONS_STAGE: CelebrationStageItem[] = [
     title: "Grand Family Banquets",
     quote: "“The warmth of the room and the richness of the curries made it an unforgettable afternoon.”",
     description:
-      "Generations gathered around lavish dining tables, sharing sizzling tandoori specialties, fragrant curries, and memories in the warm glow of our dining room.",
+      "Generations gathered around lavish dining tables, sharing sizzling tandoori specialties, fragrant curries and memories in the warm glow of our dining room.",
     capacity: "Family Tables & Groups",
     vibe: "Warm & Heartfelt",
   },
@@ -39,9 +39,9 @@ const CELEBRATIONS_STAGE: CelebrationStageItem[] = [
     step: "02",
     category: "Romantic Soirées",
     title: "Valentine's Celebration",
-    quote: "“Candlelight, emerald velvet, and bespoke dessert pairings crafted for two.”",
+    quote: "“Candlelight, emerald velvet and bespoke dessert pairings crafted for two.”",
     description:
-      "An enchanting evening where couples savoured multi-course tasting menus, house mocktails, and our High Spirits floral celebration backdrop.",
+      "An enchanting evening where couples savoured multi-course tasting menus, house mocktails and our High Spirits floral celebration backdrop.",
     capacity: "Intimate Pairings",
     vibe: "Candlelit & Elegant",
   },
@@ -51,9 +51,9 @@ const CELEBRATIONS_STAGE: CelebrationStageItem[] = [
     step: "03",
     category: "Culinary Milestones",
     title: "Team & Award Celebrations",
-    quote: "“Celebrating culinary excellence, teamwork, and every happy guest who walks through our doors.”",
+    quote: "“Celebrating culinary excellence, teamwork and every happy guest who walks through our doors.”",
     description:
-      "Our kitchen and front-of-house family marking award recognitions, birthdays, and special milestones together with joyful toasts.",
+      "Our kitchen and front-of-house family marking award recognitions, birthdays and special milestones together with joyful toasts.",
     capacity: "Milestone Receptions",
     vibe: "Joyous & Triumphant",
   },
@@ -63,9 +63,9 @@ const CELEBRATIONS_STAGE: CelebrationStageItem[] = [
     step: "04",
     category: "Dinner Gatherings",
     title: "Long Table Feasts",
-    quote: "“Delicious food, exquisite wines, and an atmosphere that invites you to linger for hours.”",
+    quote: "“Delicious food, exquisite wines and an atmosphere that invites you to linger for hours.”",
     description:
-      "Groups of friends gathering for lively evening dinners, passing around aromatic curries, hot naan, and cocktails.",
+      "Groups of friends gathering for lively evening dinners, passing around aromatic curries, hot naan and cocktails.",
     capacity: "Groups of 6 to 24",
     vibe: "Vibrant & Sociable",
   },
@@ -77,7 +77,7 @@ const CELEBRATIONS_STAGE: CelebrationStageItem[] = [
     title: "Milestone Galas",
     quote: "“From the welcome drinks to the last dessert, the service was pure perfection.”",
     description:
-      "Exclusive room hire hosting long banquet tables, private cocktail receptions, and corporate milestones for up to 120 guests.",
+      "Exclusive room hire hosting long banquet tables, private cocktail receptions and corporate milestones for up to 120 guests.",
     capacity: "Up to 120 Guests",
     vibe: "Grand & Exclusive",
   },

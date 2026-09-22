@@ -24,7 +24,7 @@ const faqs = [
   { q: "When are you open?", a: `Lunch is served ${hours[0].days}, ${hours[0].time}. Dinner is served ${hours[1].days}, ${hours[1].time}.` },
   { q: "What time does the buffet start?", a: `Our lavish buffet starts at ${site.buffet.starts}, with unlimited servings for $${site.buffet.price}.` },
   { q: "Do you cater for dietary requirements?", a: "Yes — vegetarian and vegan dishes are marked on our menu. Please inform us of any allergies or dietary restrictions when booking." },
-  { q: "Are children welcome?", a: "Children are welcome, and high chairs are available on request." },
+  { q: "Are children welcome?", a: "Children are welcome and high chairs are available on request." },
   { q: "Is there a dress code?", a: "Smart casual dress is encouraged." },
   { q: "Can you host a large group?", a: "Absolutely. For parties of 8 or more, 48 hours notice is required. For private celebrations of up to 120 guests, see our events page." },
   { q: "Do you offer delivery?", a: "Yes — order High Spirits favourites for delivery through Uber Eats." },

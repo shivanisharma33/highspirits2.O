@@ -47,7 +47,7 @@ export default function TermsPage() {
         {
           title: "Payment Terms",
           intro:
-            "We accept all major credit cards, debit cards, and cash. Gratuity is not included in menu prices and is at your discretion. For large parties and events, payment terms will be discussed during booking.",
+            "We accept all major credit cards, debit cards and cash. Gratuity is not included in menu prices and is at your discretion. For large parties and events, payment terms will be discussed during booking.",
         },
         {
           title: "Liability",

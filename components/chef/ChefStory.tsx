@@ -110,7 +110,7 @@ export function ChefStory({ className, cta = true }: Props) {
               <strong className="font-semibold text-hs-gold-deep">High Spirits</strong>,
               cooking is an expression of soul and storytelling where the rich traditions
               of Punjab meet the modern spirit of Australia. Every plate reflects balance,
-              emotion, and a deep respect for heritage, crafted for those who appreciate
+              emotion and a deep respect for heritage, crafted for those who appreciate
               refined Indian fine dining in{" "}
               <strong className="font-semibold text-hs-gold-deep">Bunbury, WA</strong>.
             </FadeUp>
@@ -124,7 +124,7 @@ export function ChefStory({ className, cta = true }: Props) {
               finest seasonal ingredients,{" "}
               <strong className="font-semibold text-hs-gold-deep">High Spirits</strong>{" "}
               stands proudly as a destination restaurant &amp; bar, redefining fine dining in
-              Australia through flavour, warmth, and unforgettable experiences.
+              Australia through flavour, warmth and unforgettable experiences.
             </FadeUp>
 
             {/* Accolades Section */}

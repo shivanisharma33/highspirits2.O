@@ -21,7 +21,7 @@ export const signatureDishes: SignatureDish[] = [
     name: "Tandoori Mixed Grill",
     region: "From the Tandoor",
     categoryTag: "Non-Veg",
-    description: "Seekh kebabs, chicken tikka, tandoori prawns, and charred lamb cutlets fired in the authentic clay tandoor.",
+    description: "Seekh kebabs, chicken tikka, tandoori prawns and charred lamb cutlets fired in the authentic clay tandoor.",
     lines: ["Charcoal-fired.", "Artisan marinades.", "Unrivalled tenderness."],
     notes: ["Seekh Kebab", "Chicken Tikka", "Tandoori Prawns", "Lamb Cutlets"],
     price: 35.99,
@@ -42,7 +42,7 @@ export const signatureDishes: SignatureDish[] = [
     name: "Biryani Royale",
     region: "Fragrant Basmati",
     categoryTag: "North Indian",
-    description: "Aged long-grain basmati rice layered with spiced tender cuts, saffron, caramelized onions, and fresh mint.",
+    description: "Aged long-grain basmati rice layered with spiced tender cuts, saffron, caramelized onions and fresh mint.",
     notes: ["Aged Basmati", "Pure Saffron", "Dum Pukht", "Mint & Herbs"],
     price: 24.99,
     image: media.heroDish3, // 1920x1080 Ultra HD
@@ -52,7 +52,7 @@ export const signatureDishes: SignatureDish[] = [
     name: "Palak Paneer",
     region: "Punjabi Classic",
     categoryTag: "Non-Veg",
-    description: "Artisan cottage cheese cubes gently cooked in a velvety spiced puree of fresh local baby spinach, garlic, and roasted cumin.",
+    description: "Artisan cottage cheese cubes gently cooked in a velvety spiced puree of fresh local baby spinach, garlic and roasted cumin.",
     notes: ["Local Spinach", "Cottage Cheese", "Garlic Tadka", "Fresh Cream"],
     price: 19.99,
     image: media.ingredientSpinach, // 1024x1024 Ultra HD
@@ -62,7 +62,7 @@ export const signatureDishes: SignatureDish[] = [
     name: "Butter Chicken",
     region: "House Classic",
     categoryTag: "North Indian",
-    description: "Tender boneless chicken roasted in the clay oven, simmered in a silky tomato, cashew, and churned butter gravy.",
+    description: "Tender boneless chicken roasted in the clay oven, simmered in a silky tomato, cashew and churned butter gravy.",
     notes: ["Tandoor Chicken", "Tomato & Cashew", "Churned Butter", "Fenugreek"],
     price: 23.99,
     image: media.heroDish1, // 1920x1080 Ultra HD

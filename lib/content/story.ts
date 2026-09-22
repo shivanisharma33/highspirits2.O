@@ -4,12 +4,12 @@ import { accolade } from "@/lib/site";
 /** Brand narrative — wording taken from the existing High Spirits site. */
 export const intro = {
   lead: "At High Spirits, cooking is an expression of soul and storytelling where the rich traditions of Punjab meet the modern spirit of Australia.",
-  body: "Every plate reflects balance, emotion, and a deep respect for heritage, crafted for those who appreciate refined Indian fine dining in Bunbury, WA.",
+  body: "Every plate reflects balance, emotion and a deep respect for heritage, crafted for those who appreciate refined Indian fine dining in Bunbury, WA.",
 };
 
 export const mission = [
   "At High Spirits, we bring the soul of India to the heart of Bunbury, WA, crafting an experience that goes far beyond a meal. As a refined restaurant & bar, our vision is rooted in authenticity, honouring time-loved Indian recipes while presenting them with modern elegance and thoughtful detail.",
-  "We see food as an art form and a celebration of culture, connection, and life’s finest moments. Every dish carries a story of heritage, passion, and uncompromising quality, designed to be savoured slowly and remembered fondly. From warm hospitality to elevated flavours, High Spirits proudly represents Indian fine dining at its most expressive, setting a new benchmark for fine dining Australia can truly be proud of right here in Bunbury.",
+  "We see food as an art form and a celebration of culture, connection and life’s finest moments. Every dish carries a story of heritage, passion and uncompromising quality, designed to be savoured slowly and remembered fondly. From warm hospitality to elevated flavours, High Spirits proudly represents Indian fine dining at its most expressive, setting a new benchmark for fine dining Australia can truly be proud of right here in Bunbury.",
 ];
 
 export const chef = {
@@ -18,8 +18,8 @@ export const chef = {
   experience: "20+",
   philosophyTitle: "CHEF'S PHILOSOPHY",
   philosophy:
-    "At High Spirits, cooking is an expression of soul and storytelling where the rich traditions of Punjab meet the modern spirit of Australia. Every plate reflects balance, emotion, and a deep respect for heritage, crafted for those who appreciate refined Indian fine dining in Bunbury, WA..",
-  bio: "Led by Amardeep Singh, our Executive Chef with over 20 years of global culinary experience, the kitchen blends time-honoured techniques with contemporary finesse. Using the finest seasonal ingredients, High Spirits stands proudly as a destination restaurant & bar, redefining fine dining in Australia through flavour, warmth, and unforgettable experiences.",
+    "At High Spirits, cooking is an expression of soul and storytelling where the rich traditions of Punjab meet the modern spirit of Australia. Every plate reflects balance, emotion and a deep respect for heritage, crafted for those who appreciate refined Indian fine dining in Bunbury, WA..",
+  bio: "Led by Amardeep Singh, our Executive Chef with over 20 years of global culinary experience, the kitchen blends time-honoured techniques with contemporary finesse. Using the finest seasonal ingredients, High Spirits stands proudly as a destination restaurant & bar, redefining fine dining in Australia through flavour, warmth and unforgettable experiences.",
   quote: "Cooking is an expression of soul and storytelling.",
   portrait: media.chefKitchen,
   inset: media.chefAmardeep,
@@ -36,12 +36,12 @@ export const partner = {
   role: "Business Partner",
   title: "From Punjab to Australia",
   eyebrow: "Leadership & Hospitality",
-  bio: "In her role as a business partner, Ishpreet takes an active part in the operations every day and gets to know the customers personally, assuring that each and every visit is made pleasing, considerate, and unforgettable.",
+  bio: "Our business partner, Ishpreet Bedi, grew up in the heart of Punjab, where hospitality is a way of life. From an early age, she learned that successful businesses are built on care, consistency and attention to detail—values she brings into every aspect of operations and guest experience.",
   secondBio:
-    "Her presence, eye for detail, and genuine devotion to the art of making people's lives happier play an important part in creating the image of High Spirits as a classy restaurant and bar where one can enjoy the real taste of Indian fine dining in Bunbury, WA. Moreover, it helps the restaurant gain the fine dining standard in Australia through care, consistency, and warm-hearted hospitality.",
+    "With a refined vision shaped by hospitality experience across India and Australia, Ishpreet Bedi leads the brand with a focus on operational excellence, cultural authenticity and elevated guest experiences.",
   paragraphs: [
-    "In her role as a business partner, Ishpreet takes an active part in the operations every day and gets to know the customers personally, assuring that each and every visit is made pleasing, considerate, and unforgettable.",
-    "Her presence, eye for detail, and genuine devotion to the art of making people's lives happier play an important part in creating the image of High Spirits as a classy restaurant and bar where one can enjoy the real taste of Indian fine dining in Bunbury, WA. Moreover, it helps the restaurant gain the fine dining standard in Australia through care, consistency, and warm-hearted hospitality.",
+    "Our business partner, Ishpreet Bedi, grew up in the heart of Punjab, where hospitality is a way of life. From an early age, she learned that successful businesses are built on care, consistency and attention to detail—values she brings into every aspect of operations and guest experience.",
+    "With a refined vision shaped by hospitality experience across India and Australia, Ishpreet Bedi leads the brand with a focus on operational excellence, cultural authenticity and elevated guest experiences.",
   ],
   portrait: media.partnerIshpreet,
   inset: media.opening1,
@@ -55,7 +55,7 @@ export const partner = {
 export const team = {
   eyebrow: "The Team",
   title: "Passionate Professionals",
-  lead: "Our team of expert chefs, sommeliers, and hospitality professionals work in perfect harmony to create an unforgettable experience. Each member brings years of expertise and a deep commitment to excellence.",
+  lead: "Our team of expert chefs, sommeliers and hospitality professionals work in perfect harmony to create an unforgettable experience. Each member brings years of expertise and a deep commitment to excellence.",
   body: "From our executive chef to our front-of-house team, everyone at High Spirit shares a common goal: to exceed your expectations and create memories that last a lifetime.",
   images: [media.teamCelebration, media.teamFamily, media.teamWithGuests],
 };
@@ -64,7 +64,7 @@ export const philosophy = [
   {
     word: "Heritage",
     title: "Recipes that remember",
-    body: "Every dish carries a story of heritage, passion and uncompromising quality — time-loved Punjabi recipes, whole spices roasted in small batches, and the joyful spirit of Chardi Kala.",
+    body: "Every dish carries a story of heritage, passion and uncompromising quality — time-loved Punjabi recipes, whole spices roasted in small batches and the joyful spirit of Chardi Kala.",
     image: media.spices,
   },
   {
@@ -155,7 +155,7 @@ export const chapters = [
     mark: "I",
     label: "Punjab",
     title: "Where it begins",
-    body: "Authentic Punjabi recipes, whole spices roasted daily in small batches, and a table that always has room for one more.",
+    body: "Authentic Punjabi recipes, whole spices roasted daily in small batches and a table that always has room for one more.",
     image: media.spices,
   },
   {

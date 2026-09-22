@@ -4,13 +4,13 @@ import { media } from "@/lib/images";
 export const eventServices = [
   {
     title: "Private Celebrations",
-    body: "Birthday parties, anniversaries, and milestone celebrations.",
+    body: "Birthday parties, anniversaries and milestone celebrations.",
     capacity: "Up to 80 guests",
     image: media.opening3,
   },
   {
     title: "Corporate Events",
-    body: "Business dinners, team building, and corporate gatherings.",
+    body: "Business dinners, team building and corporate gatherings.",
     capacity: "Up to 100 guests",
     image: media.guests7,
   },

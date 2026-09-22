@@ -22,7 +22,7 @@ import { accolade, site } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "About Us | High Spirits — Authentic Indian Fine Dining in Bunbury",
   description:
-    "At High Spirits, where tradition meets luxury in every bite. Discover our mission, core values, culinary team, and legacy of excellence in Bunbury, WA.",
+    "At High Spirits, where tradition meets luxury in every bite. Discover our mission, core values, culinary team and legacy of excellence in Bunbury, WA.",
   path: "/about",
 });
 
@@ -83,7 +83,7 @@ export default function AboutPage() {
               delay={0.2}
               className="font-display mt-12 rounded-2xl border-l-4 border-hs-gold-deep bg-hs-sand/40 p-6 md:p-8 text-[clamp(1.35rem,2.2vw,1.9rem)] italic leading-snug text-hs-green"
             >
-              “Every dish carries a story of heritage, passion, and uncompromising quality, designed to be savoured slowly and remembered fondly.”
+              “Every dish carries a story of heritage, passion and uncompromising quality, designed to be savoured slowly and remembered fondly.”
             </FadeUp>
           </div>
         </div>
@@ -195,7 +195,7 @@ export default function AboutPage() {
             />
 
             <FadeUp as="p" delay={0.1} className="mt-3 text-xs font-semibold uppercase tracking-[0.24em] text-hs-gold-soft">
-              {partner.role} · {partner.eyebrow}
+              {partner.role} · {partner.title}
             </FadeUp>
 
             <FadeUp as="p" delay={0.15} className="mt-8 text-lead leading-relaxed text-hs-cream/90">
@@ -203,9 +203,7 @@ export default function AboutPage() {
             </FadeUp>
 
             <FadeUp as="p" delay={0.22} className="mt-6 leading-relaxed text-hs-cream/75 text-base md:text-lg">
-              Her presence, eye for detail, and genuine devotion to the art of making people&apos;s lives happier play an important part in creating the image of{" "}
-              <strong className="font-semibold text-hs-gold-pale">High Spirits</strong> as a classy restaurant and bar where one can enjoy the real taste of Indian fine dining in{" "}
-              <strong className="font-semibold text-hs-gold-pale">Bunbury, WA</strong>. Moreover, it helps the restaurant gain the fine dining standard in Australia through care, consistency, and warm-hearted hospitality.
+              {partner.secondBio}
             </FadeUp>
 
             <FadeUp delay={0.3} className="mt-8 flex flex-wrap gap-2.5">

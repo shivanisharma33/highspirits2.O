@@ -132,6 +132,22 @@
   [id] {
     scroll-margin-top: calc(var(--header-h) + 24px);
   }
+
+  /* Prevent typographic widows and unbalanced lines across the entire website */
+  h1, h2, h3, h4, h5, h6,
+  .font-display,
+  .text-display,
+  .text-h1,
+  .text-h2,
+  .text-h3,
+  .text-h4,
+  .eyebrow {
+    text-wrap: balance;
+  }
+
+  p, li, blockquote, dd, dt, figcaption, .prose {
+    text-wrap: pretty;
+  }
 }
 
 /* Lenis */

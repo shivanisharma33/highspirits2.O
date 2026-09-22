@@ -23,7 +23,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     role: "Executive Chef & Co-Founder",
     badge: "Master of Tandoor",
     experience: "20+ Years Global Craft",
-    quote: "Cooking is an expression of soul, balance, and ancestral storytelling.",
+    quote: "Cooking is an expression of soul, balance and ancestral storytelling.",
     image: media.chefAmardeep,
   },
   {
@@ -32,7 +32,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     role: "Business Partner & Operations",
     badge: "Hospitality Lead",
     experience: "Punjab to Australia",
-    quote: "Authentic hospitality is built on genuine warmth, care, and attention to detail.",
+    quote: "Authentic hospitality is built on genuine warmth, care and attention to detail.",
     image: media.partnerIshpreet,
   },
   {
@@ -50,7 +50,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     role: "Naan & Kulcha Guild",
     badge: "Handcrafted Doughs",
     experience: "Heritage Hand Kneading",
-    quote: "Every garlic naan, roti, and laccha paratha prepared by hand to order.",
+    quote: "Every garlic naan, roti and laccha paratha prepared by hand to order.",
     image: media.kitchenCraft,
   },
   {
@@ -68,7 +68,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     role: "Sommeliers & Service",
     badge: "Curated Experiences",
     experience: "Five-Star Dining Service",
-    quote: "Guiding every guest through nuanced wine pairings, single malts, and dining.",
+    quote: "Guiding every guest through nuanced wine pairings, single malts and dining.",
     image: media.teamFamily,
   },
   {

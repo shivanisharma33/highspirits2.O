@@ -37,7 +37,7 @@ export const experiences: Experience[] = [
     title: "Skip the Trip",
     kicker: "Doorstep Delivery",
     description:
-      "Get your favorites delivered straight to your door fast, easy, and hassle free. No lines, no travel, just tap and enjoy.",
+      "Get your favorites delivered straight to your door fast, easy and hassle free. No lines, no travel, just tap and enjoy.",
     meta: ["Fast delivery", "Real-time tracking", "Uber Eats"],
     features: [
       "Doorstep delivery",
@@ -53,7 +53,7 @@ export const experiences: Experience[] = [
     title: "Lunch Dining Experience",
     kicker: "Wednesday – Friday",
     description:
-      "Take a relaxing midday break with our thoughtfully curated lunch menu, offering fresh flavors, quick service, and a comfortable dining atmosphere.",
+      "Take a relaxing midday break with our thoughtfully curated lunch menu, offering fresh flavors, quick service and a comfortable dining atmosphere.",
     meta: ["Wed – Fri", "11:30 AM – 2:30 PM", "Quick service"],
     features: [
       "Freshly prepared lunch menu",
@@ -69,7 +69,7 @@ export const experiences: Experience[] = [
     title: "Lavish Buffet Experience",
     kicker: `Nightly from ${site.buffet.starts}`,
     description:
-      "Enjoy a wide spread of freshly prepared dishes with unlimited servings, perfect for families, groups, and celebratory dining.",
+      "Enjoy a wide spread of freshly prepared dishes with unlimited servings, perfect for families, groups and celebratory dining.",
     meta: [`From ${site.buffet.starts}`, `$${site.buffet.price}`, "Unlimited servings"],
     features: [
       "Multi-cuisine spread",

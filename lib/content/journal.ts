@@ -17,16 +17,16 @@ export const articles: Article[] = [
     slug: "the-art-of-perfect-indian-spices",
     title: "The Art of Perfect Indian Spices",
     excerpt:
-      "Discover how authentic Indian spices are carefully selected, roasted, and blended to create rich, unforgettable flavours in every dish at High Spirits Indian Restaurant.",
+      "Discover how authentic Indian spices are carefully selected, roasted and blended to create rich, unforgettable flavours in every dish at High Spirits Indian Restaurant.",
     author: "Chef Ishpreet Bedi",
     category: "Cuisine",
     date: "2026-02-25",
     image: media.spices,
     content: `## The Heart of Indian Cuisine Lies in Its Spices
 
-Indian cuisine is not just about heat or colour — it is about balance, depth, and harmony. At High Spirits Indian Restaurant, every dish begins with a carefully crafted spice blend that reflects centuries of culinary tradition.
+Indian cuisine is not just about heat or colour — it is about balance, depth and harmony. At High Spirits Indian Restaurant, every dish begins with a carefully crafted spice blend that reflects centuries of culinary tradition.
 
-Spices are more than ingredients. They are stories of culture, geography, and heritage.
+Spices are more than ingredients. They are stories of culture, geography and heritage.
 
 ---
 
@@ -69,7 +69,7 @@ Our kitchen prepares custom blends for:
 * Lentil preparations
 * Signature buffet dishes
 
-Every blend is carefully balanced to create layers of flavour — warm, sweet, smoky, and aromatic — all in perfect harmony.
+Every blend is carefully balanced to create layers of flavour — warm, sweet, smoky and aromatic — all in perfect harmony.
 
 ---
 

@@ -36,7 +36,7 @@ const menuJsonLd = {
       "@type": "MenuItem",
       name: i.name,
       description: i.description,
-      offers: { "@type": "Offer", price: i.price.toFixed(2), priceCurrency: "AUD" },
+      offers: { "@type": "Offer", price: typeof i.price === "number" ? i.price.toFixed(2) : String(i.price), priceCurrency: "AUD" },
       ...(i.diet?.includes("VG") ? { suitableForDiet: "https://schema.org/VeganDiet" } : i.diet?.includes("V") ? { suitableForDiet: "https://schema.org/VegetarianDiet" } : {}),
     })),
   })),
@@ -62,7 +62,7 @@ export default function MenuPage() {
               start={0.15}
             />
             <p className="intro-rise mx-auto mt-8 max-w-xl text-lead text-hs-muted" style={d(0.5)}>
-              A curated journey of taste — {menuItemCount} dishes crafted from authentic Punjabi recipes, inspired by heritage, and plated with precision.
+              A curated journey of taste — {menuItemCount} dishes crafted from authentic Punjabi recipes, inspired by heritage and plated with precision.
             </p>
           </div>
         </div>
