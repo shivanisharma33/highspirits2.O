@@ -169,7 +169,7 @@ export function TeamShowcase() {
             <div
               key={member.id}
               onClick={() => setSelectedMember(member)}
-              className="group relative h-full w-full cursor-pointer overflow-hidden rounded-[26px] border border-white/20 bg-[#0a1e16] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] transition-all duration-500 hover:border-hs-gold/80 hover:shadow-[0_30px_70px_-10px_rgba(212,175,55,0.3)]"
+              className="group relative h-full w-full cursor-pointer overflow-hidden rounded-[26px] border border-white/20 bg-[#0a1e16] transition-all duration-500 hover:border-hs-gold/80"
             >
               {/* Clean Edge-to-Edge Team Portrait */}
               <Image
@@ -201,7 +201,7 @@ export function TeamShowcase() {
           onClick={() => setSelectedMember(null)}
         >
           <div
-            className="relative w-full max-w-lg overflow-hidden rounded-[2rem] border border-hs-gold/30 bg-[#071911] p-8 shadow-2xl text-white"
+            className="relative w-full max-w-lg overflow-hidden rounded-[2rem] border border-hs-gold/30 bg-[#071911] p-8 text-white"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -215,7 +215,7 @@ export function TeamShowcase() {
             </button>
 
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-              <div className="relative aspect-[3/4] w-36 shrink-0 overflow-hidden rounded-2xl border border-white/20 shadow-xl">
+              <div className="relative aspect-[3/4] w-36 shrink-0 overflow-hidden rounded-2xl border border-white/20">
                 <Image
                   src={selectedMember.image.src}
                   alt={selectedMember.image.alt}

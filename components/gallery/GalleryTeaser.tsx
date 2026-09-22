@@ -352,7 +352,7 @@ export function GalleryTeaser() {
                 tilesRef.current[i] = el;
               }}
               className={cx(
-                "absolute rounded-2xl md:rounded-3xl overflow-hidden border border-hs-gold/30 shadow-[0_20px_50px_-10px_rgba(5,35,25,0.35)] bg-hs-green-deep will-change-transform transition-shadow duration-300",
+                "absolute rounded-2xl md:rounded-3xl overflow-hidden border border-hs-gold/30 bg-hs-green-deep will-change-transform transition-all duration-300",
                 tile.className,
               )}
             >
@@ -379,7 +379,7 @@ export function GalleryTeaser() {
         {/* Centered Master Information Card */}
         <div
           ref={centerContentRef}
-          className="relative z-30 max-w-2xl mx-auto text-center px-6 py-8 sm:px-10 sm:py-10 rounded-3xl bg-hs-cream/80 backdrop-blur-xl border border-hs-gold/35 shadow-[0_25px_60px_-15px_rgba(5,35,25,0.25)] flex flex-col items-center"
+          className="relative z-30 max-w-2xl mx-auto text-center px-6 py-8 sm:px-10 sm:py-10 rounded-3xl bg-hs-cream/80 backdrop-blur-xl border border-hs-gold/35 flex flex-col items-center"
         >
           {/* Eyebrow with Luxury Gold Dot */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-hs-green/5 border border-hs-gold/40 text-hs-gold-deep text-xs font-medium tracking-[0.25em] uppercase mb-4 sm:mb-6 shadow-sm">

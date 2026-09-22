@@ -31,7 +31,7 @@ export function ArticleCard({ article, featured, className, headingLevel = "h3" 
   return (
     <article
       className={cx(
-        "group relative flex flex-col overflow-hidden rounded-[1.75rem] border border-hs-line/70 bg-white/70 shadow-sm backdrop-blur-xs transition-all duration-500 hover:-translate-y-1.5 hover:border-hs-gold-deep/50 hover:shadow-xl hover:shadow-hs-green/5",
+        "group relative flex flex-col overflow-hidden rounded-[1.75rem] border border-hs-line/70 bg-white/70 backdrop-blur-xs transition-all duration-500 hover:-translate-y-1.5 hover:border-hs-gold-deep/50",
         featured && "lg:grid lg:grid-cols-12 lg:items-center lg:gap-10",
         className,
       )}

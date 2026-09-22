@@ -226,7 +226,7 @@ export function JournalGrid({ articles }: Props) {
       </div>
 
       {/* Interactive Culinary Mastercraft Showcase: The Spice Alchemy */}
-      <section aria-labelledby="spice-showcase-title" className="mt-24 rounded-[2.5rem] border border-hs-line/80 bg-hs-white p-8 sm:p-12 lg:p-16 shadow-sm">
+      <section aria-labelledby="spice-showcase-title" className="mt-24 rounded-[2.5rem] border border-hs-line/80 bg-hs-white p-8 sm:p-12 lg:p-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-hs-line pb-8">
           <div>
             <p className="eyebrow">Culinary Masterclass</p>
@@ -247,7 +247,7 @@ export function JournalGrid({ articles }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group relative flex flex-col justify-between rounded-[1.75rem] border border-hs-line/80 bg-white p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-hs-gold-deep/50 hover:shadow-lg"
+              className="group relative flex flex-col justify-between rounded-[1.75rem] border border-hs-line/80 bg-white p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-hs-gold-deep/50"
             >
               <div>
                 <div className="flex items-center justify-between text-xs text-hs-muted">
@@ -295,7 +295,7 @@ export function JournalGrid({ articles }: Props) {
             <Link
               key={item.href}
               href={item.href}
-              className="group relative block aspect-[4/3] overflow-hidden rounded-[1.75rem] shadow-sm transition-all duration-700 hover:-translate-y-1 hover:shadow-xl"
+              className="group relative block aspect-[4/3] overflow-hidden rounded-[1.75rem] transition-all duration-700 hover:-translate-y-1"
               data-cursor="Explore"
             >
               <Image

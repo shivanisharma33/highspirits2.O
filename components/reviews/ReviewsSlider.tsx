@@ -37,7 +37,7 @@ function ReviewCard({
   return (
     <div
       data-panel
-      className="flex h-[380px] w-[290px] shrink-0 flex-col justify-between rounded-[1.75rem] border border-black/5 bg-[#072419] p-6 text-white shadow-xl transition-transform duration-500 hover:-translate-y-1 sm:w-[310px] md:p-7"
+      className="flex h-[380px] w-[290px] shrink-0 flex-col justify-between rounded-[1.75rem] border border-black/5 bg-[#072419] p-6 text-white transition-transform duration-500 hover:-translate-y-1 sm:w-[310px] md:p-7"
     >
       <div>
         <QuoteIcon className="h-6 w-6 text-emerald-400/80" />
@@ -64,7 +64,7 @@ function ImageCard({ image }: { image: Media }) {
   return (
     <div
       data-panel
-      className="group relative h-[380px] w-[290px] shrink-0 overflow-hidden rounded-[1.75rem] border border-black/5 shadow-xl transition-transform duration-500 hover:-translate-y-1 sm:w-[310px]"
+      className="group relative h-[380px] w-[290px] shrink-0 overflow-hidden rounded-[1.75rem] border border-black/5 transition-transform duration-500 hover:-translate-y-1 sm:w-[310px]"
     >
       <Image
         src={image.src}
@@ -86,7 +86,7 @@ function RatingCard() {
   return (
     <div
       data-panel
-      className="flex h-[380px] w-[290px] shrink-0 flex-col justify-between rounded-[1.75rem] border border-white/5 bg-[#8B3E2F] p-6 text-[#FDF8F3] shadow-xl transition-transform duration-500 hover:-translate-y-1 sm:w-[310px] md:p-7"
+      className="flex h-[380px] w-[290px] shrink-0 flex-col justify-between rounded-[1.75rem] border border-white/5 bg-[#8B3E2F] p-6 text-[#FDF8F3] transition-transform duration-500 hover:-translate-y-1 sm:w-[310px] md:p-7"
     >
       <div>
         <div className="flex items-center justify-between">

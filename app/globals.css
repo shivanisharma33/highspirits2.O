@@ -938,9 +938,13 @@ html.lenis body {
 
 .hscroll[data-pinned] {
   height: 100svh;
+  padding-top: var(--header-h, 84px);
+  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  box-sizing: border-box;
 }
 
 .hscroll[data-pinned] .hscroll-track {

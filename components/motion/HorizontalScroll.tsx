@@ -85,7 +85,7 @@ export function HorizontalScroll({
       <div ref={track} className={cx("hscroll-track", trackClassName)}>
         {children}
       </div>
-      <div aria-hidden className="shell pointer-events-none mt-10 hidden lg:block">
+      <div aria-hidden className="shell pointer-events-none absolute bottom-5 inset-x-0 hidden lg:block">
         <div className={cx("h-px w-full bg-hs-cream/15", barTrackClassName)}>
           <div ref={bar} className={cx("h-px w-full origin-left scale-x-0 bg-hs-gold", barFillClassName)} />
         </div>

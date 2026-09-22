@@ -21,7 +21,7 @@ type PortalItem = {
 
 function AGFGIcon() {
   return (
-    <div className="relative flex h-14 w-20 items-center justify-center rounded-xl bg-white/95 p-1.5 shadow-lg transition-transform duration-500 group-hover:scale-105">
+    <div className="relative flex h-14 w-20 items-center justify-center rounded-xl bg-white/95 p-1.5 transition-transform duration-500 group-hover:scale-105">
       <Image
         src="/agfg-badge.png"
         alt="AGFG Readers' Choice 2026 Winner"
@@ -257,7 +257,7 @@ function TiltPortalCard({ item, index }: { item: PortalItem; index: number }) {
           transformStyle: "preserve-3d",
         }}
         aria-label={`${item.title} - ${item.subtitle}`}
-        className={`group relative flex h-full min-h-[360px] flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-[#082218]/90 via-[#051810]/95 to-[#020b07] p-7 shadow-2xl backdrop-blur-xl transition-colors duration-500 hover:shadow-[0_22px_50px_-15px_rgba(0,0,0,0.8)] ${item.accentBorder}`}
+        className={`group relative flex h-full min-h-[360px] flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-[#082218]/90 via-[#051810]/95 to-[#020b07] p-7 backdrop-blur-xl transition-colors duration-500 ${item.accentBorder}`}
       >
         {/* Ambient Backlight Glow */}
         <div

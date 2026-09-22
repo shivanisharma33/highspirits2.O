@@ -19,7 +19,7 @@ export function PartnerStory({ className }: Props) {
         {/* Left Side: Portrait & Inset Photo */}
         <div className="relative lg:col-span-7 lg:col-start-1 lg:row-start-1">
           <ClipReveal
-            className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] shadow-2xl md:aspect-[5/6]"
+            className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] md:aspect-[5/6]"
             data-cursor="View"
           >
             <Image
@@ -37,7 +37,7 @@ export function PartnerStory({ className }: Props) {
           {partner.inset && (
             <ClipReveal
               delay={0.25}
-              className="absolute -bottom-8 left-4 w-[38%] max-w-[15rem] overflow-hidden rounded-[1.75rem] border-[6px] border-white shadow-[0_30px_60px_-15px_rgba(0,0,0,0.35)] md:-left-6 md:-bottom-10"
+              className="absolute -bottom-8 left-4 w-[38%] max-w-[15rem] overflow-hidden rounded-[1.75rem] border-[6px] border-white md:-left-6 md:-bottom-10"
             >
               <div className="relative aspect-[4/5]">
                 <Image
@@ -55,7 +55,7 @@ export function PartnerStory({ className }: Props) {
 
         {/* Right Side: Editorial Card Exactly Matching ChefStory */}
         <div className="relative z-10 lg:col-span-6 lg:col-start-7 lg:row-start-1 lg:-ml-12 xl:-ml-16">
-          <div className="relative rounded-[2.5rem] border border-white/80 bg-white/92 p-8 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.12)] backdrop-blur-xl sm:p-12 lg:p-14">
+          <div className="relative rounded-[2.5rem] border border-white/80 bg-white/92 p-8 backdrop-blur-xl sm:p-12 lg:p-14">
             {/* Top Eyebrow with gold dash */}
             <FadeUp as="div" className="flex items-center gap-3">
               <span className="h-px w-7 bg-hs-gold-deep" />

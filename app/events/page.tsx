@@ -87,7 +87,7 @@ export default function EventsPage() {
                 <div className="relative aspect-[16/9] overflow-hidden md:hidden">
                   <Image src={s.image.src} alt={s.image.alt} fill sizes="100vw" placeholder="blur" className="object-cover" />
                 </div>
-                <div aria-hidden className="pointer-events-none absolute right-[18%] top-1/2 z-10 hidden aspect-[4/5] w-56 -translate-y-1/2 rotate-3 scale-90 overflow-hidden opacity-0 shadow-2xl transition-all duration-700 ease-luxe group-hover:rotate-0 group-hover:scale-100 group-hover:opacity-100 md:block">
+                <div aria-hidden className="pointer-events-none absolute right-[18%] top-1/2 z-10 hidden aspect-[4/5] w-56 -translate-y-1/2 rotate-3 scale-90 overflow-hidden opacity-0 transition-all duration-700 ease-luxe group-hover:rotate-0 group-hover:scale-100 group-hover:opacity-100 md:block">
                   <Image src={s.image.src} alt="" fill sizes="14rem" placeholder="blur" className="object-cover" />
                 </div>
               </li>

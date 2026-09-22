@@ -13,7 +13,7 @@ export function DishCard({ dish, className }: Props) {
   return (
     <article
       className={cx(
-        "group relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.65)] transition-all duration-500 hover:-translate-y-2 hover:border-hs-gold/45 hover:shadow-[0_30px_60px_rgba(0,0,0,0.85),0_0_35px_rgba(212,175,55,0.18)]",
+        "group relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-hs-gold/45",
         className,
       )}
     >

@@ -81,7 +81,7 @@ export default function AboutPage() {
             <FadeUp
               as="blockquote"
               delay={0.2}
-              className="font-display mt-12 rounded-2xl border-l-4 border-hs-gold-deep bg-hs-sand/40 p-6 md:p-8 text-[clamp(1.35rem,2.2vw,1.9rem)] italic leading-snug text-hs-green shadow-sm"
+              className="font-display mt-12 rounded-2xl border-l-4 border-hs-gold-deep bg-hs-sand/40 p-6 md:p-8 text-[clamp(1.35rem,2.2vw,1.9rem)] italic leading-snug text-hs-green"
             >
               “Every dish carries a story of heritage, passion, and uncompromising quality, designed to be savoured slowly and remembered fondly.”
             </FadeUp>
@@ -111,7 +111,7 @@ export default function AboutPage() {
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((v, i) => (
               <FadeUp key={v.title} delay={i * 0.1}>
-                <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-[#082218]/90 p-8 shadow-xl backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-hs-gold/50 hover:shadow-[0_20px_45px_-10px_rgba(0,0,0,0.6)]">
+                <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-[#082218]/90 p-8 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-hs-gold/50">
                   {/* Glowing background sheen on hover */}
                   <div className="pointer-events-none absolute -inset-1 bg-gradient-to-br from-hs-gold/15 to-transparent opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -156,7 +156,7 @@ export default function AboutPage() {
           {/* Portrait Column */}
           <div className="lg:col-span-5">
             <ClipReveal
-              className="relative aspect-[3/4] max-w-md overflow-hidden rounded-[2.5rem] shadow-2xl ring-1 ring-hs-gold/20"
+              className="relative aspect-[3/4] max-w-md overflow-hidden rounded-[2.5rem] ring-1 ring-hs-gold/20"
               data-cursor="View"
             >
               <Image
@@ -252,7 +252,7 @@ export default function AboutPage() {
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {aboutMilestones.map((m, idx) => (
               <FadeUp key={m.year} delay={idx * 0.1}>
-                <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-[#082218]/85 p-6 shadow-xl backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-hs-gold/50">
+                <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-[#082218]/85 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-hs-gold/50">
                   {/* Subtle hover backlight */}
                   <div className="pointer-events-none absolute -inset-1 bg-gradient-to-b from-hs-gold/15 to-transparent opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -312,7 +312,7 @@ export default function AboutPage() {
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {recognitionAwards.map((item, idx) => (
               <FadeUp key={item.title} delay={idx * 0.12}>
-                <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-black/5 bg-white p-8 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-black/5 bg-white p-8 transition-all duration-500 hover:-translate-y-2">
                   <div className="flex items-center justify-between">
                     <span className="inline-block rounded-full bg-hs-sand/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-hs-gold-deep">
                       {item.badge}
@@ -341,9 +341,9 @@ export default function AboutPage() {
           {/* Official AGFG 2026 Readers' Choice Banner */}
           <FadeUp
             delay={0.3}
-            className="glass-light glass-spot mt-12 flex flex-col gap-8 rounded-[2.5rem] border border-black/5 bg-white/90 p-8 shadow-xl sm:flex-row sm:items-center md:p-12"
+            className="glass-light glass-spot mt-12 flex flex-col gap-8 rounded-[2.5rem] border border-black/5 bg-white/90 p-8 sm:flex-row sm:items-center md:p-12"
           >
-            <div className="relative flex h-28 w-44 shrink-0 items-center justify-center rounded-2xl bg-white p-2 shadow-md">
+            <div className="relative flex h-28 w-44 shrink-0 items-center justify-center rounded-2xl bg-white p-2">
               <Image
                 src={accolade.badge}
                 alt="Australian Good Food Guide Readers' Choice Winner 2026 badge"

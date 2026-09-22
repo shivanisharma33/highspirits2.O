@@ -55,8 +55,8 @@ function DishCard({ item, index, isExpanded, onToggle }: {
       className={cx(
         "group relative cursor-pointer overflow-hidden rounded-2xl border p-6 transition-all duration-500",
         isExpanded
-          ? "border-hs-gold/30 bg-hs-cream/[0.07] shadow-[0_12px_48px_hsl(160_80%_5%/0.6),0_0_0_1px_hsl(42_78%_51%/0.15)]"
-          : "border-hs-cream/[0.08] bg-hs-cream/[0.03] hover:border-hs-gold/20 hover:bg-hs-cream/[0.06] hover:shadow-[0_8px_40px_hsl(160_80%_5%/0.4)]",
+          ? "border-hs-gold/30 bg-hs-cream/[0.07]"
+          : "border-hs-cream/[0.08] bg-hs-cream/[0.03] hover:border-hs-gold/20 hover:bg-hs-cream/[0.06]",
       )}
     >
       {/* Mouse-following gold spotlight */}

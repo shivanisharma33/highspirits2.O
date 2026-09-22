@@ -29,7 +29,7 @@ export function JournalNewsletter() {
       />
 
       <div className="shell relative z-10">
-        <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-hs-gold/25 bg-hs-green-dark/40 p-8 sm:p-14 lg:p-16 backdrop-blur-xl shadow-2xl">
+        <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-hs-gold/25 bg-hs-green-dark/40 p-8 sm:p-14 lg:p-16 backdrop-blur-xl">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             {/* Editorial Copy */}
             <div className="lg:col-span-7">

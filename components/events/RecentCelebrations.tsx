@@ -220,7 +220,7 @@ export function RecentCelebrations() {
                 transition={{ type: "spring", stiffness: 320, damping: 32 }}
                 className={`group relative overflow-hidden rounded-[2.25rem] border transition-all duration-700 cursor-pointer ${
                   isActive
-                    ? "flex-[3.2] border-hs-gold/60 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.8)]"
+                    ? "flex-[3.2] border-hs-gold/60"
                     : "flex-1 border-white/10 hover:border-hs-gold/30 opacity-75 hover:opacity-95"
                 }`}
               >
@@ -275,7 +275,7 @@ export function RecentCelebrations() {
                     </div>
 
                     {/* Bottom Editorial Content */}
-                    <div className="max-w-lg rounded-3xl border border-white/10 bg-[#051c12]/85 p-6 sm:p-7 backdrop-blur-xl shadow-2xl">
+                    <div className="max-w-lg rounded-3xl border border-white/10 bg-[#051c12]/85 p-6 sm:p-7 backdrop-blur-xl">
                       <span className="font-display text-xs font-semibold uppercase tracking-wider text-hs-gold">
                         CHAPTER {c.step}
                       </span>
@@ -335,7 +335,7 @@ export function RecentCelebrations() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.5 }}
-            className="relative overflow-hidden rounded-3xl border border-hs-gold/40 bg-[#082218]/90 shadow-2xl"
+            className="relative overflow-hidden rounded-3xl border border-hs-gold/40 bg-[#082218]/90"
           >
             <div
               onClick={() => setLightboxIdx(activeIdx)}
@@ -416,7 +416,7 @@ export function RecentCelebrations() {
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-h-[92vh] max-w-5xl overflow-hidden rounded-3xl border border-hs-gold/30 bg-[#051c12] shadow-2xl"
+              className="relative max-h-[92vh] max-w-5xl overflow-hidden rounded-3xl border border-hs-gold/30 bg-[#051c12]"
             >
               {/* Close Button */}
               <button

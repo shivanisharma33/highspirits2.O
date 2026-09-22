@@ -89,7 +89,7 @@ export function JournalHero({ featured }: Props) {
           >
             <Link
               href={`/blogs/${featured.slug}`}
-              className="group relative block overflow-hidden rounded-[2rem] border border-hs-gold/25 bg-hs-green-dark/40 shadow-2xl backdrop-blur-md transition-all duration-700 hover:border-hs-gold/60 hover:shadow-[0_20px_60px_rgba(212,175,55,0.15)]"
+              className="group relative block overflow-hidden rounded-[2rem] border border-hs-gold/25 bg-hs-green-dark/40 backdrop-blur-md transition-all duration-700 hover:border-hs-gold/60"
               data-cursor="Read"
             >
               <div className="grid lg:grid-cols-12 lg:items-center">
