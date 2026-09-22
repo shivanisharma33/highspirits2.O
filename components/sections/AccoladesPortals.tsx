@@ -347,7 +347,7 @@ export function AccoladesPortals() {
   return (
     <section
       aria-labelledby="accolades-portals-title"
-      className="relative overflow-hidden bg-hs-green-deep py-24 sm:py-28 md:py-36 text-hs-cream"
+      className="relative overflow-hidden bg-hs-green-deep py-12 md:py-16 lg:py-20 text-hs-cream"
     >
       {/* Top Hairline Separator with Golden Flare */}
       <div

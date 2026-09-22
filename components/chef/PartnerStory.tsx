@@ -11,7 +11,7 @@ export function PartnerStory({ className }: Props) {
     <section
       aria-labelledby="partner-title"
       className={cx(
-        "surface-light relative overflow-hidden bg-hs-cream py-20 md:py-32",
+        "surface-light relative overflow-hidden bg-hs-cream py-12 md:py-16 lg:py-20",
         className,
       )}
     >

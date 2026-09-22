@@ -1,21 +1,17 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useState, type FormEvent } from "react";
 import { FadeUp } from "@/components/motion/Reveal";
 import { Aurora } from "@/components/ui/Aurora";
-import { ButtonLink } from "@/components/ui/ButtonLink";
 import {
-  ArrowRight,
   ArrowUp,
   ArrowUpRight,
   Facebook,
-  Feather,
   Instagram,
   Mail,
   MapPin,
   Phone,
-  WhatsApp,
 } from "@/components/ui/Icons";
 import { hours, legalNav, primaryNav, site } from "@/lib/site";
 
@@ -24,20 +20,15 @@ const listLink =
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: FormEvent) => {
-    e.preventDefault();
-    if (!email.trim()) return;
-    setSubscribed(true);
-  };
 
   const scrollToTop = () => {
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
+
+
+
 
   return (
     <footer
@@ -56,15 +47,21 @@ export function SiteFooter() {
         className="pointer-events-none absolute bottom-20 right-10 h-72 w-72 rounded-full bg-hs-gold/8 blur-[120px]"
       />
 
-      <div className="shell relative z-10 pt-20 sm:pt-28 pb-12">
+      <div className="shell relative z-10 pt-12 sm:pt-16 pb-12">
         {/* =========================================================================
-            LAYER 1: Invitation Headline + VIP Circle Newsletter
+            Invitation Headline & Direct Actions
             ========================================================================= */}
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-center pb-16 border-b border-hs-cream/10">
-          <FadeUp className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 rounded-full border border-hs-gold/30 bg-hs-gold/10 px-4 py-1 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-hs-gold mb-6 shadow-sm shadow-hs-gold/10">
-              <span className="h-1.5 w-1.5 rounded-full bg-hs-gold animate-pulse" />
-              Victoria Street, Bunbury
+        <div className="pb-16 border-b border-hs-cream/10">
+          <FadeUp className="max-w-3xl">
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-hs-gold/30 bg-hs-gold/10 px-3.5 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-hs-gold mb-6 shadow-sm shadow-hs-gold/10">
+              <Image
+                src="/logo-mark.png"
+                alt=""
+                width={16}
+                height={28}
+                className="h-3.5 w-auto object-contain"
+              />
+              <span>Victoria Street, Bunbury</span>
             </div>
 
             <h2
@@ -76,87 +73,10 @@ export function SiteFooter() {
               <em className="text-gold-gradient italic font-normal">Stay for the experience.</em>
             </h2>
 
-            <p className="mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-hs-cream/80">
+            <p className="mt-5 text-base sm:text-lg leading-relaxed text-hs-cream/80">
               Experience the soul of Punjab through time-honoured tandoor recipes, authentic gravies, and a lavish
               daily evening buffet in the heart of Bunbury.
             </p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <ButtonLink href="/reservation" variant="gold" className="shadow-lg shadow-hs-gold/20">
-                Reserve a Table
-              </ButtonLink>
-              <ButtonLink href="/menu" variant="ghost">
-                Explore Menu
-              </ButtonLink>
-              <a
-                href={site.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-ghost inline-flex items-center gap-2 border border-emerald-500/30 text-emerald-300 hover:border-emerald-400 hover:text-emerald-200 hover:bg-emerald-950/40"
-              >
-                <WhatsApp size={16} className="text-emerald-400" />
-                <span>WhatsApp Concierge</span>
-              </a>
-            </div>
-          </FadeUp>
-
-          {/* Interactive VIP High Spirits Circle Card */}
-          <FadeUp delay={0.1} className="lg:col-span-5">
-            <div className="rounded-3xl border border-hs-gold/30 bg-gradient-to-b from-hs-green-dark/80 to-hs-green-deep/90 p-7 sm:p-8 backdrop-blur-xl shadow-2xl shadow-black/50 relative overflow-hidden group">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-hs-gold/15 blur-2xl transition-all duration-700 group-hover:scale-125"
-              />
-
-              <div className="flex items-center gap-2 text-hs-gold text-xs font-semibold uppercase tracking-[0.2em]">
-                <Feather size={16} className="text-hs-gold" />
-                <span>High Spirits Circle</span>
-              </div>
-
-              <h3 className="font-display mt-3 text-2xl text-hs-cream leading-snug">
-                Exclusive Chef’s Table &amp; <span className="text-gold-gradient">Seasonal Tasting Invites</span>
-              </h3>
-
-              <p className="mt-2.5 text-xs sm:text-sm text-hs-cream/70 leading-relaxed">
-                Join our private guest list for secret seasonal menu previews, festival banquets, and reserved tasting
-                invitations.
-              </p>
-
-              {subscribed ? (
-                <div className="mt-6 rounded-2xl border border-hs-gold/40 bg-hs-gold/15 p-5 text-center transition-all animate-in fade-in zoom-in duration-300">
-                  <div className="mx-auto mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-hs-gold text-hs-green-deep font-bold">
-                    ✓
-                  </div>
-                  <p className="font-display text-lg text-hs-gold">Welcome to the Circle</p>
-                  <p className="mt-1 text-xs text-hs-cream/80">
-                    You are confirmed on our VIP guest list. Expect curated culinary invitations directly to your inbox.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubscribe} className="mt-6 space-y-3">
-                  <div className="relative">
-                    <input
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email for VIP access"
-                      className="h-12 w-full rounded-full border border-hs-gold/30 bg-black/40 px-5 text-xs sm:text-sm text-hs-cream placeholder:text-hs-cream/45 backdrop-blur-sm transition-all focus:border-hs-gold focus:bg-black/60 focus:outline-none focus:ring-2 focus:ring-hs-gold/20"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="group flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-r from-hs-gold via-amber-400 to-hs-gold px-6 text-xs font-bold uppercase tracking-[0.18em] text-[#03150D] shadow-lg shadow-hs-gold/25 transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
-                  >
-                    <span>Request VIP Membership</span>
-                    <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
-                  </button>
-                  <p className="text-center text-[0.68rem] text-hs-cream/50">
-                    Complimentary privilege. No spam, ever.
-                  </p>
-                </form>
-              )}
-            </div>
           </FadeUp>
         </div>
 
@@ -166,10 +86,22 @@ export function SiteFooter() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12 pt-14 pb-16">
           {/* Brand Col */}
           <FadeUp className="lg:col-span-4">
-            <h3 className="font-display text-2xl tracking-tight text-hs-cream font-bold">
-              HIGH SPIRITS
-            </h3>
-            <p className="text-xs tracking-[0.2em] text-hs-gold uppercase mt-1">
+            <Link href="/" aria-label="High Spirits — Home" className="group inline-flex items-center gap-3.5 mb-2">
+              <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-hs-gold/25 via-hs-green-dark to-hs-green-deep p-2 border border-hs-gold/30 shadow-lg shadow-black/40 transition-transform duration-500 group-hover:scale-105">
+                <Image
+                  src="/logo-mark.png"
+                  alt="High Spirits Peacock Emblem"
+                  width={60}
+                  height={100}
+                  className="h-auto w-7 object-contain transition-transform duration-700 ease-luxe group-hover:-rotate-6"
+                />
+              </div>
+              <span className="font-display text-2xl tracking-[0.14em] text-hs-cream font-bold group-hover:text-hs-gold transition-colors leading-none">
+                HIGH SPIRITS
+              </span>
+            </Link>
+
+            <p className="text-xs tracking-[0.2em] text-hs-gold/90 uppercase mt-2">
               Taste the Spirit of Punjab
             </p>
 

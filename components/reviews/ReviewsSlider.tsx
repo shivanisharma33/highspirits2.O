@@ -120,7 +120,7 @@ function RatingCard() {
 
 export function ReviewsSlider() {
   return (
-    <div className="surface-light relative overflow-hidden bg-hs-cream py-20 lg:py-0">
+    <div className="surface-light relative overflow-hidden bg-hs-cream py-12 md:py-16 lg:py-0">
       <HorizontalScroll
         label="Guest reviews"
         trackClassName="gap-5 px-[var(--gutter)] md:gap-6 lg:items-center"

@@ -1474,7 +1474,7 @@ html.lenis body {
     --sc-line: rgb(245 240 230 / 0.12);
     --sc-gap: 3rem;
     --sc-art-w: 100%;
-    padding-block: clamp(5.5rem, 12vw, 8rem) clamp(3.5rem, 8vw, 5rem);
+    padding-block: clamp(3rem, 6vw, 4.5rem) clamp(2.5rem, 5vw, 3.5rem);
     background: var(--sc-night);
     color: var(--sc-ivory);
   }

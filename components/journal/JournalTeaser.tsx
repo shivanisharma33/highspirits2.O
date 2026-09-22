@@ -9,7 +9,7 @@ export function JournalTeaser() {
   if (!latest) return null;
 
   return (
-    <section aria-labelledby="journal-teaser-title" className="surface-light relative bg-hs-white py-24 text-hs-text md:py-32">
+    <section aria-labelledby="journal-teaser-title" className="surface-light relative bg-hs-white py-12 md:py-16 lg:py-20 text-hs-text">
       <div className="shell">
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6 border-b border-hs-line pb-8">
           <div>

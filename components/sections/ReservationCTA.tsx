@@ -9,7 +9,7 @@ import { hours, site } from "@/lib/site";
 /** The conversion moment: a single, dramatic invitation. */
 export function ReservationCTA() {
   return (
-    <section aria-labelledby="cta-title" className="grain relative isolate overflow-hidden bg-hs-green py-32 text-center md:py-48">
+    <section aria-labelledby="cta-title" className="grain relative isolate overflow-hidden bg-hs-green py-14 text-center md:py-20">
       <Image src={media.interiorLuxe.src} alt="" fill sizes="100vw" placeholder="blur" className="-z-20 object-cover opacity-25 mix-blend-luminosity" />
       <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_50%_50%,hsl(160_60%_18%/0.4),var(--hs-green)_85%)]" />
       <Aurora />

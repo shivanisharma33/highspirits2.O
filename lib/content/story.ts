@@ -65,19 +65,19 @@ export const philosophy = [
     word: "Heritage",
     title: "Recipes that remember",
     body: "Every dish carries a story of heritage, passion and uncompromising quality — time-loved Punjabi recipes, whole spices roasted in small batches and the joyful spirit of Chardi Kala.",
-    image: media.spices,
+    image: media.heritage,
   },
   {
     word: "Craft",
     title: "Hours in every plate",
     body: "Behind every dish lies hours of preparation, ancient techniques and modern innovation. From our slow-cooked dal to our tandoor-roasted meats, each element is crafted with precision and passion.",
-    image: media.foodSizzler,
+    image: media.craft,
   },
   {
     word: "Innovation",
     title: "Punjab, reimagined",
     body: "We marry the complex spice profiles of Punjab with the clean, produce-driven ethos of Australian fine dining — honouring tradition while embracing contemporary technique.",
-    image: media.heroDish1,
+    image: media.innovation,
   },
 ];
 

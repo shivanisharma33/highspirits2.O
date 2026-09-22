@@ -85,24 +85,24 @@ export const ingredients = [
     name: "Black Lentils",
     origin: "Punjab, India",
     description: "Hand-selected premium whole urad dal, slow-cooked for 12 hours to achieve velvety perfection.",
-    image: media.foodCurry,
+    image: media.ingredientLentilsHd,
   },
   {
     name: "Australian Lamb",
     origin: "Tasmania, Australia",
     description: "Grass-fed, ethically sourced from pristine Tasmanian highlands, aged for optimal tenderness.",
-    image: media.ingredientLamb,
+    image: media.ingredientLambHd,
   },
   {
     name: "Organic Spinach",
     origin: "Victoria, Australia",
     description: "Farm-fresh baby spinach from our local Victorian partners, harvested at peak freshness.",
-    image: media.ingredientSpinach,
+    image: media.ingredientSpinachHd,
   },
   {
     name: "Stone-Ground Flour",
     origin: "Punjab, India",
     description: "Traditional chakki-ground whole wheat, imported directly from heritage mills in Punjab.",
-    image: media.ingredientFlour,
+    image: media.ingredientFlourHd,
   },
 ];

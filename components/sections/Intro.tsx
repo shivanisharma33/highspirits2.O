@@ -1,174 +1,113 @@
-import Image from "next/image";
 import Link from "next/link";
 import { CountUp } from "@/components/motion/CountUp";
-import { Parallax } from "@/components/motion/Parallax";
-import { ClipReveal, ClipRevealX, FadeIn, FadeUp, ScaleReveal, TextReveal } from "@/components/motion/Reveal";
-import { ArrowRight, ArrowUpRight } from "@/components/ui/Icons";
+import { FadeIn, FadeUp, ScaleReveal, TextReveal } from "@/components/motion/Reveal";
+import { ArrowRight } from "@/components/ui/Icons";
 import { RotatingBadge } from "@/components/ui/RotatingBadge";
 import { intro, stats } from "@/lib/content/story";
-import { media } from "@/lib/images";
 
 /**
- * "The Spirit of Punjab" — one art-directed spread: the story on the left, the
- * tandoor kitchen on the right. Height comes from the content, never the
- * viewport, and only the photograph's frame clips.
+ * "The Spirit of Punjab" — compact luxury editorial spread.
+ * Perfectly centered and height-optimized with balanced typography,
+ * streamlined stats card, and inline badge + CTA.
  */
 export function Intro() {
   return (
     <section
       aria-labelledby="intro-title"
-      className="surface-light grain grain-ink relative bg-hs-cream py-[clamp(4.5rem,9vw,8.75rem)] text-hs-text"
+      className="surface-light grain grain-ink relative overflow-hidden bg-hs-cream py-10 md:py-14 lg:py-16 text-hs-text"
     >
       <IntroDecor />
 
-      <div className="shell relative">
-        <div className="mx-auto grid max-w-[1400px] items-center gap-y-14 md:gap-y-16 lg:grid-cols-[minmax(0,48fr)_minmax(0,52fr)] lg:gap-x-[4.5rem] xl:gap-x-28">
-          {/* Story */}
-          <div>
-            <FadeUp as="p" duration={0.8} className="eyebrow max-sm:tracking-[0.22em] max-sm:before:hidden">
-              Since day one · 1/57 Victoria Street
-            </FadeUp>
+      <div className="shell relative z-10">
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          {/* Eyebrow Badge */}
+          <FadeUp delay={0.08} duration={0.7}>
+            <span className="inline-flex items-center gap-2 rounded-full border border-hs-gold/45 bg-hs-cream/90 px-4 py-1 shadow-xs backdrop-blur-md">
+              <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-hs-gold animate-pulse" />
+              <span className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-hs-gold-deep">
+                Since day one · 1/57 Victoria Street
+              </span>
+            </span>
+          </FadeUp>
 
+          {/* Grand Centered Title */}
+          <div className="mt-4 text-center">
             <TextReveal
+              as="h2"
               id="intro-title"
               delay={0.15}
-              className="intro-title font-display mt-6 text-[clamp(2.2rem,5.5vw,3.5rem)] leading-[1.02] tracking-[-0.025em] text-hs-green lg:mt-7 lg:text-[clamp(2.75rem,4vw,4.5rem)] [&_.tr-line]:block"
-              lineClassName="whitespace-nowrap"
+              className="intro-title font-display text-h2 text-hs-green [&_.tr-line]:block"
+              lineClassName="justify-center"
               lines={[
                 <span key="l1">
-                  The <em className="text-hs-gold-deep">Spirit</em>
+                  The <em className="text-gold-gradient font-normal italic">Spirit</em> of Punjab
                 </span>,
-                "of Punjab",
               ]}
             />
+          </div>
 
-            <ClipRevealX delay={0.35} className="mt-8 w-20 lg:mt-10">
-              <div aria-hidden className="h-px bg-hs-gold-deep/50" />
-            </ClipRevealX>
+          {/* Symmetrical Luxury Gold Divider */}
+          <FadeUp delay={0.22} duration={0.7} className="my-3.5 flex items-center justify-center gap-3">
+            <div className="h-px w-14 bg-gradient-to-r from-transparent to-hs-gold-deep/60 sm:w-20 md:w-28" />
+            <span className="inline-block h-1.5 w-1.5 rotate-45 border border-hs-gold-deep/80 bg-hs-gold/40" />
+            <div className="h-px w-14 bg-gradient-to-l from-transparent to-hs-gold-deep/60 sm:w-20 md:w-28" />
+          </FadeUp>
 
-            <FadeUp as="h3" delay={0.35} duration={0.9} className="font-display mt-7 text-h3 text-hs-green">
-              Tradition, <em>reimagined.</em>
-            </FadeUp>
+          {/* Subtitle */}
+          <FadeUp as="h3" delay={0.28} duration={0.8} className="font-display text-lg text-hs-green sm:text-xl md:text-2xl">
+            Tradition, <em className="text-hs-gold-deep italic">reimagined.</em>
+          </FadeUp>
 
-            <FadeUp as="p" delay={0.42} duration={0.9} className="mt-4 max-w-[34rem] text-lead text-hs-text/85">
+          {/* Lead & Narrative Body */}
+          <div className="mx-auto mt-3.5 max-w-2xl space-y-2">
+            <FadeUp as="p" delay={0.34} duration={0.8} className="text-base leading-relaxed text-hs-text/90 md:text-lg font-normal">
               {intro.lead}
             </FadeUp>
-
-            <FadeUp as="p" delay={0.5} duration={0.9} className="mt-4 max-w-[34rem] text-hs-muted">
+            <FadeUp as="p" delay={0.4} duration={0.8} className="text-xs sm:text-sm leading-relaxed text-hs-muted">
               {intro.body}
-            </FadeUp>
-
-            <FadeUp
-              as="dl"
-              delay={0.55}
-              duration={0.9}
-              className="mt-9 grid max-w-[34rem] grid-cols-3 border-t border-hs-line pt-6 lg:mt-10"
-            >
-              {stats.map((s) => (
-                <div key={s.label} className="flex flex-col pr-3">
-                  <dt className="order-2 mt-2 text-[0.68rem] uppercase leading-snug tracking-[0.16em] text-hs-muted">
-                    {s.label}
-                  </dt>
-                  <dd className="font-display order-1 text-[clamp(1.6rem,2.6vw,2.4rem)] leading-none text-hs-green">
-                    <CountUp value={s.value} />
-                  </dd>
-                </div>
-              ))}
-            </FadeUp>
-
-            <FadeUp delay={0.6} duration={0.8} className="mt-9">
-              <Link
-                href="/about"
-                className="link-line text-xs font-semibold uppercase tracking-[0.22em] text-hs-green"
-              >
-                Discover our story <ArrowRight size={14} />
-              </Link>
             </FadeUp>
           </div>
 
-          {/* Photograph */}
-          <div className="relative">
-            {/* Gold hairline frame, offset up and right behind the photograph */}
-            <FadeIn
-              delay={0.8}
-              className="pointer-events-none absolute -right-3 -top-3 bottom-3 left-3 border border-hs-gold/45 lg:-right-4 lg:-top-4 lg:bottom-4 lg:left-4"
-            />
+          {/* Centered Compact Luxury Stats Showcase Card */}
+          <FadeUp
+            as="div"
+            delay={0.46}
+            duration={0.8}
+            className="mx-auto mt-7 w-full max-w-2xl rounded-xl border border-hs-gold/35 bg-gradient-to-b from-hs-sand/70 via-hs-cream/90 to-hs-sand/50 px-5 py-4 shadow-sm backdrop-blur-sm sm:px-8 sm:py-5"
+          >
+            <dl className="grid grid-cols-1 divide-y divide-hs-gold/20 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+              {stats.map((s) => (
+                <div key={s.label} className="flex flex-col items-center justify-center px-3 py-2.5 sm:py-0">
+                  <dd className="font-display text-[clamp(1.8rem,3vw,2.5rem)] leading-none text-hs-green">
+                    <CountUp value={s.value} />
+                  </dd>
+                  <span className="mt-2 h-0.5 w-6 rounded-full bg-hs-gold/50" />
+                  <dt className="mt-1.5 text-[0.68rem] font-semibold uppercase leading-tight tracking-[0.18em] text-hs-gold-deep">
+                    {s.label}
+                  </dt>
+                </div>
+              ))}
+            </dl>
+          </FadeUp>
 
-            {/* Portrait source (2:3): the cook sits left, her hands at centre —
-                every crop keeps her face, both arms and the dough in frame. */}
-            <ClipReveal
-              duration={0.9}
-              className="intro-frame relative z-10 aspect-[5/6] overflow-hidden bg-hs-sand md:aspect-[5/4] lg:aspect-[4/5]"
-            >
-              <Link
-                href="/gallery"
-                aria-label="View the gallery"
-                data-cursor="View"
-                className="group absolute inset-0 block"
-              >
-                <Parallax distance={16} className="absolute -inset-y-5 inset-x-0">
-                  <div className="absolute inset-0 transition-transform duration-[1100ms] ease-luxe group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
-                    <Image
-                      src={media.kitchenCraft.src}
-                      alt={media.kitchenCraft.alt}
-                      fill
-                      sizes="(min-width: 1440px) 680px, (min-width: 1024px) 50vw, 100vw"
-                      placeholder="blur"
-                      className="object-cover object-[50%_22%] md:object-[50%_16%] lg:object-[50%_25%]"
-                    />
-                  </div>
-                </Parallax>
-
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,hsl(160_80%_6%/0.38),transparent_32%)]"
-                />
-
-                <span className="glass-chip absolute right-4 top-4 hidden sm:inline-flex md:right-5 md:top-5">
-                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-hs-gold" />
-                  The tandoor, lit every day
-                </span>
-
-                <span
-                  aria-hidden
-                  data-intro-view
-                  className="glass-chip absolute bottom-4 right-4 transition-colors duration-500 ease-luxe group-hover:border-hs-gold/70 group-hover:text-hs-gold-pale group-focus-visible:border-hs-gold/70 group-focus-visible:text-hs-gold-pale md:bottom-5 md:right-5"
-                >
-                  View
-                  <ArrowUpRight
-                    size={12}
-                    className="transition-transform duration-500 ease-luxe group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  />
-                </span>
-              </Link>
-            </ClipReveal>
-
-            {/* On phones the chip would cross her head, so it becomes a caption. */}
-            <p className="mt-4 flex items-center gap-2.5 text-[0.625rem] font-medium uppercase tracking-[0.24em] text-hs-gold-deep sm:hidden">
-              <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-hs-gold" />
-              The tandoor, lit every day
-            </p>
-
-            {/* Seal: straddles the text/photo seam on desktop, the frame's bottom edge on
-                tablet, its top-right (over the range hood) on phones — never her face. */}
-            <ScaleReveal
-              delay={0.7}
-              duration={0.8}
-              className="glass-light absolute -top-12 right-4 z-20 w-24 rounded-full sm:-bottom-12 sm:left-5 sm:right-auto sm:top-auto md:w-28 lg:-left-16 lg:bottom-[14%] lg:w-32 xl:-left-[4.5rem] xl:w-36"
-            >
-              <div data-intro-badge>
-                <RotatingBadge
-                  text="Authentic Punjabi · Fine dining · Bunbury WA · "
-                  className="relative grid w-full text-hs-gold-deep"
-                />
-              </div>
+          {/* Streamlined Seal & CTA */}
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-5 sm:gap-6">
+            <ScaleReveal delay={0.52} duration={0.7} className="w-20 text-hs-gold-deep md:w-24">
+              <RotatingBadge
+                text="Authentic Punjabi · Fine dining · Bunbury WA · "
+                className="relative grid w-full text-hs-gold-deep drop-shadow-xs"
+              />
             </ScaleReveal>
 
-            <FadeIn delay={0.9} className="absolute -right-9 top-0 hidden 2xl:block">
-              <span className="vertical-label block text-[0.625rem] font-medium uppercase tracking-[0.32em] text-hs-gold-deep/80">
-                Kitchen · Victoria Street
-              </span>
-            </FadeIn>
+            <FadeUp delay={0.58} duration={0.7}>
+              <Link
+                href="/about"
+                className="group inline-flex items-center gap-2.5 rounded-full border border-hs-green/40 bg-hs-green px-7 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-hs-cream shadow-sm transition-all duration-500 ease-luxe hover:border-hs-gold hover:bg-hs-green-deep hover:shadow-md hover:shadow-hs-green/20"
+              >
+                <span>Discover our story</span>
+                <ArrowRight size={13} className="text-hs-gold transition-transform duration-300 ease-luxe group-hover:translate-x-1" />
+              </Link>
+            </FadeUp>
           </div>
         </div>
       </div>
@@ -176,12 +115,27 @@ export function Intro() {
   );
 }
 
-/** Quiet atmosphere: a warm glow behind the photograph and a botanical sprig. */
+/** Quiet atmosphere: warm centered radial glow and symmetrical botanical accents. */
 function IntroDecor() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute -right-[12%] top-[6%] aspect-square w-[min(44rem,90vw)] rounded-full bg-[radial-gradient(closest-side,hsl(42_78%_51%/0.12),transparent)]" />
-      <FadeIn delay={0.9} className="absolute -left-12 bottom-[4%] hidden w-56 text-hs-gold-deep/15 lg:block xl:left-[1%]">
+      {/* Centered radiant warm aura */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[min(50rem,90vw)] rounded-full bg-[radial-gradient(circle,hsl(42_78%_51%/0.11)_0%,transparent_68%)]" />
+
+      {/* Left Botanical Sprig */}
+      <FadeIn delay={0.8} className="absolute -left-10 bottom-[5%] hidden w-44 text-hs-gold-deep/10 lg:block xl:left-[2%]">
+        <svg viewBox="0 0 200 260" fill="none" stroke="currentColor" strokeWidth="1.2" className="h-auto w-full">
+          <path d="M100 258C96 200 104 140 93 18" />
+          <path d="M97 205C70 195 52 173 48 150c24 4 42 24 49 55Z" />
+          <path d="M99 172c27-10 45-32 51-56-26 4-44 26-51 56Z" />
+          <path d="M96 132c-24-10-38-32-40-52 22 6 36 26 40 52Z" />
+          <path d="M97 102c23-10 37-30 41-50-22 6-36 26-41 50Z" />
+          <path d="M94 40c-12-8-16-22-12-34 10 8 14 20 12 34Z" />
+        </svg>
+      </FadeIn>
+
+      {/* Right Botanical Sprig (Symmetrical reflection) */}
+      <FadeIn delay={0.8} className="absolute -right-10 bottom-[5%] hidden w-44 -scale-x-100 text-hs-gold-deep/10 lg:block xl:right-[2%]">
         <svg viewBox="0 0 200 260" fill="none" stroke="currentColor" strokeWidth="1.2" className="h-auto w-full">
           <path d="M100 258C96 200 104 140 93 18" />
           <path d="M97 205C70 195 52 173 48 150c24 4 42 24 49 55Z" />

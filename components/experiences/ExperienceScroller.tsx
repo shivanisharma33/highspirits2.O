@@ -11,7 +11,7 @@ export function ExperienceScroller() {
   const total = String(experiences.length).padStart(2, "0");
 
   return (
-    <div className="grain relative bg-hs-green-deep py-24 lg:py-0">
+    <div className="grain relative bg-hs-green-deep py-12 md:py-16 lg:py-0">
       <Aurora />
       <HorizontalScroll label="Signature experiences" trackClassName="gap-5 px-[var(--gutter)] md:gap-8 lg:items-center">
         <div data-panel className="flex w-[82vw] flex-col justify-center pr-6 sm:w-[60vw] lg:h-[68vh] lg:max-h-[580px] lg:min-h-[460px] lg:w-[34vw] lg:pr-16">

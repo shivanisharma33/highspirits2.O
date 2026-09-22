@@ -12,7 +12,7 @@ export function ChefStory({ className, cta = true }: Props) {
     <section
       aria-labelledby="chef-title"
       className={cx(
-        "surface-light relative overflow-hidden bg-hs-cream py-20 md:py-32",
+        "surface-light relative overflow-hidden bg-hs-cream py-12 md:py-16 lg:py-20",
         className,
       )}
     >

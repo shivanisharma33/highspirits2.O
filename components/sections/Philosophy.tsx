@@ -8,7 +8,7 @@ const lift = ["", "lg:mt-20", "lg:mt-10"];
 /** HERITAGE + CRAFT + INNOVATION — three glass chapters over drifting emerald light. */
 export function Philosophy() {
   return (
-    <section aria-labelledby="philosophy-title" className="grain relative overflow-hidden bg-hs-green-deep py-28 md:py-40">
+    <section aria-labelledby="philosophy-title" className="grain relative overflow-hidden bg-hs-green-deep py-12 md:py-16 lg:py-20">
       <Aurora />
 
       <div className="shell relative">

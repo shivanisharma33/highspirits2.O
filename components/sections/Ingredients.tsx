@@ -7,7 +7,7 @@ const offsets = ["", "lg:mt-24", "lg:mt-10", "lg:mt-36"];
 
 export function Ingredients() {
   return (
-    <section aria-labelledby="ingredients-title" className="surface-light relative overflow-hidden bg-hs-sand py-28 text-hs-text md:py-40">
+    <section aria-labelledby="ingredients-title" className="surface-light relative overflow-hidden bg-hs-sand py-12 md:py-16 lg:py-20 text-hs-text">
       <div className="shell">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <SectionHeading

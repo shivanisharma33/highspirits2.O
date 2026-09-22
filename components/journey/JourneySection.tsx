@@ -31,26 +31,13 @@ export const MILESTONES: Milestone[] = [
     year: "2015",
     title: "The Vision",
     description:
-      "Born from a dream to bring authentic North Indian fine dining to Australia, High Spirits was conceived in the vibrant culinary scene of Melbourne.",
-    place: "Melbourne",
-    image: media.kitchenCraft,
-    caption: "Bread shaped by hand beside the tandoor",
-    orientation: "portrait",
-    aspect: "aspect-[4/5]",
-    focus: "30% 30%",
-  },
-  {
-    id: "debut-2017",
-    year: "2017",
-    title: "Opening Night",
-    description:
-      "Our doors opened to Melbourne's elite, introducing a revolutionary fusion of authentic Indian flavours with Australian produce.",
-    place: "Melbourne",
-    image: media.interiorLuxe,
-    caption: "The emerald dining room, set for service",
+      "Born from a dream to bring authentic North Indian fine dining to Australia, High Spirits was conceived to introduce a revolutionary fusion of authentic flavours with Australian produce in an elegant setting.",
+    place: "The Beginning",
+    image: media.journeyDiningHall,
+    caption: "The warm chandelier-lit dining room, set for service",
     orientation: "landscape",
     aspect: "aspect-[4/3]",
-    focus: "50% 45%",
+    focus: "50% 50%",
   },
   {
     id: "acclaim-2020",
@@ -59,11 +46,11 @@ export const MILESTONES: Milestone[] = [
     description:
       "Executive Chef Amardeep Singh was crowned Chef of the Year by the Australian Culinary Federation, gaining national acclaim for culinary excellence.",
     place: "National acclaim",
-    image: media.chefAmardeep,
-    caption: "Executive Chef Amardeep Singh at the tandoor",
+    image: media.journeyChefAmardeep,
+    caption: "Executive Chef Amardeep Singh",
     orientation: "portrait",
     aspect: "aspect-[4/5]",
-    focus: "50% 22%",
+    focus: "50% 25%",
   },
   {
     id: "bunbury-2023",
@@ -72,11 +59,11 @@ export const MILESTONES: Milestone[] = [
     description:
       "Bringing our culinary legacy to 1/57 Victoria Street in Bunbury, crafting an intimate destination for refined fine dining and lavish buffets.",
     place: "Bunbury, WA",
-    image: media.exteriorNight,
-    caption: "Victoria Street, Bunbury — after dark",
+    image: media.journeyBunburyExterior,
+    caption: "1/57 Victoria Street, Bunbury — glowing at night",
     orientation: "landscape",
     aspect: "aspect-[4/3]",
-    focus: "50% 40%",
+    focus: "50% 50%",
   },
   {
     id: "today-2026",
@@ -85,11 +72,11 @@ export const MILESTONES: Milestone[] = [
     description:
       "Today, High Spirits stands as Western Australia's celebrated benchmark for modern Indian gastronomy, celebrated by more than 560 five-star reviews.",
     place: "Today",
-    image: media.teamFamily,
-    caption: "Ishpreet and Amardeep with guests in the dining room",
+    image: media.journeyTeamGuests,
+    caption: "Ishpreet and Amardeep celebrating with guests",
     orientation: "landscape",
     aspect: "aspect-[16/10]",
-    focus: "50% 40%",
+    focus: "50% 35%",
   },
 ];
 
@@ -229,7 +216,7 @@ export function JourneySection() {
       ref={root}
       id="journey"
       aria-labelledby="journey-title"
-      className="journey grain relative bg-hs-green-dark pb-20 pt-24 md:pb-28 md:pt-32 xl:pb-32 xl:pt-36"
+      className="journey grain relative bg-hs-green-dark py-12 md:py-16 lg:py-20"
     >
       <div className="shell md:grid md:grid-cols-12 md:gap-x-10 xl:gap-x-16">
         {/* ── Story panel: anchored while the chapters travel past ─────────── */}

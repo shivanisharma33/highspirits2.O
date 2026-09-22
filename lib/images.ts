@@ -79,6 +79,17 @@ import corporateEventsAvif from "@/assets/images/corporate events.avif";
 import degustationAvif from "@/assets/images/degustation.avif";
 import diningExperienceAvif from "@/assets/images/dining experience.avif";
 import skipTheTripAvif from "@/assets/images/skip the trip.avif";
+import heritageAvif from "@/assets/images/heritage.avif";
+import craftAvif from "@/assets/images/craft.avif";
+import innovationAvif from "@/assets/images/innovation.avif";
+import ingredientLentilsAvif from "@/assets/images/ewmpblom84yxsgmihrxb.avif";
+import ingredientLambAvif from "@/assets/images/v01whpmnhsndd6skwfis.avif";
+import ingredientSpinachAvif from "@/assets/images/fdnjipjrsivexiuftoyk.avif";
+import ingredientFlourAvif from "@/assets/images/vvp8e5pdzudmf4r7wint.avif";
+import journeyDiningHallAvif from "@/assets/images/ChatGPT Image Sep 22, 2026, 04_25_56 PM.avif";
+import journeyChefAmardeepAvif from "@/assets/images/ChatGPT Image Sep 22, 2026, 04_28_56 PM.avif";
+import journeyBunburyExteriorAvif from "@/assets/images/ChatGPT Image Sep 22, 2026, 04_30_28 PM.avif";
+import journeyTeamGuestsAvif from "@/assets/images/ChatGPT Image Sep 22, 2026, 04_31_57 PM.avif";
 
 export type Media = { src: StaticImageData; alt: string };
 
@@ -164,6 +175,17 @@ export const media = {
   degustation: m(degustationAvif, "Signature 7 or 10-course degustation tasting journey"),
   diningExperience: m(diningExperienceAvif, "Curated lunch dining experience with fresh authentic flavours"),
   skipTheTrip: m(skipTheTripAvif, "Skip the trip with doorstep delivery of High Spirits favourites"),
+  heritage: m(heritageAvif, "Heritage recipes, whole roasted spices and time-honoured Punjabi traditions"),
+  craft: m(craftAvif, "Artisanal culinary craft and precision behind every plate at High Spirits"),
+  innovation: m(innovationAvif, "Modern Indian culinary innovation and artistic contemporary presentation"),
+  ingredientLentilsHd: m(ingredientLentilsAvif, "Slow-cooked black lentils dal makhani in a copper handi with butter and cream"),
+  ingredientLambHd: m(ingredientLambAvif, "Tender Tasmanian lamb shank simmered in aromatic Kashmiri spices"),
+  ingredientSpinachHd: m(ingredientSpinachAvif, "Fresh Victorian spinach simmered with paneer in a copper pot"),
+  ingredientFlourHd: m(ingredientFlourAvif, "Chakki-ground stone flour tandoori garlic naan in a woven basket"),
+  journeyDiningHall: m(journeyDiningHallAvif, "The warm chandelier-lit dining room at High Spirits, set for dinner service"),
+  journeyChefAmardeep: m(journeyChefAmardeepAvif, "Executive Chef Amardeep Singh in the kitchen seated at the table"),
+  journeyBunburyExterior: m(journeyBunburyExteriorAvif, "High Spirits Victoria Street Bunbury restaurant facade glowing at night"),
+  journeyTeamGuests: m(journeyTeamGuestsAvif, "Ishpreet Bedi and Chef Amardeep Singh celebrating with happy guests"),
 } satisfies Record<string, Media>;
 
 export type MediaKey = keyof typeof media;
