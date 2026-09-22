@@ -34,7 +34,8 @@ import dishChickenKorma from "@/assets/images/dish-chicken-korma.jpg";
 import dishGoatCurry from "@/assets/images/dish-goat-curry.jpg";
 import chefAmardeep from "@/assets/images/chef-amardeep.jpg";
 import chefKitchen from "@/assets/images/chef-amardeep-kitchen.jpg";
-import partnerIshpreet from "@/assets/images/partner-ishpreet.jpg";
+import partnerIshpreet from "@/assets/images/ishpreet bedi .avif";
+import partnerIshpreetJpg from "@/assets/images/partner-ishpreet.jpg";
 import kitchenCraft from "@/assets/images/kitchen-craft.jpg";
 import teamCelebration from "@/assets/images/team-celebration.jpg";
 import teamWithGuests from "@/assets/images/team-with-guests.jpg";
@@ -71,6 +72,13 @@ import valentines1 from "@/assets/images/valentines-1.jpg";
 import valentines2 from "@/assets/images/valentines-2.jpg";
 import valentines3 from "@/assets/images/valentines-3.jpg";
 import fathersDay from "@/assets/images/fathers-day.jpg";
+
+import buffetAvif from "@/assets/images/buffet.avif";
+import chefsTableAvif from "@/assets/images/chefs table.avif";
+import corporateEventsAvif from "@/assets/images/corporate events.avif";
+import degustationAvif from "@/assets/images/degustation.avif";
+import diningExperienceAvif from "@/assets/images/dining experience.avif";
+import skipTheTripAvif from "@/assets/images/skip the trip.avif";
 
 export type Media = { src: StaticImageData; alt: string };
 
@@ -112,7 +120,8 @@ export const media = {
   dishGoatCurry: m(dishGoatCurry, "Slow-braised Punjabi goat curry with ginger and whole spices"),
   chefAmardeep: m(chefAmardeep, "Executive Chef Amardeep Singh in the kitchen at the tandoor"),
   chefKitchen: m(chefKitchen, "Executive Chef Amardeep Singh lifting fresh naan from the tandoor"),
-  partnerIshpreet: m(partnerIshpreet, "Business partner Ishpreet Bedi holding the grand opening buffet menu"),
+  partnerIshpreet: m(partnerIshpreet, "Business partner Chef Ishpreet Bedi"),
+  partnerIshpreetJpg: m(partnerIshpreetJpg, "Business partner Ishpreet Bedi holding the grand opening buffet menu"),
   kitchenCraft: m(kitchenCraft, "Bread being prepared by hand beside the tandoor"),
   teamCelebration: m(teamCelebration, "The High Spirits team celebrating together with a cake"),
   teamWithGuests: m(teamWithGuests, "Chef Amardeep Singh with guests in the kitchen"),
@@ -149,6 +158,12 @@ export const media = {
   valentines2: m(valentines2, "A couple in front of the Valentine's Day floral backdrop"),
   valentines3: m(valentines3, "Friends celebrating Valentine's Day at High Spirits"),
   fathersDay: m(fathersDay, "Father and son sharing a meal at High Spirits"),
+  buffet: m(buffetAvif, "Lavish evening buffet experience with unlimited authentic Indian dishes"),
+  chefsTable: m(chefsTableAvif, "Intimate 8-seat Chef's Table experience led by the Executive Chef"),
+  corporateEvents: m(corporateEventsAvif, "Sophisticated corporate high-end events and private dining"),
+  degustation: m(degustationAvif, "Signature 7 or 10-course degustation tasting journey"),
+  diningExperience: m(diningExperienceAvif, "Curated lunch dining experience with fresh authentic flavours"),
+  skipTheTrip: m(skipTheTripAvif, "Skip the trip with doorstep delivery of High Spirits favourites"),
 } satisfies Record<string, Media>;
 
 export type MediaKey = keyof typeof media;

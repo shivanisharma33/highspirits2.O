@@ -2,20 +2,23 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { DESKTOP_MOTION, gsap } from "@/components/motion/gsap";
-import { ClipRevealX, FadeUp, ImageReveal } from "@/components/motion/Reveal";
-import { Aurora } from "@/components/ui/Aurora";
-import { ButtonLink } from "@/components/ui/ButtonLink";
-import { ArrowRight, ArrowUpRight } from "@/components/ui/Icons";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type KeyboardEvent,
+} from "react";
+import { DESKTOP_MOTION, MOTION_OK, ScrollTrigger, gsap } from "@/components/motion/gsap";
+import { ArrowRight, ArrowUpRight, Clock, Flame, Leaf } from "@/components/ui/Icons";
 import { signatureDishes, type SignatureDish } from "@/lib/content/dishes";
-import { cx } from "@/lib/format";
+import { media } from "@/lib/images";
+import { reviews } from "@/lib/content/reviews";
 import { lenisStore } from "@/lib/lenis";
 
-type CategoryFilter = "all" | "Non-Veg" | "North Indian";
-
-/** Curated running order for the gallery; any dish not listed follows. */
+/** Curated running order for the campaign; any dish not listed follows. */
 const RUNNING_ORDER = [
   "Dal Makhani",
   "Butter Chicken",
@@ -30,336 +33,656 @@ const DISHES: SignatureDish[] = [
   ...signatureDishes.filter((d) => !RUNNING_ORDER.includes(d.name)),
 ];
 
-/** Crop focus per photograph, so no bowl, plate or garnish is cut. */
+/** Crop focus per photograph inside the tall arch, so the plate stays whole. */
 const FOCUS: Record<string, string> = {
-  "Dal Makhani": "50% 45%",
-  "Butter Chicken": "52% 50%",
-  "Tandoori Mixed Grill": "50% 58%",
-  "Biryani Royale": "50% 50%",
-  "Palak Paneer": "50% 50%",
-  "Tasmanian Lamb": "50% 50%",
+  "Dal Makhani": "46% 52%",
+  "Butter Chicken": "50% 55%",
+  "Tandoori Mixed Grill": "46% 62%",
+  "Biryani Royale": "50% 58%",
+  "Palak Paneer": "50% 52%",
+  "Tasmanian Lamb": "46% 56%",
 };
 
-const FILTERS: { id: CategoryFilter; label: string }[] = [
-  { id: "all", label: "All Creations" },
-  { id: "Non-Veg", label: "Non-Veg" },
-  { id: "North Indian", label: "North Indian" },
-];
-
-/** Fixed frame per gallery slot: a swapped-in dish never changes the layout. */
-const SLOT_ASPECT = ["aspect-[5/4]", "aspect-[4/3]", "aspect-[3/2]", "aspect-[5/4]", "aspect-[4/3]"];
+const QUOTE = reviews[0];
+const TOTAL = DISHES.length;
 
 const pad = (n: number) => String(n).padStart(2, "0");
-const numberOf = (dish: SignatureDish) => pad(DISHES.indexOf(dish) + 1);
 const price = (dish: SignatureDish) => (dish.price ? `$${dish.price.toFixed(2)}` : null);
-const inFilter = (filter: CategoryFilter) =>
-  filter === "all" ? DISHES : DISHES.filter((d) => d.categoryTag === filter);
+const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/** A tiny line mark per note: fire, time, herb — or a spice seed. */
+function NoteIcon({ note }: { note: string }) {
+  const n = note.toLowerCase();
+  if (/(simmer|slow|hour|dum)/.test(n)) return <Clock size={13} />;
+  if (/(tandoor|tadka|chilli|kebab|tikka|charcoal)/.test(n)) return <Flame size={13} />;
+  if (/(spinach|mint|herb|fenugreek)/.test(n)) return <Leaf size={13} />;
+  return (
+    <svg width={13} height={13} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} aria-hidden>
+      <path d="M12 3.5c3.6 3 5.5 5.8 5.5 8.6a5.5 5.5 0 0 1-11 0c0-2.8 1.9-5.6 5.5-8.6Z" />
+      <path d="M12 9v7" />
+    </svg>
+  );
+}
+
+/** Star anise and a curry-leaf sprig, drawn as a single gold hairline study. */
+function BotanicalStudy({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 220 180" fill="none" stroke="currentColor" strokeWidth={0.8} aria-hidden className={className}>
+      <g transform="translate(70 92)">
+        {Array.from({ length: 8 }, (_, i) => (
+          <g key={i} transform={`rotate(${i * 45})`}>
+            <path d="M0 -6 C 7 -14, 9 -28, 0 -40 C -9 -28, -7 -14, 0 -6 Z" />
+            <ellipse cx="0" cy="-22" rx="2.2" ry="4" />
+          </g>
+        ))}
+        <circle r="5" />
+      </g>
+      <path d="M128 168 C 142 128, 160 86, 206 22" />
+      {[
+        [140, 138, -52],
+        [150, 116, 38],
+        [160, 96, -48],
+        [172, 76, 42],
+        [184, 58, -42],
+        [196, 40, 46],
+      ].map(([x, y, r], i) => (
+        <path key={i} transform={`translate(${x} ${y}) rotate(${r})`} d="M0 0 C 6 -6, 18 -6, 26 0 C 18 6, 6 6, 0 0 Z M3 0 H 22" />
+      ))}
+    </svg>
+  );
+}
+
+/** Eight-point star from two turned squares — a quiet Punjabi phulkari nod. */
+function PhulkariStar({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={0.9} aria-hidden className={className}>
+      <rect x="6" y="6" width="12" height="12" />
+      <rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)" />
+      <circle cx="12" cy="12" r="1.6" />
+    </svg>
+  );
+}
 
 /**
- * "Signature Creations" as a culinary gallery: one plate holds the stage while
- * the rest sit in a staggered editorial index. Choosing a plate trades it with
- * the featured one in place, so nothing else on the page moves.
+ * "Signature Creations" as an immersive culinary editorial: one plate held in
+ * an arch at the centre of the canvas, its story set beside it, and a
+ * culinary index along the foot that re-sets the whole composition in place.
  */
 export function SignatureDishes() {
   const root = useRef<HTMLElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-  const [filter, setFilter] = useState<CategoryFilter>("all");
-  const [order, setOrder] = useState<SignatureDish[]>(DISHES);
-  const [previous, setPrevious] = useState<SignatureDish | null>(null);
-  const [swapped, setSwapped] = useState(false);
+  const artRef = useRef<HTMLElement>(null);
+  const listRef = useRef<HTMLOListElement>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const markerRef = useRef<HTMLSpanElement>(null);
+  const layerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const entrance = useRef<gsap.core.Timeline | null>(null);
+  const swap = useRef<gsap.core.Timeline | null>(null);
+  const shown = useRef(0);
 
-  const featured = order[0];
-  const supporting = order.slice(1);
+  const [active, setActive] = useState(0);
+  // Only the opening plate loads with the page; the others arrive on intent
+  // (hover, focus) or once the section is actually reached.
+  const [seen, setSeen] = useState<ReadonlySet<number>>(() => new Set([0]));
+  const [announce, setAnnounce] = useState("");
 
-  const chooseFilter = (next: CategoryFilter) => {
-    if (next === filter) return;
-    setFilter(next);
-    setOrder(inFilter(next));
-    setPrevious(null);
-    setSwapped(false);
-  };
+  const warm = useCallback((i: number) => {
+    setSeen((prev) => (prev.has(i) ? prev : new Set(prev).add(i)));
+  }, []);
 
-  const feature = (slot: number) => {
-    const next = [...order];
-    [next[0], next[slot]] = [next[slot], next[0]];
-    setPrevious(order[0]);
-    setOrder(next);
-    setSwapped(true);
+  const select = useCallback(
+    (next: number, { reveal = false }: { reveal?: boolean } = {}) => {
+      const i = (next + TOTAL) % TOTAL;
+      warm(i);
+      setActive(i);
+      setAnnounce(`${pad(i + 1)} of ${pad(TOTAL)}: ${DISHES[i].name}`);
 
-    // Bring the stage into view so the change is seen, not just made.
-    const stage = stageRef.current;
-    if (!stage) return;
-    const top = stage.getBoundingClientRect().top;
-    if (top < 0 || top > window.innerHeight * 0.35) {
-      const lenis = lenisStore.get();
-      if (lenis) lenis.scrollTo(stage, { offset: -110, duration: 1.4 });
-      else window.scrollTo({ top: top + window.scrollY - 110, behavior: "smooth" });
+      // Keep the chosen entry in view within the index strip.
+      const scroller = scrollerRef.current;
+      const tab = tabRefs.current[i];
+      if (scroller && tab && scroller.scrollWidth > scroller.clientWidth) {
+        const left = tab.offsetLeft - (scroller.clientWidth - tab.offsetWidth) / 2;
+        scroller.scrollTo({ left, behavior: reducedMotion() ? "auto" : "smooth" });
+      }
+
+      // On small screens the photograph sits far above the index: bring it
+      // back into view so the change is seen, not just made.
+      const art = artRef.current;
+      if (reveal && art && window.innerWidth < 1200) {
+        const rect = art.getBoundingClientRect();
+        if (rect.bottom < window.innerHeight * 0.35) {
+          const lenis = lenisStore.get();
+          if (lenis) lenis.scrollTo(art, { offset: -96, duration: 1.2 });
+          else window.scrollTo({ top: rect.top + window.scrollY - 96, behavior: reducedMotion() ? "auto" : "smooth" });
+        }
+      }
+    },
+    [warm],
+  );
+
+  const onTabKey = (e: KeyboardEvent<HTMLButtonElement>, i: number) => {
+    let next: number;
+    switch (e.key) {
+      case "ArrowRight":
+        next = i + 1;
+        break;
+      case "ArrowLeft":
+        next = i - 1;
+        break;
+      case "Home":
+        next = 0;
+        break;
+      case "End":
+        next = TOTAL - 1;
+        break;
+      default:
+        return;
     }
+    e.preventDefault();
+    const target = (next + TOTAL) % TOTAL;
+    select(target);
+    tabRefs.current[target]?.focus({ preventScroll: true });
   };
 
-  // A whisper of parallax (~14px) on every photograph: desktop pointers only.
+  // Load the remaining plates once the section is near.
   useEffect(() => {
     const section = root.current;
     if (!section) return;
+    let timer = 0;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        timer = window.setTimeout(() => setSeen(new Set(DISHES.map((_, i) => i))), 1200);
+      },
+      { rootMargin: "300px 0px" },
+    );
+    io.observe(section);
+    return () => {
+      io.disconnect();
+      window.clearTimeout(timer);
+    };
+  }, []);
+
+  // The gold underline glides beneath the active index entry.
+  useLayoutEffect(() => {
+    const list = listRef.current;
+    const marker = markerRef.current;
+    if (!list || !marker) return;
+    const place = () => {
+      const item = list.children[active] as HTMLElement | undefined;
+      if (!item) return;
+      marker.style.transform = `translate3d(${item.offsetLeft}px,0,0) scaleX(${item.offsetWidth / 100})`;
+      marker.style.opacity = "1";
+    };
+    place();
+    const ro = new ResizeObserver(place);
+    ro.observe(list);
+    return () => ro.disconnect();
+  }, [active]);
+
+  // Entrance, parallax and drift.
+  useEffect(() => {
+    const section = root.current;
+    if (!section) return;
+    const q = gsap.utils.selector(section);
     const mm = gsap.matchMedia();
-    mm.add(DESKTOP_MOTION, () => {
-      gsap.utils.toArray<HTMLElement>("[data-sg-parallax]", section).forEach((el) => {
-        gsap.fromTo(
-          el,
-          { y: -14 },
-          {
-            y: 14,
-            ease: "none",
-            scrollTrigger: { trigger: el.parentElement, start: "top bottom", end: "bottom top", scrub: 1 },
-          },
-        );
+
+    mm.add(MOTION_OK, () => {
+      const panel = panelRefs.current[shown.current];
+      const layer = layerRefs.current[shown.current];
+      const tl = gsap.timeline({
+        paused: true,
+        defaults: { ease: "expo.out" },
+        onComplete: () => {
+          entrance.current = null;
+        },
       });
+      tl.fromTo(q("[data-sc-bg]"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 2.2, ease: "power2.out" }, 0)
+        .fromTo(q("[data-sc-line]"), { yPercent: 112 }, { yPercent: 0, duration: 1.3, stagger: 0.14 }, 0.15)
+        .fromTo(q("[data-sc-mark]"), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.4, ease: "power2.inOut" }, 0.9)
+        .fromTo(
+          q("[data-sc-fade]"),
+          { autoAlpha: 0, y: 22 },
+          { autoAlpha: 1, y: 0, duration: 1.1, stagger: 0.08 },
+          0.45,
+        )
+        .fromTo(
+          q("[data-sc-reveal]"),
+          { clipPath: "inset(100% 0% 0% 0%)" },
+          { clipPath: "inset(0% 0% 0% 0%)", duration: 1.6, ease: "expo.inOut" },
+          0.2,
+        )
+        .fromTo(layer?.querySelector("img") ?? [], { scale: 1.16 }, { scale: 1, duration: 2.4 }, 0.2)
+        .fromTo(q("[data-sc-outline]"), { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 1.6 }, 0.8);
+      if (panel) {
+        tl.fromTo(
+          panel.querySelectorAll("[data-sc-mask]"),
+          { yPercent: 110 },
+          { yPercent: 0, duration: 1.2, stagger: 0.1 },
+          0.75,
+        ).fromTo(
+          panel.querySelectorAll("[data-sc-in]"),
+          { autoAlpha: 0, y: 18 },
+          { autoAlpha: 1, y: 0, duration: 1, stagger: 0.07 },
+          0.95,
+        );
+      }
+      tl.fromTo(
+        q("[data-sc-index] > li"),
+        { autoAlpha: 0, x: 36 },
+        { autoAlpha: 1, x: 0, duration: 1.1, stagger: 0.07 },
+        1.05,
+      ).fromTo(q("[data-sc-late]"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.2 }, 1.3);
+
+      entrance.current = tl;
+      const st = ScrollTrigger.create({ trigger: section, start: "top 72%", once: true, onEnter: () => void tl.play() });
+      // Arriving already scrolled past the section (reload, anchor): just play.
+      if (st.progress > 0) tl.play();
+      return () => {
+        st.kill();
+        entrance.current = null;
+      };
     });
+
+    mm.add(DESKTOP_MOTION, () => {
+      const scrub = { trigger: section, start: "top bottom", end: "bottom top", scrub: 1.2 };
+      gsap.fromTo(q("[data-sc-parallax]"), { yPercent: -3.5 }, { yPercent: 3.5, ease: "none", scrollTrigger: scrub });
+      gsap.fromTo(q("[data-sc-drift]"), { yPercent: -7 }, { yPercent: 7, ease: "none", scrollTrigger: scrub });
+      gsap.fromTo(q("[data-sc-float]"), { y: 18 }, { y: -18, ease: "none", scrollTrigger: scrub });
+    });
+
     return () => mm.revert();
-  }, [filter]);
+  }, []);
+
+  // The cinematic swap: a clip-path wipe for the plate, masks for the type.
+  useLayoutEffect(() => {
+    const from = shown.current;
+    if (from === active) return;
+    shown.current = active;
+
+    entrance.current?.progress(1);
+    swap.current?.progress(1);
+    if (reducedMotion()) return;
+
+    const oldLayer = layerRefs.current[from];
+    const newLayer = layerRefs.current[active];
+    const oldPanel = panelRefs.current[from];
+    const newPanel = panelRefs.current[active];
+    if (!newLayer || !newPanel) return;
+    const newImg = newLayer.querySelector("img");
+
+    // The outgoing plate and story stay on screen beneath the incoming ones.
+    gsap.set([oldLayer, oldPanel], { visibility: "visible" });
+    gsap.set(oldLayer, { zIndex: 1 });
+    gsap.set(newLayer, { zIndex: 2 });
+
+    const tl = gsap.timeline({
+      paused: true,
+      defaults: { ease: "expo.out" },
+      onComplete: () => {
+        gsap.set([oldLayer, oldPanel], { clearProps: "visibility,zIndex" });
+        gsap.set(newLayer, { clearProps: "clipPath,zIndex" });
+        if (oldPanel) gsap.set(oldPanel.querySelectorAll("[data-sc-in],[data-sc-mask]"), { clearProps: "all" });
+        swap.current = null;
+      },
+    });
+    tl.fromTo(
+        newLayer,
+        { clipPath: "inset(100% 0% 0% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0%)", duration: 1.35, ease: "expo.inOut" },
+        0,
+      )
+      .fromTo(newImg ?? [], { scale: 1.08 }, { scale: 1, duration: 2, ease: "power3.out" }, 0);
+    if (oldPanel) {
+      tl.to(oldPanel.querySelectorAll("[data-sc-mask]"), { yPercent: -110, duration: 0.5, ease: "power3.in", stagger: 0.04 }, 0)
+        .to(oldPanel.querySelectorAll("[data-sc-in]"), { autoAlpha: 0, y: -12, duration: 0.4, ease: "power2.in", stagger: 0.03 }, 0);
+    }
+    tl.fromTo(newPanel.querySelectorAll("[data-sc-mask]"), { yPercent: 110 }, { yPercent: 0, duration: 1.1, stagger: 0.09 }, 0.42)
+      .fromTo(
+        newPanel.querySelectorAll("[data-sc-in]"),
+        { autoAlpha: 0, y: 18 },
+        { autoAlpha: 1, y: 0, duration: 0.95, stagger: 0.06 },
+        0.6,
+      );
+    swap.current = tl;
+
+    // Hold the frame until the incoming photograph can be painted.
+    if (!newImg || newImg.complete) {
+      tl.play();
+      return;
+    }
+    let started = false;
+    const start = () => {
+      if (started || swap.current !== tl) return;
+      started = true;
+      tl.play();
+    };
+    newImg.decode().then(start, start);
+    const cap = window.setTimeout(start, 900);
+    return () => window.clearTimeout(cap);
+  }, [active]);
+
+  const dish = DISHES[active];
 
   return (
     <section
       ref={root}
       id="signature"
       aria-labelledby="signature-title"
-      data-swapped={swapped || undefined}
-      className="sg grain relative overflow-hidden bg-hs-green-dark py-24 md:py-32 xl:py-40"
+      className="sc grain relative overflow-hidden"
+      style={{ "--sc-i": active, "--sc-n": TOTAL } as CSSProperties}
     >
-      <Aurora />
+      {/* ── Atmosphere: barely-there photography for depth ─────────────── */}
+      <div data-sc-bg aria-hidden className="sc-atmos">
+        <div data-sc-drift className="sc-atmos-room">
+          <Image src={media.interiorLuxe.src} alt="" fill sizes="40vw" quality={70} className="object-cover" />
+        </div>
+        <div data-sc-drift className="sc-atmos-spice">
+          <Image src={media.spices.src} alt="" fill sizes="30vw" quality={70} className="object-cover" />
+        </div>
+        <div className="sc-atmos-glow" />
+      </div>
 
       <div className="shell relative">
-        {/* ── Masthead ─────────────────────────────────────────────────── */}
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <SectionHeading
-            id="signature-title"
-            eyebrow="Signature Creations"
-            className="lg:col-span-7"
-            lines={["Plates we're", <em key="k" className="sg-title-em text-gold-gradient">celebrated for.</em>]}
-          />
-          <FadeUp delay={0.2} className="lg:col-span-4 lg:col-start-9 lg:pb-3">
-            <p className="text-lead font-light text-hs-cream/75">
-              Handcrafted with the finest ingredients and authentic spices — the dishes our guests return for, night
-              after night.
-            </p>
-          </FadeUp>
-        </div>
+        <div className="sc-stage">
+          {/* ── Editorial story ─────────────────────────────────────────── */}
+          <div className="sc-story">
+            <div>
+              <p data-sc-fade className="eyebrow">
+                Signature Creations
+              </p>
+              <h2 id="signature-title" className="sc-title font-display">
+                <span className="sc-title-line">
+                  <span data-sc-line className="block">
+                    Plates we&rsquo;re
+                  </span>
+                </span>
+                <span className="sc-title-line sc-title-line--em">
+                  <em data-sc-line className="sc-title-em">
+                    celebrated for.
+                    <svg className="sc-title-mark" viewBox="0 0 300 16" fill="none" aria-hidden preserveAspectRatio="none">
+                      <path
+                        data-sc-mark
+                        pathLength={1}
+                        d="M3 11 C 60 4, 140 3, 206 6 S 276 10, 297 5"
+                        stroke="currentColor"
+                        strokeWidth={1.1}
+                        strokeLinecap="round"
+                        strokeDasharray="1"
+                        vectorEffect="non-scaling-stroke"
+                      />
+                    </svg>
+                  </em>
+                </span>
+              </h2>
+              <p data-sc-fade className="sc-lede">
+                Handcrafted with the finest ingredients and authentic Punjabi spices — the dishes our guests return for,
+                night after night.
+              </p>
 
-        {/* ── Editorial filter ─────────────────────────────────────────── */}
-        <FadeUp delay={0.3} className="mt-14 flex flex-wrap items-end justify-between gap-x-10 gap-y-5 border-b border-hs-cream/10 md:mt-20">
-          <div role="group" aria-label="Filter signature creations" className="sg-filter">
-            {FILTERS.map((f) => (
-              <button
-                key={f.id}
-                type="button"
-                aria-pressed={filter === f.id}
-                onClick={() => chooseFilter(f.id)}
-                className="sg-filter-btn"
-              >
-                {f.label}
-                <sup className="sg-filter-count tabular-nums">{pad(inFilter(f.id).length)}</sup>
-              </button>
-            ))}
-          </div>
-          <p className="hidden pb-4 text-[0.62rem] font-medium uppercase tracking-[0.3em] text-hs-gold/75 md:block">
-            Clay Oven &amp; Charcoal Fired
-          </p>
-        </FadeUp>
-
-        {/* ── The stage: one plate, given the room it deserves ─────────── */}
-        <div key={`stage-${filter}`} ref={stageRef} className="sg-stage">
-          <figure className="sg-stage-figure">
-            <ImageReveal className="sg-frame aspect-[4/3]">
-              <div data-sg-parallax className="sg-parallax">
-                {order.map((dish) => (
-                  <div
-                    key={dish.name}
-                    className="sg-layer"
-                    data-state={dish === featured ? "active" : dish === previous ? "prev" : undefined}
-                  >
-                    <Image
-                      src={dish.image.src}
-                      alt={dish === featured ? dish.image.alt : ""}
-                      fill
-                      sizes="(min-width: 1024px) 55vw, 100vw"
-                      quality={80}
-                      className="object-cover"
-                      style={{ objectPosition: FOCUS[dish.name] } as CSSProperties}
+              <Link href="/about" data-sc-fade className="sc-taste group">
+                <span aria-hidden className="sc-taste-ring">
+                  <svg viewBox="0 0 48 48" fill="none" className="sc-taste-circle">
+                    <circle cx="24" cy="24" r="23" stroke="currentColor" strokeWidth="0.75" className="opacity-35" />
+                    <circle
+                      cx="24"
+                      cy="24"
+                      r="23"
+                      stroke="currentColor"
+                      strokeWidth="0.9"
+                      pathLength={1}
+                      className="sc-taste-draw"
                     />
-                  </div>
-                ))}
+                  </svg>
+                  <ArrowRight size={14} />
+                </span>
+                <span className="sc-taste-label">
+                  A taste of
+                  <br />
+                  our story
+                </span>
+              </Link>
+            </div>
+
+            <div data-sc-fade className="sc-brand">
+              <BotanicalStudy className="sc-botanical" />
+              <p className="sc-brand-line">
+                <PhulkariStar className="size-3.5 shrink-0" />
+                Clay Oven &amp; Charcoal Fired
+              </p>
+            </div>
+          </div>
+
+          {/* ── The plate, held in an arch ──────────────────────────────── */}
+          <figure ref={artRef} className="sc-art">
+            <span data-sc-outline aria-hidden className="sc-art-outline">
+              <PhulkariStar className="sc-art-keystone" />
+            </span>
+            <div className="sc-frame">
+              <div data-sc-reveal className="sc-frame-reveal">
+                <div data-sc-parallax className="sc-frame-parallax">
+                  {DISHES.map((d, i) =>
+                    seen.has(i) ? (
+                      <div
+                        key={d.name}
+                        ref={(el) => {
+                          layerRefs.current[i] = el;
+                        }}
+                        className="sc-layer"
+                        data-active={i === active || undefined}
+                      >
+                        <Image
+                          src={d.image.src}
+                          alt={i === active ? d.image.alt : ""}
+                          fill
+                          sizes="(min-width: 1200px) 31vw, (min-width: 768px) 46vw, 92vw"
+                          quality={80}
+                          loading={i === 0 ? "lazy" : "eager"}
+                          className="object-cover"
+                          style={{ objectPosition: FOCUS[d.name] }}
+                        />
+                      </div>
+                    ) : null,
+                  )}
+                </div>
               </div>
-            </ImageReveal>
-            <figcaption className="mt-4 flex items-baseline gap-3 text-[0.62rem] uppercase tracking-[0.24em] text-hs-cream/40">
-              <span className="shrink-0 text-hs-gold/75 tabular-nums">Plate {numberOf(featured)}</span>
-              <span aria-hidden className="h-px w-6 self-center bg-hs-cream/20" />
-              <span className="normal-case tracking-[0.04em]">{featured.image.alt}</span>
+              <span aria-hidden className="sc-frame-shade" />
+            </div>
+            <span data-sc-outline aria-hidden className="sc-art-base" />
+            <figcaption className="sr-only">{dish.image.alt}</figcaption>
+          </figure>
+
+          {/* ── A guest's line, set like a pull quote ───────────────────── */}
+          <figure data-sc-fade className="sc-quote">
+            <blockquote>
+              <p className="font-display">&ldquo;{QUOTE.quote}&rdquo;</p>
+            </blockquote>
+            <figcaption>
+              <span aria-hidden className="sc-quote-rule" />
+              {QUOTE.name} · {QUOTE.title}
             </figcaption>
           </figure>
 
-          <div className="sg-stage-info">
-            <span aria-hidden className="sg-ghost font-display" key={`ghost-${featured.name}`}>
-              {numberOf(featured)}
+          {/* ── The dish story ──────────────────────────────────────────── */}
+          <div className="sc-info">
+            <span aria-hidden className="sc-ghost font-display">
+              <span className="sc-roll">
+                {DISHES.map((_, i) => (
+                  <span key={i}>{pad(i + 1)}</span>
+                ))}
+              </span>
             </span>
 
-            <FadeUp delay={0.25} className="relative">
-              <div key={featured.name} className="sg-swap" aria-live="polite">
-                <p className="sg-rise flex items-baseline gap-3" style={{ "--i": 0 } as CSSProperties}>
-                  <span className="font-display text-[clamp(3rem,5vw,5.25rem)] leading-[0.85] text-hs-gold tabular-nums">
-                    {numberOf(featured)}
-                  </span>
-                  <span className="text-[0.62rem] font-medium uppercase tracking-[0.3em] text-hs-cream/40 tabular-nums">
-                    / {pad(DISHES.length)}
-                  </span>
-                </p>
-                <p
-                  className="sg-rise mt-7 text-[0.64rem] font-semibold uppercase tracking-[0.3em] text-hs-gold"
-                  style={{ "--i": 1 } as CSSProperties}
-                >
-                  {featured.region}
-                </p>
-                <h3
-                  className="sg-rise font-display mt-3 text-[clamp(2.3rem,4vw,4.25rem)] font-normal leading-[1.02] tracking-[-0.02em] text-hs-cream"
-                  style={{ "--i": 2 } as CSSProperties}
-                >
-                  {featured.name}
-                </h3>
-                <ClipRevealX delay={0.5} className="mt-7">
-                  <span aria-hidden className="block h-px w-14 bg-hs-gold/70" />
-                </ClipRevealX>
-                {featured.lines ? (
-                  <p
-                    className="sg-rise font-display mt-6 text-[1.35rem] italic leading-[1.45] text-hs-cream/85"
-                    style={{ "--i": 3 } as CSSProperties}
+            <div className="sc-panels">
+              {DISHES.map((d, i) => {
+                const on = i === active;
+                return (
+                  <div
+                    key={d.name}
+                    ref={(el) => {
+                      panelRefs.current[i] = el;
+                    }}
+                    id={`sc-panel-${i}`}
+                    role="tabpanel"
+                    aria-labelledby={`sc-tab-${i}`}
+                    aria-hidden={!on}
+                    inert={!on}
+                    data-active={on || undefined}
+                    className="sc-panel"
                   >
-                    {featured.lines.map((line) => (
-                      <span key={line} className="block">
-                        {line}
+                    <p className="sc-kicker">
+                      <span className="sc-mask">
+                        <span data-sc-mask className="sc-kicker-no font-display">
+                          {pad(i + 1)}
+                        </span>
                       </span>
-                    ))}
-                  </p>
-                ) : null}
-                <p
-                  className="sg-rise mt-6 max-w-[38ch] text-[0.95rem] font-light leading-[1.8] text-hs-cream/72"
-                  style={{ "--i": 4 } as CSSProperties}
-                >
-                  {featured.description}
-                </p>
-                <p
-                  className="sg-rise mt-6 text-[0.68rem] font-medium uppercase leading-relaxed tracking-[0.2em] text-hs-cream/50"
-                  style={{ "--i": 5 } as CSSProperties}
-                >
-                  {featured.notes.slice(0, 3).join("  ·  ")}
-                </p>
-                <div
-                  className="sg-rise mt-9 flex flex-wrap items-center gap-x-8 gap-y-5 border-t border-hs-cream/10 pt-7"
-                  style={{ "--i": 6 } as CSSProperties}
-                >
-                  {price(featured) && (
-                    <p className="font-display text-[2rem] leading-none text-hs-cream tabular-nums">
-                      <span className="sr-only">Price </span>
-                      {price(featured)}
+                      <span data-sc-in aria-hidden className="sc-kicker-rule" />
+                      <span data-sc-in>{d.region}</span>
                     </p>
-                  )}
-                  <Link href="/menu" className="sg-view group">
-                    <span>View dish</span>
-                    <span aria-hidden className="sg-view-circle">
-                      <ArrowRight size={14} />
-                    </span>
-                    <span className="sr-only"> — {featured.name} on the menu</span>
-                  </Link>
-                </div>
-              </div>
-            </FadeUp>
+                    <h3 className="sc-dish font-display">
+                      <span className="sc-mask">
+                        <span data-sc-mask className="block">
+                          {d.name}
+                        </span>
+                      </span>
+                    </h3>
+                    {d.lines ? (
+                      <p data-sc-in className="sc-lines font-display">
+                        {d.lines.map((line) => (
+                          <span key={line} className="block">
+                            {line}
+                          </span>
+                        ))}
+                      </p>
+                    ) : null}
+                    <p data-sc-in className="sc-desc">
+                      {d.description}
+                    </p>
+                    <ul data-sc-in className="sc-notes" aria-label="Key ingredients">
+                      {d.notes.map((note) => (
+                        <li key={note}>
+                          <NoteIcon note={note} />
+                          {note}
+                        </li>
+                      ))}
+                    </ul>
+                    <div data-sc-in className="sc-order">
+                      {price(d) && (
+                        <p className="sc-price font-display">
+                          <span className="sr-only">Price </span>
+                          {price(d)}
+                        </p>
+                      )}
+                      <Link href="/menu" className="sc-view">
+                        View dish
+                        <ArrowRight size={13} />
+                        <span className="sr-only"> — {d.name} on the menu</span>
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* ── Edge navigation ─────────────────────────────────────────── */}
+          <div data-sc-late className="sc-rail">
+            <button type="button" className="sc-rail-btn" onClick={() => select(active - 1)} aria-label="Previous dish">
+              <svg viewBox="0 0 12 16" fill="none" stroke="currentColor" strokeWidth={1} aria-hidden>
+                <path d="M6 15V1M1.5 5.5 6 1l4.5 4.5" />
+              </svg>
+            </button>
+            <p className="sc-rail-count font-display" aria-hidden>
+              <span className="sc-rail-window">
+                <span className="sc-roll">
+                  {DISHES.map((_, i) => (
+                    <span key={i}>{pad(i + 1)}</span>
+                  ))}
+                </span>
+              </span>
+              <span className="sc-rail-slash">/</span>
+              <span className="sc-rail-total">{pad(TOTAL)}</span>
+            </p>
+            <button type="button" className="sc-rail-btn" onClick={() => select(active + 1)} aria-label="Next dish">
+              <svg viewBox="0 0 12 16" fill="none" stroke="currentColor" strokeWidth={1} aria-hidden>
+                <path d="M6 1v14M1.5 10.5 6 15l4.5-4.5" />
+              </svg>
+            </button>
+            <p className="sr-only" aria-live="polite">
+              {announce}
+            </p>
           </div>
         </div>
 
-        {/* ── The collection: a staggered editorial index ──────────────── */}
-        {supporting.length > 0 && (
-          <div key={`gallery-${filter}`} className="sg-collection">
-            <div className="flex items-baseline justify-between gap-6 border-b border-hs-cream/10 pb-4">
-              <p className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-hs-gold">The Collection</p>
-              <p className="hidden text-[0.62rem] font-medium uppercase tracking-[0.3em] text-hs-cream/40 sm:block">
-                Choose a plate to feature
-              </p>
-            </div>
-
-            <ol className="sg-gallery">
-              {supporting.map((dish, i) => (
-                <li key={`${i}-${dish.name}`} className="sg-item group">
-                  <ImageReveal className={cx("sg-frame", SLOT_ASPECT[i % SLOT_ASPECT.length])} delay={0.08 * (i % 2)}>
-                    <div data-sg-parallax className="sg-parallax">
+        {/* ── Culinary index ────────────────────────────────────────────── */}
+        <div ref={scrollerRef} className="sc-index">
+          <ol ref={listRef} data-sc-index role="tablist" aria-label="Signature creations" className="sc-index-list">
+            {DISHES.map((d, i) => {
+              const on = i === active;
+              return (
+                <li key={d.name} role="presentation" className="sc-index-item">
+                  <button
+                    ref={(el) => {
+                      tabRefs.current[i] = el;
+                    }}
+                    id={`sc-tab-${i}`}
+                    type="button"
+                    role="tab"
+                    aria-selected={on}
+                    aria-controls={`sc-panel-${i}`}
+                    tabIndex={on ? 0 : -1}
+                    onClick={() => select(i, { reveal: true })}
+                    onKeyDown={(e) => onTabKey(e, i)}
+                    onPointerEnter={() => warm(i)}
+                    onFocus={() => warm(i)}
+                    className="sc-tab"
+                  >
+                    <span className="sc-tab-thumb">
                       <Image
-                        src={dish.image.src}
-                        alt={dish.image.alt}
+                        src={d.image.src}
+                        alt=""
                         fill
-                        sizes="(min-width: 1024px) 38vw, (min-width: 768px) 46vw, 100vw"
-                        quality={80}
-                        className="sg-item-img object-cover"
-                        style={{ objectPosition: FOCUS[dish.name] } as CSSProperties}
+                        sizes="48px"
+                        quality={70}
+                        className="object-cover"
+                        style={{ objectPosition: FOCUS[d.name] }}
                       />
-                    </div>
-                  </ImageReveal>
-
-                  <FadeUp delay={0.15} className="mt-6">
-                    <p className="flex items-center gap-3 text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-hs-gold">
-                      <span className="sg-item-no font-display text-[1.35rem] font-normal tracking-normal tabular-nums">
-                        {numberOf(dish)}
-                      </span>
-                      <span aria-hidden className="sg-item-rule" />
-                      <span className="text-hs-gold/80">{dish.region}</span>
-                    </p>
-                    <div className="mt-3 flex items-start justify-between gap-6">
-                      <h3 className="font-display text-[clamp(1.6rem,2.2vw,2.15rem)] font-normal leading-[1.1] text-hs-cream">
-                        <button
-                          type="button"
-                          onClick={() => feature(i + 1)}
-                          className="sg-item-title text-left after:absolute after:inset-0 after:content-['']"
-                        >
-                          {dish.name}
-                          <span className="sr-only"> — show as featured plate</span>
-                        </button>
-                      </h3>
-                      <span aria-hidden className="sg-item-arrow">
-                        <ArrowUpRight size={14} />
-                      </span>
-                    </div>
-                    <p className="mt-3 max-w-[44ch] text-[0.9rem] font-light leading-[1.75] text-hs-cream/65">
-                      {dish.description}
-                    </p>
-                    {price(dish) && (
-                      <p className="mt-4 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-hs-cream/45 tabular-nums">
-                        {price(dish)}
-                      </p>
-                    )}
-                  </FadeUp>
+                    </span>
+                    <span className="sc-tab-text">
+                      <span className="sc-tab-no font-display">{pad(i + 1)}</span>
+                      <span className="sc-tab-name font-display">{d.name}</span>
+                      <span className="sc-tab-cat">{d.region}</span>
+                    </span>
+                  </button>
                 </li>
-              ))}
-            </ol>
-          </div>
-        )}
+              );
+            })}
+          </ol>
+          <span ref={markerRef} aria-hidden className="sc-index-marker" />
+        </div>
 
-        {/* ── Coda: the full menu ──────────────────────────────────────── */}
-        <FadeUp className="mt-24 grid gap-8 border-t border-hs-cream/10 pt-10 md:mt-32 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7">
-            <p className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-hs-gold">The Full Menu</p>
-            <h3 className="font-display mt-4 text-[clamp(1.8rem,2.8vw,2.75rem)] font-normal leading-[1.1] text-hs-cream">
-              Explore Our Full <em className="text-hs-gold-soft">Dining Menu</em>
-            </h3>
-            <p className="mt-4 max-w-[52ch] text-[0.95rem] font-light leading-relaxed text-hs-cream/65">
-              From charcoal-fired clay tandoor specialties and slow-simmered Punjabi curries to freshly baked naans and
-              artisan drinks — explore over 80 authentic selections.
-            </p>
+        {/* ── Coda ──────────────────────────────────────────────────────── */}
+        <div data-sc-late className="sc-coda">
+          <p className="sc-coda-lede">
+            <span className="sc-coda-kicker">More than a meal</span>
+            <span className="sc-coda-text">
+              Over 80 authentic selections — from the charcoal-fired clay tandoor to slow-simmered Punjabi curries.
+            </span>
+          </p>
+          <div className="sc-coda-links">
+            <Link href="/menu" className="sc-coda-link">
+              Explore full menu
+              <ArrowRight size={14} />
+            </Link>
+            <a href="https://order.highspirits.au/" target="_blank" rel="noopener noreferrer" className="sc-coda-alt">
+              Order online
+              <ArrowUpRight size={12} />
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
           </div>
-          <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
-            <ButtonLink href="/menu" variant="gold">
-              View Full Menu
-            </ButtonLink>
-            <ButtonLink href="https://order.highspirits.au/" external variant="ghost">
-              Order Online
-            </ButtonLink>
-          </div>
-        </FadeUp>
+        </div>
       </div>
     </section>
   );

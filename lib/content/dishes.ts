@@ -73,6 +73,7 @@ export const signatureDishes: SignatureDish[] = [
     region: "Heritage Signature",
     categoryTag: "North Indian",
     description: "Hand-selected whole black urad lentils, slow-cooked for 16 hours over gentle embers with churned butter and dairy cream.",
+    lines: ["Slow-cooked.", "Deeply layered.", "Unforgettable."],
     notes: ["16-Hour Simmer", "Black Urad Dal", "White Butter", "Velvet Cream"],
     price: 19.99,
     image: media.ingredientLentils, // 1024x1024 Ultra HD

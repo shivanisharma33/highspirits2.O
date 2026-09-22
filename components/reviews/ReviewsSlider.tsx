@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { HorizontalScroll } from "@/components/motion/HorizontalScroll";
-import { media } from "@/lib/images";
+import { media, type Media } from "@/lib/images";
+import { reviews } from "@/lib/content/reviews";
 
 function QuoteIcon({ className = "h-6 w-6" }: { className?: string }) {
   return (
@@ -24,6 +25,99 @@ function StarRow() {
   );
 }
 
+function ReviewCard({
+  quote,
+  name,
+  title,
+}: {
+  quote: string;
+  name: string;
+  title?: string;
+}) {
+  return (
+    <div
+      data-panel
+      className="flex h-[380px] w-[290px] shrink-0 flex-col justify-between rounded-[1.75rem] border border-black/5 bg-[#072419] p-6 text-white shadow-xl transition-transform duration-500 hover:-translate-y-1 sm:w-[310px] md:p-7"
+    >
+      <div>
+        <QuoteIcon className="h-6 w-6 text-emerald-400/80" />
+        <div className="mt-4">
+          <StarRow />
+        </div>
+        <p className="mt-4 text-xs leading-relaxed text-hs-cream/90 sm:text-sm">
+          {quote}
+        </p>
+      </div>
+      <div className="mt-4 border-t border-white/10 pt-4">
+        <p className="text-xs font-semibold tracking-wide text-white sm:text-sm">
+          {name}
+        </p>
+        <p className="mt-0.5 text-[0.7rem] text-hs-cream/60">
+          {title || "Verified Diner"}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function ImageCard({ image }: { image: Media }) {
+  return (
+    <div
+      data-panel
+      className="group relative h-[380px] w-[290px] shrink-0 overflow-hidden rounded-[1.75rem] border border-black/5 shadow-xl transition-transform duration-500 hover:-translate-y-1 sm:w-[310px]"
+    >
+      <Image
+        src={image.src}
+        alt={image.alt}
+        fill
+        sizes="310px"
+        quality={80}
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+      />
+    </div>
+  );
+}
+
+function RatingCard() {
+  return (
+    <div
+      data-panel
+      className="flex h-[380px] w-[290px] shrink-0 flex-col justify-between rounded-[1.75rem] border border-white/5 bg-[#8B3E2F] p-6 text-[#FDF8F3] shadow-xl transition-transform duration-500 hover:-translate-y-1 sm:w-[310px] md:p-7"
+    >
+      <div>
+        <div className="flex items-center justify-between">
+          <span className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/80">
+            Google Rating
+          </span>
+          <svg className="h-4 w-4 text-white/80" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.24 10.285V14.4h6.887c-.648 2.428-2.519 4.114-5.137 4.114-3.478 0-6.3-2.822-6.3-6.3s2.822-6.3 6.3-6.3c1.637 0 3.125.626 4.256 1.646L21.3 4.675C19.034 2.554 15.937 1.2 12.24 1.2 6.2 1.2 1.2 6.2 1.2 12.24s5 11.04 11.04 11.04c6.31 0 11.04-4.44 11.04-11.04 0-.744-.06-1.464-.18-2.155H12.24z" />
+          </svg>
+        </div>
+        <div className="mt-8">
+          <span className="font-display text-5xl font-bold tracking-tight text-[#FDF8F3] sm:text-6xl">
+            4.5
+          </span>
+          <div className="mt-4">
+            <StarRow />
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/15 pt-4">
+        <p className="text-xs font-medium tracking-wide text-white/90">
+          Based on 567 reviews
+        </p>
+        <p className="mt-1 text-[0.68rem] text-white/70">
+          Bunbury&apos;s Top Indian Restaurant
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export function ReviewsSlider() {
   return (
     <div className="surface-light relative overflow-hidden bg-hs-cream py-20 lg:py-0">
@@ -36,185 +130,74 @@ export function ReviewsSlider() {
         {/* Intro / Header Panel */}
         <div
           data-panel
-          className="flex w-[82vw] shrink-0 flex-col justify-center pr-6 sm:w-[50vw] lg:h-[76vh] lg:w-[26vw] lg:pr-10"
+          className="flex h-[380px] w-[82vw] shrink-0 flex-col justify-center pr-6 sm:w-[48vw] lg:w-[24vw] lg:pr-8"
         >
           <p className="eyebrow mb-3">Guest voices</p>
           <h2 id="reviews-title" className="font-display text-h2 text-hs-green">
             What Our Guests <em className="italic text-hs-gold-deep">Say</em>
           </h2>
-          <p className="mt-6 max-w-xs text-sm leading-relaxed text-hs-text/75">
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-hs-text/75">
             Every dish carries a story of heritage, passion, and uncompromising quality — as told by our valued diners.
           </p>
-          <div className="mt-8 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-hs-gold-deep">
+          <div className="mt-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-hs-gold-deep">
             <span className="h-px w-8 bg-hs-gold-deep" />
             <span>Scroll to explore</span>
           </div>
         </div>
 
-        {/* Item 1: Full-Height Food Image Card */}
-        <div
-          data-panel
-          className="group relative h-[520px] w-[300px] shrink-0 overflow-hidden rounded-[2rem] border border-black/5 shadow-xl md:w-[340px] lg:h-[70vh]"
-        >
-          <Image
-            src={media.heroDish2.src}
-            alt={media.heroDish2.alt}
-            fill
-            sizes="340px"
-            quality={80}
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
-          />
-        </div>
+        {/* 1. Food Image Card */}
+        <ImageCard image={media.heroDish2} />
 
-        {/* Item 2: Split Column (Top Review Card + Bottom Terracotta Rating Card) */}
-        <div
-          data-panel
-          className="flex h-[520px] w-[290px] shrink-0 flex-col gap-4 md:w-[320px] lg:h-[70vh]"
-        >
-          {/* Top Dark Green Review Card */}
-          <div className="flex flex-1 flex-col justify-between rounded-[1.75rem] border border-white/5 bg-[#072419] p-6 text-white shadow-xl md:p-7">
-            <div>
-              <QuoteIcon className="h-6 w-6 text-emerald-500/80" />
-              <div className="mt-4">
-                <StarRow />
-              </div>
-              <p className="mt-4 text-xs leading-relaxed text-hs-cream/90 sm:text-sm">
-                Every dish felt like a piece of art. The flavors, the presentation, the service — perfection
-              </p>
-            </div>
-            <p className="mt-4 text-[0.72rem] font-medium tracking-wide text-hs-cream/70">
-              Farzana Rahman
-            </p>
-          </div>
+        {/* 2. Review Card */}
+        <ReviewCard
+          quote={reviews[0].quote}
+          name={reviews[0].name}
+          title={reviews[0].title}
+        />
 
-          {/* Bottom Terracotta Rating Card */}
-          <div className="flex h-[180px] shrink-0 flex-col justify-between rounded-[1.75rem] border border-white/5 bg-[#8B3E2F] p-6 text-[#FDF8F3] shadow-xl">
-            <span className="font-display text-4xl font-bold tracking-tight text-[#FDF8F3] sm:text-5xl">
-              4.5
-            </span>
-            <div>
-              <StarRow />
-              <p className="mt-2 text-[0.68rem] font-medium tracking-wide text-white/80">
-                Based on 567 review
-              </p>
-            </div>
-          </div>
-        </div>
+        {/* 3. Rating Card */}
+        <RatingCard />
 
-        {/* Item 3: Tall Full-Height Dark Green Review Card */}
-        <div
-          data-panel
-          className="flex h-[520px] w-[310px] shrink-0 flex-col justify-between rounded-[2rem] border border-white/5 bg-[#072419] p-8 text-white shadow-xl md:w-[340px] lg:h-[70vh]"
-        >
-          <div>
-            <QuoteIcon className="h-7 w-7 text-emerald-500/80" />
-            <div className="mt-5">
-              <StarRow />
-            </div>
-            <p className="mt-6 text-sm leading-relaxed text-hs-cream/90 sm:text-base">
-              Dining at High Spirits is more than just enjoying exquisite food — it&apos;s a journey of taste, texture, and emotion. Every plate feels like a work of art, and every moment is curated with genuine care &amp; passion
-            </p>
-          </div>
-          <p className="mt-6 text-xs font-medium tracking-wide text-hs-cream/70">
-            Nadia &amp; Arif Hasan
-          </p>
-        </div>
+        {/* 4. Review Card */}
+        <ReviewCard
+          quote={reviews[1].quote}
+          name={reviews[1].name}
+          title={reviews[1].title}
+        />
 
-        {/* Item 4: Full-Height Food Image Card (Plated Dish) */}
-        <div
-          data-panel
-          className="group relative h-[520px] w-[300px] shrink-0 overflow-hidden rounded-[2rem] border border-black/5 shadow-xl md:w-[340px] lg:h-[70vh]"
-        >
-          <Image
-            src={media.foodSizzler.src}
-            alt={media.foodSizzler.alt}
-            fill
-            sizes="340px"
-            quality={80}
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
-          />
-        </div>
+        {/* 5. Food Image Card */}
+        <ImageCard image={media.foodSizzler} />
 
-        {/* Item 5: Split Column (Top Review Card + Bottom Terracotta Rating Card) */}
-        <div
-          data-panel
-          className="flex h-[520px] w-[290px] shrink-0 flex-col gap-4 md:w-[320px] lg:h-[70vh]"
-        >
-          {/* Top Dark Green Review Card */}
-          <div className="flex flex-1 flex-col justify-between rounded-[1.75rem] border border-white/5 bg-[#072419] p-6 text-white shadow-xl md:p-7">
-            <div>
-              <QuoteIcon className="h-6 w-6 text-emerald-500/80" />
-              <div className="mt-4">
-                <StarRow />
-              </div>
-              <p className="mt-4 text-xs leading-relaxed text-hs-cream/90 sm:text-sm">
-                Every dish felt like a piece of art. The flavors, the presentation, the service — perfection
-              </p>
-            </div>
-            <p className="mt-4 text-[0.72rem] font-medium tracking-wide text-hs-cream/70">
-              Farzana Rahman
-            </p>
-          </div>
+        {/* 6. Review Card */}
+        <ReviewCard
+          quote={reviews[2].quote}
+          name={reviews[2].name}
+          title={reviews[2].title}
+        />
 
-          {/* Bottom Terracotta Rating Card */}
-          <div className="flex h-[180px] shrink-0 flex-col justify-between rounded-[1.75rem] border border-white/5 bg-[#8B3E2F] p-6 text-[#FDF8F3] shadow-xl">
-            <span className="font-display text-4xl font-bold tracking-tight text-[#FDF8F3] sm:text-5xl">
-              4.5
-            </span>
-            <div>
-              <StarRow />
-              <p className="mt-2 text-[0.68rem] font-medium tracking-wide text-white/80">
-                Based on 567 review
-              </p>
-            </div>
-          </div>
-        </div>
+        {/* 7. Review Card */}
+        <ReviewCard
+          quote={reviews[3].quote}
+          name={reviews[3].name}
+          title={reviews[3].title}
+        />
 
-        {/* Item 6: Tall Full-Height Dark Green Review Card (Frans Buissink) */}
-        <div
-          data-panel
-          className="flex h-[520px] w-[310px] shrink-0 flex-col justify-between rounded-[2rem] border border-white/5 bg-[#072419] p-8 text-white shadow-xl md:w-[340px] lg:h-[70vh]"
-        >
-          <div>
-            <QuoteIcon className="h-7 w-7 text-emerald-500/80" />
-            <div className="mt-5">
-              <StarRow />
-            </div>
-            <p className="mt-6 text-sm leading-relaxed text-hs-cream/90 sm:text-base">
-              Some of the best Indian food to be had in Bunbury. Definitely worth checking out. Buffet of delicious selections at the moment, with very friendly and accommodating staff.
-            </p>
-          </div>
-          <p className="mt-6 text-xs font-medium tracking-wide text-hs-cream/70">
-            Frans Buissink
-          </p>
-        </div>
+        {/* 8. Food Image Card */}
+        <ImageCard image={media.heroDish1} />
 
-        {/* Item 7: Full-Height Food Image Card (Plated Curry) */}
-        <div
-          data-panel
-          className="group relative h-[520px] w-[300px] shrink-0 overflow-hidden rounded-[2rem] border border-black/5 shadow-xl md:w-[340px] lg:h-[70vh]"
-        >
-          <Image
-            src={media.heroDish1.src}
-            alt={media.heroDish1.alt}
-            fill
-            sizes="340px"
-            quality={80}
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
-          />
-        </div>
+        {/* 9. Review Card */}
+        <ReviewCard
+          quote={reviews[4].quote}
+          name={reviews[4].name}
+          title={reviews[4].title}
+        />
+
+        {/* 10. Review Card */}
+        <ReviewCard
+          quote={reviews[5].quote}
+          name={reviews[5].name}
+          title={reviews[5].title}
+        />
 
         <div aria-hidden className="w-[4vw] shrink-0" />
       </HorizontalScroll>

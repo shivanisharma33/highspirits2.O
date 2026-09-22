@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { AboutHero } from "@/components/about/AboutHero";
+import { TeamShowcase } from "@/components/about/TeamShowcase";
 import { ChefStory } from "@/components/chef/ChefStory";
 import { ClipReveal, FadeUp, ImageReveal, TextReveal } from "@/components/motion/Reveal";
 import { ReservationCTA } from "@/components/sections/ReservationCTA";
@@ -143,62 +144,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 4. THE TEAM: Passionate Professionals ─── */}
-      <section
-        aria-labelledby="team-title"
-        className="surface-light bg-hs-sand py-24 text-hs-text md:py-36"
-      >
-        <div className="shell">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-5">
-              <div className="flex items-center gap-2">
-                <span className="h-px w-6 bg-hs-gold-deep" />
-                <FadeUp as="p" className="eyebrow text-hs-gold-deep">
-                  {team.eyebrow}
-                </FadeUp>
-              </div>
-              <TextReveal
-                as="h2"
-                id="team-title"
-                className="font-display mt-6 text-h2 text-hs-green"
-                lines={["Passionate", <em key="p" className="italic text-hs-gold-deep">Professionals</em>]}
-              />
-            </div>
-
-            <div className="lg:col-span-7">
-              <FadeUp as="p" className="text-lead text-hs-text/90">
-                {team.lead}
-              </FadeUp>
-              <FadeUp as="p" delay={0.15} className="mt-6 font-display text-xl italic leading-relaxed text-hs-green">
-                “{team.body}”
-              </FadeUp>
-            </div>
-          </div>
-
-          {/* Curated Team Photo Gallery */}
-          <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
-            {team.images.map((img, i) => (
-              <ImageReveal
-                key={img.alt}
-                delay={i * 0.1}
-                className={`relative overflow-hidden rounded-2xl md:rounded-3xl shadow-lg ${
-                  i === 0 ? "row-span-2 aspect-[3/4] md:row-span-1" : "aspect-[4/3]"
-                } ${i === 2 ? "col-span-2 md:col-span-1" : ""}`}
-                data-cursor="View"
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(min-width: 768px) 33vw, 50vw"
-                  placeholder="blur"
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                />
-              </ImageReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ─── 4. THE TEAM: 3D Curved Carousel Showcase ─── */}
+      <TeamShowcase />
 
       {/* ─── 5. FROM PUNJAB TO AUSTRALIA — CHEF ISHPREET BEDI ─── */}
       <section
@@ -236,7 +183,7 @@ export default function AboutPage() {
             <div className="flex items-center gap-2.5">
               <span className="h-px w-6 bg-hs-gold" />
               <FadeUp as="p" className="eyebrow text-hs-gold">
-                {partner.title}
+                Meet Our Business Partner
               </FadeUp>
             </div>
 
@@ -256,7 +203,9 @@ export default function AboutPage() {
             </FadeUp>
 
             <FadeUp as="p" delay={0.22} className="mt-6 leading-relaxed text-hs-cream/75 text-base md:text-lg">
-              {partner.secondBio}
+              Her presence, eye for detail, and genuine devotion to the art of making people&apos;s lives happier play an important part in creating the image of{" "}
+              <strong className="font-semibold text-hs-gold-pale">High Spirits</strong> as a classy restaurant and bar where one can enjoy the real taste of Indian fine dining in{" "}
+              <strong className="font-semibold text-hs-gold-pale">Bunbury, WA</strong>. Moreover, it helps the restaurant gain the fine dining standard in Australia through care, consistency, and warm-hearted hospitality.
             </FadeUp>
 
             <FadeUp delay={0.3} className="mt-8 flex flex-wrap gap-2.5">

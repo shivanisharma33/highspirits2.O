@@ -195,8 +195,6 @@ export function GalleryTeaser() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const tilesRef = useRef<Array<HTMLDivElement | null>>([]);
   const centerContentRef = useRef<HTMLDivElement>(null);
-  const progressBarRef = useRef<HTMLDivElement>(null);
-  const progressTextRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -230,15 +228,6 @@ export function GalleryTeaser() {
           scrub: 1.2,
           anticipatePin: 1,
           invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            const pct = Math.round(self.progress * 100);
-            if (progressBarRef.current) {
-              progressBarRef.current.style.transform = `scaleX(${self.progress})`;
-            }
-            if (progressTextRef.current) {
-              progressTextRef.current.textContent = `${pct}%`;
-            }
-          },
         },
       });
 
@@ -300,11 +289,6 @@ export function GalleryTeaser() {
           scrub: 1,
           anticipatePin: 1,
           invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            if (progressBarRef.current) {
-              progressBarRef.current.style.transform = `scaleX(${self.progress})`;
-            }
-          },
         },
       });
 
@@ -438,21 +422,6 @@ export function GalleryTeaser() {
               <span>Photographs</span>
               <span className="text-hs-gold transition-transform duration-300 group-hover:translate-x-0.5">→</span>
             </Link>
-          </div>
-        </div>
-
-        {/* Bottom Interactive Scroll Indicator & Scrub Progress */}
-        <div className="absolute bottom-6 left-0 right-0 z-20 flex flex-col items-center justify-center pointer-events-none px-6">
-          <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-hs-muted/90 font-medium mb-2">
-            <span>Scroll to Zoom Archive</span>
-            <span className="inline-block w-1 h-1 rounded-full bg-hs-gold" />
-            <span ref={progressTextRef} className="font-mono text-hs-green-dark">0%</span>
-          </div>
-          <div className="w-48 sm:w-64 h-[3px] rounded-full bg-hs-green/10 overflow-hidden">
-            <div
-              ref={progressBarRef}
-              className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-hs-gold to-hs-emerald rounded-full"
-            />
           </div>
         </div>
       </div>

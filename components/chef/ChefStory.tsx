@@ -106,12 +106,25 @@ export function ChefStory({ className, cta = true }: Props) {
 
             {/* Paragraph 1 */}
             <FadeUp delay={0.26} as="p" className="mt-4 text-xs sm:text-sm leading-relaxed text-hs-text/85">
-              {chef.philosophy}
+              At{" "}
+              <strong className="font-semibold text-hs-gold-deep">High Spirits</strong>,
+              cooking is an expression of soul and storytelling where the rich traditions
+              of Punjab meet the modern spirit of Australia. Every plate reflects balance,
+              emotion, and a deep respect for heritage, crafted for those who appreciate
+              refined Indian fine dining in{" "}
+              <strong className="font-semibold text-hs-gold-deep">Bunbury, WA</strong>.
             </FadeUp>
 
             {/* Paragraph 2 */}
             <FadeUp delay={0.3} as="p" className="mt-4 text-xs sm:text-sm leading-relaxed text-hs-text/85">
-              {chef.bio}
+              Led by{" "}
+              <strong className="font-semibold text-hs-gold-deep">Amardeep Singh</strong>,
+              our Executive Chef with over 20 years of global culinary experience, the
+              kitchen blends time-honoured techniques with contemporary finesse. Using the
+              finest seasonal ingredients,{" "}
+              <strong className="font-semibold text-hs-gold-deep">High Spirits</strong>{" "}
+              stands proudly as a destination restaurant &amp; bar, redefining fine dining in
+              Australia through flavour, warmth, and unforgettable experiences.
             </FadeUp>
 
             {/* Accolades Section */}
