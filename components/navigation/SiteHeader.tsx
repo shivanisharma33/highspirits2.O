@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import { useCart } from "@/components/cart/CartContext";
 import { ButtonLink } from "@/components/ui/ButtonLink";
-import { Close, Facebook, Instagram } from "@/components/ui/Icons";
+import { Close, Facebook, Instagram, ShoppingBag } from "@/components/ui/Icons";
 import { Logo } from "@/components/ui/Logo";
 import { lockScroll } from "@/lib/lenis";
 import { addressLines, hours, primaryNav, site } from "@/lib/site";
@@ -15,6 +16,7 @@ function isActive(pathname: string, href: string) {
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const { totalCount, openCart } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -70,8 +72,8 @@ export function SiteHeader() {
     };
   }, [open, close]);
 
-  // The journal opens on a cream masthead, where the bare cream nav would vanish.
-  const lightTop = pathname.startsWith("/blogs");
+  // The journal and menu open on a cream masthead, where the bare cream nav would vanish without the glass pill.
+  const lightTop = pathname.startsWith("/blogs") || pathname.startsWith("/menu");
 
   return (
     <header data-scrolled={scrolled || lightTop} className="site-header fixed inset-x-0 top-0 z-50">
@@ -101,7 +103,20 @@ export function SiteHeader() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <button
+              type="button"
+              onClick={openCart}
+              aria-label={`View your order (${totalCount} ${totalCount === 1 ? "item" : "items"})`}
+              className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-hs-cream/25 text-hs-cream transition-colors hover:border-hs-gold hover:text-hs-gold"
+            >
+              <ShoppingBag size={18} />
+              {totalCount > 0 && (
+                <span className="absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-hs-gold px-1 text-[0.65rem] font-bold text-hs-green-deep shadow-md">
+                  {totalCount}
+                </span>
+              )}
+            </button>
             <ButtonLink href="/reservation" className="hidden min-h-11! px-5! text-[0.66rem]! sm:inline-flex" arrow={false}>
               Reserve a Table
             </ButtonLink>
@@ -136,15 +151,33 @@ export function SiteHeader() {
       >
         <div className="shell flex min-h-full flex-col pb-10">
           <div className="flex h-[var(--header-h)] items-center justify-between">
-            <Logo />
-            <button
-              type="button"
-              onClick={close}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-hs-cream/25 text-hs-cream transition-colors hover:border-hs-gold hover:text-hs-gold"
-              aria-label="Close menu"
-            >
-              <Close size={18} />
-            </button>
+            <Logo onClick={close} />
+            <div className="flex items-center gap-2.5">
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  openCart();
+                }}
+                aria-label={`View your order (${totalCount} items)`}
+                className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-hs-cream/25 text-hs-cream transition-colors hover:border-hs-gold hover:text-hs-gold"
+              >
+                <ShoppingBag size={18} />
+                {totalCount > 0 && (
+                  <span className="absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-hs-gold px-1 text-[0.65rem] font-bold text-hs-green-deep shadow-md">
+                    {totalCount}
+                  </span>
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={close}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-hs-cream/25 text-hs-cream transition-colors hover:border-hs-gold hover:text-hs-gold"
+                aria-label="Close menu"
+              >
+                <Close size={18} />
+              </button>
+            </div>
           </div>
 
           <nav aria-label="Mobile" className="mt-8 flex-1 md:mt-14">
@@ -196,10 +229,21 @@ export function SiteHeader() {
               </div>
             </div>
           </div>
-          <div className="mm-item mt-10" style={{ "--i": primaryNav.length + 1 } as CSSProperties}>
+          <div className="mm-item mt-10 flex flex-col sm:flex-row gap-3" style={{ "--i": primaryNav.length + 1 } as CSSProperties}>
             <ButtonLink href="/reservation" className="w-full sm:w-auto">
               Reserve a Table
             </ButtonLink>
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                openCart();
+              }}
+              className="inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2.5 rounded-full border border-hs-gold/40 bg-hs-gold/10 px-6 text-xs font-semibold uppercase tracking-[0.2em] text-hs-gold transition-colors hover:bg-hs-gold hover:text-hs-green-deep"
+            >
+              <ShoppingBag size={16} />
+              <span>Your Cart ({totalCount})</span>
+            </button>
           </div>
         </div>
       </div>

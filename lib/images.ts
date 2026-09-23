@@ -81,6 +81,11 @@ import diningExperienceAvif from "@/assets/images/dining experience.avif";
 import skipTheTripAvif from "@/assets/images/skip the trip.avif";
 import heritageAvif from "@/assets/images/heritage.avif";
 import craftAvif from "@/assets/images/craft.avif";
+import biryaniAvif from "@/assets/images/biryani.avif";
+import lambAvif from "@/assets/images/lamb.avif";
+import palakPaneerAvif from "@/assets/images/palak-paneer.avif";
+import butterChickenAvif from "@/assets/images/laqoqg7l3c4loifgd5nr.avif";
+import platterAvif from "@/assets/images/platter.avif";
 import innovationAvif from "@/assets/images/innovation.avif";
 import ingredientLentilsAvif from "@/assets/images/ewmpblom84yxsgmihrxb.avif";
 import ingredientLambAvif from "@/assets/images/v01whpmnhsndd6skwfis.avif";
@@ -176,7 +181,12 @@ export const media = {
   diningExperience: m(diningExperienceAvif, "Curated lunch dining experience with fresh authentic flavours"),
   skipTheTrip: m(skipTheTripAvif, "Skip the trip with doorstep delivery of High Spirits favourites"),
   heritage: m(heritageAvif, "Heritage recipes, whole roasted spices and time-honoured Punjabi traditions"),
-  craft: m(craftAvif, "Artisanal culinary craft and precision behind every plate at High Spirits"),
+  craft: m(craftAvif, "Slow-cooked artisanal Dal Makhani simmered with butter and cream"),
+  biryani: m(biryaniAvif, "Steaming authentic Biryani Royale layered with saffron and aromatic spices"),
+  lamb: m(lambAvif, "Slow-simmered Tasmanian grass-fed lamb in aromatic Kashmiri gravy"),
+  palakPaneer: m(palakPaneerAvif, "Artisan palak paneer with golden cottage cheese cubes in rich spinach puree"),
+  butterChicken: m(butterChickenAvif, "Rich and creamy butter chicken simmered in silky tomato, cashew and churned butter gravy"),
+  platter: m(platterAvif, "Charcoal-fired tandoori mixed grill platter with seekh kebabs, chicken tikka, prawns and lamb cutlets"),
   innovation: m(innovationAvif, "Modern Indian culinary innovation and artistic contemporary presentation"),
   ingredientLentilsHd: m(ingredientLentilsAvif, "Slow-cooked black lentils dal makhani in a copper handi with butter and cream"),
   ingredientLambHd: m(ingredientLambAvif, "Tender Tasmanian lamb shank simmered in aromatic Kashmiri spices"),

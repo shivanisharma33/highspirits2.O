@@ -112,9 +112,11 @@ export function Lightbox({ items, index, onClose, onIndex }: Props) {
             >
               <Image
                 src={item.src}
-                alt={item.alt}
+                alt={item.alt || ""}
+                width={typeof item.src === "string" ? (item.width || 1600) : undefined}
+                height={typeof item.src === "string" ? (item.height || 1200) : undefined}
                 sizes="(min-width: 768px) 80vw, 100vw"
-                placeholder="blur"
+                placeholder={typeof item.src !== "string" ? "blur" : undefined}
                 className="h-auto max-h-[calc(100svh-12rem)] w-auto max-w-full select-none object-contain"
                 draggable={false}
               />

@@ -190,7 +190,7 @@ const GALLERY_TILES: GalleryTile[] = [
   },
 ];
 
-export function GalleryTeaser() {
+export function GalleryTeaser({ count }: { count?: number } = {}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const tilesRef = useRef<Array<HTMLDivElement | null>>([]);
@@ -418,7 +418,7 @@ export function GalleryTeaser() {
               href="/gallery"
               className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-hs-green-dark hover:text-hs-gold-deep transition-colors px-4 py-2.5 rounded-full bg-white/70 border border-hs-gold/25 hover:border-hs-gold/60 backdrop-blur-sm shadow-sm group"
             >
-              <span className="font-bold text-hs-gold-deep">{galleryItems.length}</span>
+              <span className="font-bold text-hs-gold-deep">{count ?? 62}</span>
               <span>Photographs</span>
               <span className="text-hs-gold transition-transform duration-300 group-hover:translate-x-0.5">→</span>
             </Link>

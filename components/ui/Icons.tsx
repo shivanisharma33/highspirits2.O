@@ -139,3 +139,23 @@ export const WhatsApp = ({ size = 16, ...p }: IconProps) => (
   </svg>
 );
 
+export const ShoppingBag = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+    <path d="M3 6h18" />
+    <path d="M16 10a4 4 0 0 1-8 0" />
+  </svg>
+);
+
+export const Minus = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M5 12h14" />
+  </svg>
+);
+
+export const Trash = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6" />
+  </svg>
+);
+

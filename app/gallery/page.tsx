@@ -4,9 +4,11 @@ import type { CSSProperties } from "react";
 import { MasonryGallery } from "@/components/gallery/MasonryGallery";
 import { IntroLines } from "@/components/motion/Reveal";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { galleryItems } from "@/lib/content/gallery";
+import { fetchGalleryItems } from "@/lib/content/gallery";
 import { media } from "@/lib/images";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = pageMetadata({
   title: "Gallery | Indian Dining Moments in Bunbury",
@@ -16,7 +18,9 @@ export const metadata: Metadata = pageMetadata({
 
 const d = (s: number) => ({ "--d": `${s}s` }) as CSSProperties;
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
+  const { items, categories } = await fetchGalleryItems();
+
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Gallery", path: "/gallery" }])} />
@@ -47,7 +51,7 @@ export default function GalleryPage() {
 
           <div className="relative z-20 flex min-h-[34rem] flex-col items-center justify-center text-center md:min-h-[42rem]">
             <p className="eyebrow eyebrow--plain intro-rise" style={d(0.1)}>
-              A visual archive · {galleryItems.length} photographs
+              A visual archive · {items.length} photographs
             </p>
             <IntroLines as="h1" id="gallery-title" className="font-display mt-6 text-display drop-shadow-[0_10px_40px_hsl(160_90%_3%/0.8)]" lines={["The", <em key="a" className="text-gold-gradient">Archive</em>]} start={0.2} />
           </div>
@@ -56,7 +60,7 @@ export default function GalleryPage() {
 
       <section aria-label="Photographs" className="bg-hs-green-dark py-20 md:py-28">
         <div className="shell">
-          <MasonryGallery />
+          <MasonryGallery initialItems={items} initialCategories={categories} />
         </div>
       </section>
     </>

@@ -22,3 +22,14 @@ export function lockScroll(locked: boolean) {
   }
   document.documentElement.style.overflow = locked ? "hidden" : "";
 }
+
+export function scrollToTop(smooth: boolean = true) {
+  const lenis = instance;
+  if (lenis) {
+    lenis.scrollTo(0, { immediate: !smooth });
+  }
+  if (typeof window !== "undefined") {
+    window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
+  }
+}
+

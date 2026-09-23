@@ -14,18 +14,13 @@ import {
   Phone,
 } from "@/components/ui/Icons";
 import { hours, legalNav, primaryNav, site } from "@/lib/site";
+import { scrollToTop } from "@/lib/lenis";
 
 const listLink =
   "group inline-flex items-center gap-1.5 text-hs-cream/70 transition-all duration-300 hover:text-hs-gold hover:translate-x-1";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
-
-  const scrollToTop = () => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
 
 
 

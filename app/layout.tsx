@@ -1,9 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { CartProvider } from "@/components/cart/CartContext";
+import { CartDrawer } from "@/components/cart/CartDrawer";
 import { SiteFooter } from "@/components/footer/SiteFooter";
 import { Cursor } from "@/components/motion/Cursor";
 import { RevealRoot } from "@/components/motion/RevealRoot";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { ScrollToTop } from "@/components/navigation/ScrollToTop";
 import { SiteHeader } from "@/components/navigation/SiteHeader";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { restaurantJsonLd } from "@/lib/seo";
@@ -75,16 +78,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
       <body>
-        <div aria-hidden className="scroll-progress" />
-        <SiteHeader />
-        <main id="main" tabIndex={-1} className="outline-none">
-          {children}
-        </main>
-        <SiteFooter />
-        <SmoothScroll />
-        <RevealRoot />
-        <Cursor />
-        <JsonLd data={restaurantJsonLd()} />
+        <CartProvider>
+          <div aria-hidden className="scroll-progress" />
+          <SiteHeader />
+          <main id="main" tabIndex={-1} className="outline-none">
+            {children}
+          </main>
+          <SiteFooter />
+          <CartDrawer />
+          <ScrollToTop />
+          <SmoothScroll />
+          <RevealRoot />
+          <Cursor />
+          <JsonLd data={restaurantJsonLd()} />
+        </CartProvider>
       </body>
     </html>
   );

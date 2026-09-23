@@ -386,8 +386,9 @@ export function AccoladesPortals() {
 
           <FadeUp delay={0.2}>
             <p className="mx-auto mt-6 max-w-xl text-lead text-hs-cream/80">
-              Explore our verified credentials, read dining reviews, or order directly
-              to your door.
+              Explore our verified credentials, read dining reviews
+              <br />
+              or order directly to your door.
             </p>
           </FadeUp>
         </div>

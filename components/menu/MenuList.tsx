@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { Flame, Leaf } from "@/components/ui/Icons";
+import { useCart } from "@/components/cart/CartContext";
+import { Flame, Leaf, Minus, Plus } from "@/components/ui/Icons";
 import { dietLabels, menuCategories, type Diet, type MenuItem } from "@/lib/content/menu";
 import { cx, formatPrice } from "@/lib/format";
 import { media, type Media } from "@/lib/images";
@@ -37,8 +38,8 @@ const itemImages: Record<string, Media> = {
   "Chicken Tikka (4 pieces)": media.dishTandooriChicken,
   "Tandoori Chicken (4 pieces)": media.dishTandooriChicken,
   "Veg Platter": media.dishSamosa,
-  "Mix Tandoori Grill Platter": media.dishTandooriGrill,
-  "Butter Chicken": media.dishButterChickenHd,
+  "Mix Tandoori Grill Platter": media.platter,
+  "Butter Chicken": media.butterChicken,
   "Dhaba Butter Chicken": media.dishButterChicken,
   "Chicken Mushroom": media.foodCurry,
   "Chicken Kadhai": media.foodCurry,
@@ -121,7 +122,7 @@ function getItemImage(itemName: string, categorySlug: string): Media {
   if (lower.includes("paneer")) return media.dishPalakPaneerHd;
   if (lower.includes("dal")) return media.dishDalMakhaniHd;
   if (lower.includes("tandoori") || lower.includes("tikka")) return media.dishTandooriChicken;
-  if (lower.includes("butter chicken")) return media.dishButterChickenHd;
+  if (lower.includes("butter chicken")) return media.butterChicken;
   if (lower.includes("lamb") || lower.includes("beef") || lower.includes("goat")) return media.dishLambRoganJosh;
   if (lower.includes("korma")) return media.dishChickenKorma;
   if (lower.includes("momo") || lower.includes("manchurian") || lower.includes("noodle")) return media.foodSizzler;
@@ -132,6 +133,7 @@ function getItemImage(itemName: string, categorySlug: string): Media {
 }
 
 export function MenuList() {
+  const { addItem, updateQuantity, getItemQuantity, totalCount, totalPrice, openCart } = useCart();
   const [activeDiet, setActiveDiet] = useState<"ALL" | Diet>("ALL");
   const [activeCategory, setActiveCategory] = useState<string>(menuCategories[0]?.slug ?? "entrees");
 
@@ -339,6 +341,72 @@ export function MenuList() {
                           </p>
                         )}
                       </div>
+
+                      {/* Add to Cart & Stepper controls */}
+                      <div className="mt-3.5 flex items-center justify-between pt-2.5 border-t border-hs-gold/20">
+                        {getItemQuantity(item.name) === 0 ? (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const numPrice =
+                                typeof item.price === "number"
+                                  ? item.price
+                                  : parseFloat(item.price) || 0;
+                              addItem({
+                                id: item.name,
+                                name: item.name,
+                                price: numPrice,
+                                diet: item.diet,
+                                description: item.description,
+                                category: cat.title,
+                                image: img.src,
+                              });
+                            }}
+                            aria-label={`Add ${item.name} to cart`}
+                            className="inline-flex items-center gap-1.5 rounded-full bg-hs-green-deep text-hs-cream hover:bg-hs-gold hover:text-hs-green-deep px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-wider border border-hs-gold/40 transition-all duration-200 shadow-xs hover:shadow-md hover:scale-105 active:scale-95"
+                          >
+                            <Plus size={13} />
+                            <span>Add</span>
+                          </button>
+                        ) : (
+                          <div className="inline-flex items-center rounded-full border-2 border-hs-gold bg-hs-green-deep px-1 py-0.5 shadow-md">
+                            <button
+                              type="button"
+                              onClick={() =>
+                                updateQuantity(item.name, getItemQuantity(item.name) - 1)
+                              }
+                              aria-label={`Decrease ${item.name} quantity`}
+                              className="flex h-6 w-6 items-center justify-center rounded-full text-hs-cream hover:bg-hs-gold hover:text-hs-green-deep transition-all active:scale-90"
+                            >
+                              <Minus size={12} />
+                            </button>
+                            <span className="w-7 text-center text-xs font-bold tabular-nums text-hs-gold">
+                              {getItemQuantity(item.name)}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() =>
+                                updateQuantity(item.name, getItemQuantity(item.name) + 1)
+                              }
+                              aria-label={`Increase ${item.name} quantity`}
+                              className="flex h-6 w-6 items-center justify-center rounded-full text-hs-cream hover:bg-hs-gold hover:text-hs-green-deep transition-all active:scale-90"
+                            >
+                              <Plus size={12} />
+                            </button>
+                          </div>
+                        )}
+
+                        {getItemQuantity(item.name) > 0 && (
+                          <button
+                            type="button"
+                            onClick={openCart}
+                            className="inline-flex items-center gap-1 text-[0.7rem] font-bold uppercase tracking-wider text-hs-gold-deep hover:text-hs-green-deep transition-colors"
+                          >
+                            <span>View Cart</span>
+                            <span>→</span>
+                          </button>
+                        )}
+                      </div>
                     </div>
                   </article>
                 );
@@ -367,6 +435,37 @@ export function MenuList() {
           </p>
         </div>
       </div>
+
+      {/* Floating Bottom Order Bar */}
+      {totalCount > 0 && (
+        <aside
+          aria-label="Floating order summary"
+          className="fixed bottom-6 inset-x-0 z-40 flex justify-center px-4 pointer-events-none animate-in slide-in-from-bottom-6 duration-300"
+        >
+          <button
+            type="button"
+            onClick={openCart}
+            className="pointer-events-auto group flex items-center gap-3 sm:gap-4.5 rounded-full bg-gradient-to-r from-[#062c1f] via-[#083a29] to-[#062c1f] px-5 sm:px-6 py-3 text-hs-cream shadow-[0_12px_40px_rgba(0,0,0,0.6),0_0_25px_rgba(212,175,55,0.35)] border-2 border-hs-gold/70 backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_50px_rgba(0,0,0,0.7),0_0_35px_rgba(212,175,55,0.5)] active:scale-95"
+          >
+            <div className="flex items-center gap-2">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-hs-gold text-xs font-bold text-hs-green-deep shadow-md transition-transform duration-300 group-hover:scale-110">
+                {totalCount}
+              </span>
+              <span className="text-xs font-bold uppercase tracking-wider text-hs-cream hidden sm:inline">
+                {totalCount === 1 ? "Item" : "Items"} in Feast
+              </span>
+            </div>
+            <span className="h-4 w-px bg-hs-gold/30" />
+            <span className="font-mono text-sm sm:text-base font-bold text-hs-gold tabular-nums tracking-wide">
+              {formatPrice(totalPrice)} AUD
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-hs-gold px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-hs-green-deep transition-colors group-hover:bg-hs-gold-light ml-1 shadow-sm">
+              <span>View Order</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1 font-sans">→</span>
+            </span>
+          </button>
+        </aside>
+      )}
     </div>
   );
 }

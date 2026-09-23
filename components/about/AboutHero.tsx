@@ -58,34 +58,13 @@ export function AboutHero() {
       {/* ─── 3. Main Foreground Content ─── */}
       <div className="shell relative z-10 my-auto">
         <div className="max-w-4xl">
-          {/* Top Eyebrow Tag */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2.5 rounded-full border border-hs-gold/30 bg-hs-gold/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-hs-gold-pale backdrop-blur-md"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-hs-gold animate-pulse" />
-            <span>ABOUT US · 1/57 VICTORIA STREET</span>
-          </motion.div>
-
-          {/* Brand Tag */}
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-6 text-xs font-bold uppercase tracking-[0.35em] text-hs-gold sm:text-sm"
-          >
-            High Spirits
-          </motion.p>
-
           {/* Grand Main Headline */}
           <motion.h1
             id="about-hero-title"
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display mt-4 text-4xl font-normal tracking-[-0.02em] text-white sm:text-6xl md:text-7xl lg:text-[5.25rem] xl:text-[6rem] leading-[1.04]"
+            className="font-display text-4xl font-normal tracking-[-0.02em] text-white sm:text-6xl md:text-7xl lg:text-[5.25rem] xl:text-[6rem] leading-[1.04]"
           >
             The Story
             <br />

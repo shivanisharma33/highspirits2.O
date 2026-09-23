@@ -53,12 +53,15 @@ export default function MenuPage() {
           ═══════════════════════════════════════════════════════ */}
       <section aria-labelledby="menu-title" className="surface-light relative overflow-hidden bg-hs-cream pb-16 pt-[calc(var(--header-h)+5rem)] md:pb-20">
         <div className="shell relative">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-5xl text-center">
             <IntroLines
               as="h1"
               id="menu-title"
-              className="font-display text-h1 text-hs-green-deep"
-              lines={["Discover the art", <em key="m" className="italic">of flavour</em>]}
+              className="font-display text-[clamp(2.4rem,6.2vw,5.4rem)] leading-[0.98] tracking-tight text-hs-green-deep"
+              lines={[
+                <span key="l1" className="whitespace-nowrap">Discover the art</span>,
+                <em key="m" className="italic whitespace-nowrap">of flavour</em>,
+              ]}
               start={0.15}
             />
             <p className="intro-rise mx-auto mt-8 max-w-xl text-lead text-hs-muted" style={d(0.5)}>

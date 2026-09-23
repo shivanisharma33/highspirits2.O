@@ -25,7 +25,7 @@ export const signatureDishes: SignatureDish[] = [
     lines: ["Charcoal-fired.", "Artisan marinades.", "Unrivalled tenderness."],
     notes: ["Seekh Kebab", "Chicken Tikka", "Tandoori Prawns", "Lamb Cutlets"],
     price: 35.99,
-    image: media.heroDish2, // 1920x1080 Ultra HD
+    image: media.platter,
   },
   {
     no: "02",
@@ -35,7 +35,7 @@ export const signatureDishes: SignatureDish[] = [
     description: "Ethically sourced Tasmanian grass-fed lamb slow-simmered in a deep, aromatic Kashmiri and Punjabi gravy.",
     notes: ["Tasmanian Lamb", "Whole Spices", "Kashmiri Chilli", "Slow Cooked"],
     price: 25.99,
-    image: media.ingredientLamb, // 1024x1024 Ultra HD
+    image: media.lamb,
   },
   {
     no: "03",
@@ -45,17 +45,17 @@ export const signatureDishes: SignatureDish[] = [
     description: "Aged long-grain basmati rice layered with spiced tender cuts, saffron, caramelized onions and fresh mint.",
     notes: ["Aged Basmati", "Pure Saffron", "Dum Pukht", "Mint & Herbs"],
     price: 24.99,
-    image: media.heroDish3, // 1920x1080 Ultra HD
+    image: media.biryani,
   },
   {
     no: "04",
     name: "Palak Paneer",
     region: "Punjabi Classic",
-    categoryTag: "Non-Veg",
+    categoryTag: "North Indian",
     description: "Artisan cottage cheese cubes gently cooked in a velvety spiced puree of fresh local baby spinach, garlic and roasted cumin.",
     notes: ["Local Spinach", "Cottage Cheese", "Garlic Tadka", "Fresh Cream"],
     price: 19.99,
-    image: media.ingredientSpinach, // 1024x1024 Ultra HD
+    image: media.palakPaneer,
   },
   {
     no: "05",
@@ -65,7 +65,7 @@ export const signatureDishes: SignatureDish[] = [
     description: "Tender boneless chicken roasted in the clay oven, simmered in a silky tomato, cashew and churned butter gravy.",
     notes: ["Tandoor Chicken", "Tomato & Cashew", "Churned Butter", "Fenugreek"],
     price: 23.99,
-    image: media.heroDish1, // 1920x1080 Ultra HD
+    image: media.butterChicken,
   },
   {
     no: "06",
@@ -76,7 +76,7 @@ export const signatureDishes: SignatureDish[] = [
     lines: ["Slow-cooked.", "Deeply layered.", "Unforgettable."],
     notes: ["16-Hour Simmer", "Black Urad Dal", "White Butter", "Velvet Cream"],
     price: 19.99,
-    image: media.ingredientLentils, // 1024x1024 Ultra HD
+    image: media.craft,
   },
 ];
 
