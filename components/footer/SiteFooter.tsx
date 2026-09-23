@@ -151,7 +151,7 @@ export function SiteFooter() {
               <li>
                 <Link href="/reservation" className={listLink}>
                   <span className="text-hs-gold/50 group-hover:text-hs-gold transition-colors">›</span>
-                  <span className="font-semibold text-hs-gold">Online Reservations</span>
+                  <span>Online Reservations</span>
                 </Link>
               </li>
             </ul>
@@ -170,11 +170,6 @@ export function SiteFooter() {
                   <span className="text-xs text-hs-cream/80">{h.time}</span>
                 </div>
               ))}
-              <div className="border-l-2 border-hs-gold/40 pl-3">
-                <span className="block font-semibold text-hs-cream">Dinner Buffet</span>
-                <span className="text-xs text-hs-gold-pale block">Mon – Sun from 5:00 PM</span>
-                <span className="text-xs text-hs-cream/80">$39.99 Per Person</span>
-              </div>
             </div>
           </FadeUp>
 

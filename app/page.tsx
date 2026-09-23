@@ -10,7 +10,6 @@ import { ReviewsSlider } from "@/components/reviews/ReviewsSlider";
 import { Ingredients } from "@/components/sections/Ingredients";
 import { Intro } from "@/components/sections/Intro";
 import { Philosophy } from "@/components/sections/Philosophy";
-import { AccoladesPortals } from "@/components/sections/AccoladesPortals";
 import { ReservationCTA } from "@/components/sections/ReservationCTA";
 import { SignatureDishes } from "@/components/sections/SignatureDishes";
 import { Marquee } from "@/components/ui/Marquee";
@@ -35,7 +34,6 @@ export default function HomePage() {
       <HomeHero />
       <Marquee items={taglines} label="High Spirits taglines" className="border-y border-hs-gold/20 bg-hs-green-deep py-6 text-hs-cream/90" />
       <Intro />
-      <AccoladesPortals />
       <SignatureDishes />
       <ExperienceScroller />
       <ChefStory />

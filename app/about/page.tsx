@@ -3,21 +3,18 @@ import Image from "next/image";
 import { AboutHero } from "@/components/about/AboutHero";
 import { TeamShowcase } from "@/components/about/TeamShowcase";
 import { ChefStory } from "@/components/chef/ChefStory";
-import { ClipReveal, FadeUp, ImageReveal, TextReveal } from "@/components/motion/Reveal";
+import { ClipReveal, FadeUp, TextReveal } from "@/components/motion/Reveal";
+import { AccoladesPortals } from "@/components/sections/AccoladesPortals";
 import { ReservationCTA } from "@/components/sections/ReservationCTA";
 import { Aurora } from "@/components/ui/Aurora";
-import { ButtonLink } from "@/components/ui/ButtonLink";
 import { JsonLd } from "@/components/ui/JsonLd";
 import {
   aboutMilestones,
   mission,
   partner,
-  recognitionAwards,
-  team,
   values,
 } from "@/lib/content/story";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
-import { accolade, site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "About Us | High Spirits — Authentic Indian Fine Dining in Bunbury",
@@ -276,96 +273,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 8. RECOGNITION: Awards & Accolades ─── */}
-      <section
-        aria-labelledby="awards-section-title"
-        className="surface-light bg-hs-cream py-24 text-hs-text md:py-36"
-      >
-        <div className="shell">
-          <div className="mx-auto max-w-3xl text-center">
-            <FadeUp as="p" className="eyebrow justify-center">
-              Recognition
-            </FadeUp>
-
-            <FadeUp as="h2" id="awards-section-title" className="font-display mt-4 text-h2 text-hs-green">
-              Awards <em className="italic text-hs-gold-deep">&amp;</em> Accolades
-            </FadeUp>
-
-            <FadeUp as="p" delay={0.1} className="mt-4 text-sm leading-relaxed text-hs-muted md:text-base">
-              Honoured by industry critics and cherished by our wonderful diners across Western Australia.
-            </FadeUp>
-          </div>
-
-          {/* 3 Prominent Stat Cards */}
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {recognitionAwards.map((item, idx) => (
-              <FadeUp key={item.title} delay={idx * 0.12}>
-                <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-black/5 bg-white p-8 transition-all duration-500 hover:-translate-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="inline-block rounded-full bg-hs-sand/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-hs-gold-deep">
-                      {item.badge}
-                    </span>
-                    <span className="font-display text-2xl text-hs-gold-deep">✦</span>
-                  </div>
-
-                  <div className="my-6">
-                    <p className="font-display text-4xl font-bold tracking-tight text-hs-green sm:text-5xl">
-                      {item.metric}
-                    </p>
-                    <h3 className="font-display mt-3 text-xl font-bold text-hs-green">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-hs-muted">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  <div className="h-1 w-12 bg-hs-gold-deep/30 group-hover:w-full group-hover:bg-hs-gold-deep transition-all duration-500" />
-                </div>
-              </FadeUp>
-            ))}
-          </div>
-
-          {/* Official AGFG 2026 Readers' Choice Banner */}
-          <FadeUp
-            delay={0.3}
-            className="glass-light glass-spot mt-12 flex flex-col gap-8 rounded-[2.5rem] border border-black/5 bg-white/90 p-8 sm:flex-row sm:items-center md:p-12"
-          >
-            <div className="relative flex h-28 w-44 shrink-0 items-center justify-center rounded-2xl bg-white p-2">
-              <Image
-                src={accolade.badge}
-                alt="Australian Good Food Guide Readers' Choice Winner 2026 badge"
-                width={200}
-                height={120}
-                className="h-auto w-36 object-contain"
-              />
-            </div>
-
-            <div className="flex-1">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-800">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 animate-pulse" />
-                Verified Credential
-              </span>
-              <h3 className="font-display mt-2 text-2xl font-bold text-hs-green sm:text-3xl">
-                {accolade.title}
-              </h3>
-              <p className="mt-1 text-sm text-hs-muted">{accolade.body}</p>
-              <p className="mt-3 text-xs leading-relaxed text-hs-text/75 sm:text-sm">
-                Voted by the guests we proudly cook for, acknowledging High Spirits as Bunbury&apos;s leading destination for authentic Punjabi and Indian fine dining.
-              </p>
-            </div>
-
-            <ButtonLink
-              href={site.listings.agfg}
-              external
-              variant="outline-dark"
-              className="shrink-0"
-            >
-              View on AGFG
-            </ButtonLink>
-          </FadeUp>
-        </div>
-      </section>
+      {/* ─── 8. RECOGNITION & PARTNERS: Interactive Awards Carousel ─── */}
+      <AccoladesPortals />
 
       {/* ─── 9. RESERVATION CTA ─── */}
       <ReservationCTA />
