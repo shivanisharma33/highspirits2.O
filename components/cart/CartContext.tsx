@@ -10,6 +10,8 @@ import {
   type ReactNode,
 } from "react";
 
+import type { StaticImageData } from "next/image";
+
 export type CartItem = {
   id: string;
   name: string;
@@ -18,7 +20,7 @@ export type CartItem = {
   diet?: string[];
   description?: string;
   category?: string;
-  image?: string;
+  image?: string | StaticImageData;
 };
 
 export type CartContextType = {

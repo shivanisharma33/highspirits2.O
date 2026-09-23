@@ -1,5 +1,5 @@
 "use client";
-
+import type { StaticImageData } from "next/image";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type FormEvent } from "react";
@@ -11,7 +11,7 @@ import { lockScroll } from "@/lib/lenis";
 import { site } from "@/lib/site";
 
 /* ── Fallback image resolver ── */
-function getCartItemImage(item: CartItem): string {
+function getCartItemImage(item: CartItem): string | StaticImageData {
   if (item.image) return item.image;
   const name = item.name.toLowerCase();
   if (name.includes("naan") || name.includes("roti") || name.includes("bread")) return media.dishGarlicNaan.src;

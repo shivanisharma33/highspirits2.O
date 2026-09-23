@@ -296,7 +296,7 @@ export function SiteFooter() {
           <div className="flex items-center gap-4">
             <span className="text-hs-cream/45">Bunbury, WA</span>
             <button
-              onClick={scrollToTop}
+              onClick={() => scrollToTop()}
               className="inline-flex items-center gap-1.5 rounded-full border border-hs-gold/30 bg-hs-gold/10 px-3.5 py-1.5 text-[0.7rem] font-semibold text-hs-gold transition-all duration-300 hover:border-hs-gold hover:bg-hs-gold hover:text-hs-green-deep active:scale-95 cursor-pointer"
               aria-label="Scroll back to top of page"
             >

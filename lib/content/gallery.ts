@@ -78,29 +78,28 @@ export async function fetchGalleryItems(): Promise<{ items: GalleryItem[]; categ
       return { items: galleryItems, categories: galleryCategories };
     }
 
-    const mapped: GalleryItem[] = json.data
-      .map((entry) => {
-        const img = entry.imsge || entry.image;
-        if (!img?.url) return null;
+    const mapped: GalleryItem[] = [];
+    for (const entry of json.data) {
+      const img = entry.imsge || entry.image;
+      if (!img?.url) continue;
 
-        const category = normalizeGalleryCategory(entry.Category);
-        const alt =
-          entry.altText ||
-          entry.Title ||
-          img.alternativeText ||
-          `${category} at High Spirits`;
+      const category = normalizeGalleryCategory(entry.Category);
+      const alt =
+        entry.altText ||
+        entry.Title ||
+        img.alternativeText ||
+        `${category} at High Spirits`;
 
-        return {
-          id: entry.id,
-          src: img.url,
-          alt,
-          category,
-          width: img.width || 1200,
-          height: img.height || 800,
-          title: entry.Title,
-        };
-      })
-      .filter((item): item is GalleryItem => item !== null);
+      mapped.push({
+        id: entry.id,
+        src: img.url,
+        alt,
+        category,
+        width: img.width || 1200,
+        height: img.height || 800,
+        title: entry.Title,
+      });
+    }
 
     if (mapped.length === 0) {
       return { items: galleryItems, categories: galleryCategories };
