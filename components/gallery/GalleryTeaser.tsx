@@ -381,11 +381,10 @@ export function GalleryTeaser({ count }: { count?: number } = {}) {
           ref={centerContentRef}
           className="relative z-30 max-w-2xl mx-auto text-center px-6 py-8 sm:px-10 sm:py-10 rounded-3xl bg-hs-cream/80 backdrop-blur-xl border border-hs-gold/35 flex flex-col items-center"
         >
-          {/* Eyebrow with Luxury Gold Dot */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-hs-green/5 border border-hs-gold/40 text-hs-gold-deep text-xs font-medium tracking-[0.25em] uppercase mb-4 sm:mb-6 shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-hs-gold animate-pulse" />
-            <span>The Gallery Archive</span>
-          </div>
+          {/* Unified Eyebrow */}
+          <p className="eyebrow justify-center mb-4 sm:mb-6">
+            The Gallery Archive
+          </p>
 
           {/* Heading */}
           <h2

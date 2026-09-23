@@ -154,7 +154,7 @@ function ExperienceChapter({ exp, index }: { exp: Experience; index: number }) {
       <div aria-hidden className="absolute inset-0 bg-hs-green-deep/55" />
       <div className="shell relative">
         <FadeUp className="glass glass-edge glass-spot mx-auto max-w-2xl rounded-[2rem] p-8 text-center sm:p-12 md:p-16">
-          <p className="eyebrow eyebrow--plain justify-center">
+          <p className="eyebrow justify-center">
             {no} · {exp.kicker}
           </p>
           <h2 id={titleId} className="font-display mt-6 text-h2">

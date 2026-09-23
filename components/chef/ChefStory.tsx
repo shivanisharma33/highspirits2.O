@@ -58,11 +58,8 @@ export function ChefStory({ className, cta = true }: Props) {
         <div className="relative z-10 lg:col-span-6 lg:col-start-7 lg:row-start-1 lg:-ml-12 xl:-ml-16">
           <div className="relative rounded-[2.5rem] border border-white/80 bg-white/92 p-8 backdrop-blur-xl sm:p-12 lg:p-14">
             {/* Top Eyebrow with gold dash */}
-            <FadeUp as="div" className="flex items-center gap-3">
-              <span className="h-px w-7 bg-hs-gold-deep" />
-              <span className="text-[0.68rem] font-bold uppercase tracking-[0.28em] text-hs-gold-deep">
-                THE VISIONARY
-              </span>
+            <FadeUp as="p" className="eyebrow mb-2">
+              The Visionary
             </FadeUp>
 
             {/* Main Headline: "Meet the" in Green + "Visionary" in Gold Italic */}

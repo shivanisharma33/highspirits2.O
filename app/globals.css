@@ -231,8 +231,7 @@ html.lenis body {
     background: linear-gradient(145deg, hsl(160 45% 16% / 0.55) 0%, hsl(160 80% 6% / 0.42) 100%);
     border: 1px solid hsl(42 78% 60% / 0.2);
     box-shadow:
-      0 30px 80px -30px hsl(160 90% 3% / 0.75),
-      inset 0 1px 0 hsl(40 60% 99% / 0.1),
+            inset 0 1px 0 hsl(40 60% 99% / 0.1),
       inset 0 -1px 0 hsl(160 90% 3% / 0.35);
     -webkit-backdrop-filter: blur(24px) saturate(170%);
     backdrop-filter: blur(24px) saturate(170%);
@@ -241,7 +240,7 @@ html.lenis body {
   .glass-light {
     background: linear-gradient(145deg, hsl(40 60% 99% / 0.8) 0%, hsl(40 45% 94% / 0.62) 100%);
     border: 1px solid hsl(40 77% 31% / 0.16);
-    box-shadow: 0 30px 80px -40px hsl(160 70% 12% / 0.35), inset 0 1px 0 hsl(0 0% 100% / 0.7);
+    box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.7);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
     backdrop-filter: blur(20px) saturate(140%);
   }
@@ -564,7 +563,7 @@ html.lenis body {
   transition:
     opacity var(--dur) var(--ease-luxe) var(--delay, 0s),
     transform var(--dur) var(--ease-luxe) var(--delay, 0s),
-    clip-path calc(var(--dur) * 1.25) var(--ease-luxe) var(--delay, 0s);
+    /* clip-path scoped to clip reveals */
 }
 
 .js [data-reveal="fade-up"] {
@@ -616,6 +615,11 @@ html.lenis body {
 .js [data-reveal].is-in {
   opacity: 1;
   transform: none;
+}
+
+.js [data-reveal="clip"].is-in,
+.js [data-reveal="clip-x"].is-in,
+.js [data-reveal="image"].is-in {
   clip-path: inset(0 0 0 0);
 }
 

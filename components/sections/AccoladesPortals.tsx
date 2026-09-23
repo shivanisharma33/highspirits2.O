@@ -400,23 +400,7 @@ export function AccoladesPortals() {
           ))}
         </div>
 
-        {/* Bottom Trust Seal Strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 flex flex-wrap items-center justify-center gap-6 border-t border-hs-gold/15 pt-8 text-xs tracking-wider text-hs-cream/60"
-        >
-          <div className="flex items-center gap-2">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-            <span className="font-medium text-hs-cream/80">100% Independently Verified Dining & Delivery</span>
-          </div>
-          <span className="hidden text-hs-gold/40 sm:inline">•</span>
-          <div>Australian Good Food Guide Readers&apos; Choice 2026</div>
-          <span className="hidden text-hs-gold/40 sm:inline">•</span>
-          <div>Victoria Street, Bunbury WA</div>
-        </motion.div>
+
       </div>
 
       {/* Bottom Hairline Separator */}

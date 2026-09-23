@@ -50,7 +50,7 @@ export default async function GalleryPage() {
           </div>
 
           <div className="relative z-20 flex min-h-[34rem] flex-col items-center justify-center text-center md:min-h-[42rem]">
-            <p className="eyebrow eyebrow--plain intro-rise" style={d(0.1)}>
+            <p className="eyebrow justify-center intro-rise" style={d(0.1)}>
               A visual archive · {items.length} photographs
             </p>
             <IntroLines as="h1" id="gallery-title" className="font-display mt-6 text-display drop-shadow-[0_10px_40px_hsl(160_90%_3%/0.8)]" lines={["The", <em key="a" className="text-gold-gradient">Archive</em>]} start={0.2} />

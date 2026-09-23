@@ -112,12 +112,9 @@ export function TeamShowcase() {
       {/* Section Header (Centered in shell) */}
       <div className="shell relative z-10">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-hs-gold/30 bg-hs-gold/10 px-4 py-1.5 backdrop-blur-md">
-            <span className="h-1.5 w-1.5 rounded-full bg-hs-gold animate-pulse" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.24em] text-hs-gold-pale">
-              The Culinary Brigade
-            </span>
-          </div>
+          <FadeUp as="p" className="eyebrow justify-center mb-4">
+            The Culinary Brigade
+          </FadeUp>
 
           <TextReveal
             as="h2"

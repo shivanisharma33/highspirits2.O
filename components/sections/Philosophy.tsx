@@ -32,8 +32,8 @@ export function Philosophy() {
         <ol className="mt-16 grid gap-6 md:mt-20 lg:grid-cols-3 lg:gap-8">
           {philosophy.map((chapter, i) => (
             <FadeUp as="li" key={chapter.word} delay={i * 0.1} className={lift[i]}>
-              <article className="glass glass-edge glass-spot group h-full rounded-[1.75rem] p-3 transition-transform duration-700 ease-luxe hover:-translate-y-2 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:block">
-                <div className="media-zoom relative aspect-[4/3] overflow-hidden rounded-[1.25rem]">
+              <article className="glass glass-edge overflow-hidden h-full rounded-[1.75rem] p-3 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:block">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem]">
                   <Image src={chapter.image.src} alt={chapter.image.alt} fill sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw" placeholder="blur" className="object-cover" />
                   <div aria-hidden className="absolute inset-0 bg-linear-to-t from-hs-green-deep/70 via-transparent to-transparent" />
                   <span className="glass-chip absolute left-4 top-4">

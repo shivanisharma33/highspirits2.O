@@ -44,6 +44,18 @@ export const reviews: Review[] = [
     title: "Verified Guest",
     rating: 5,
   },
+  {
+    quote: "Best butter chicken and garlic naan in Western Australia. The flavours take you straight to Punjab, and the hospitality is second to none.",
+    name: "Sarah Jenkins",
+    title: "Local Foodie",
+    rating: 5,
+  },
+  {
+    quote: "An absolute culinary gem on Victoria Street. The ambience, attentive staff and rich aromatic curries made our anniversary dinner truly memorable.",
+    name: "David & Emma Miller",
+    title: "Bunbury Resident",
+    rating: 5,
+  },
 ];
 
 /** Rating shown on the current highspirits.au homepage & reference image. */

@@ -46,12 +46,9 @@ export default function AboutPage() {
       >
         <div className="shell grid gap-14 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-2">
-              <span className="h-px w-6 bg-hs-gold-deep" />
-              <FadeUp as="p" className="eyebrow text-hs-gold-deep">
-                Our Mission
-              </FadeUp>
-            </div>
+            <FadeUp as="p" className="eyebrow">
+              Our Mission
+            </FadeUp>
             <TextReveal
               as="h2"
               id="mission-title"
@@ -180,12 +177,9 @@ export default function AboutPage() {
 
           {/* Narrative Column */}
           <div className="lg:col-span-7">
-            <div className="flex items-center gap-2.5">
-              <span className="h-px w-6 bg-hs-gold" />
-              <FadeUp as="p" className="eyebrow text-hs-gold">
-                Meet Our Business Partner
-              </FadeUp>
-            </div>
+            <FadeUp as="p" className="eyebrow">
+              Meet Our Business Partner
+            </FadeUp>
 
             <TextReveal
               as="h2"
@@ -231,11 +225,9 @@ export default function AboutPage() {
         <Aurora />
         <div className="shell relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.28em] text-hs-gold">
-              <span className="h-px w-6 bg-hs-gold/60" />
-              <span>Our Journey</span>
-              <span className="h-px w-6 bg-hs-gold/60" />
-            </div>
+            <FadeUp as="p" className="eyebrow justify-center">
+              Our Journey
+            </FadeUp>
 
             <FadeUp as="h2" id="journey-section-title" className="font-display mt-4 text-h2 text-white">
               Milestones <em className="italic text-gold-gradient">&amp;</em> Achievements
@@ -291,11 +283,9 @@ export default function AboutPage() {
       >
         <div className="shell">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.28em] text-hs-gold-deep">
-              <span className="h-px w-6 bg-hs-gold-deep/60" />
-              <span>Recognition</span>
-              <span className="h-px w-6 bg-hs-gold-deep/60" />
-            </div>
+            <FadeUp as="p" className="eyebrow justify-center">
+              Recognition
+            </FadeUp>
 
             <FadeUp as="h2" id="awards-section-title" className="font-display mt-4 text-h2 text-hs-green">
               Awards <em className="italic text-hs-gold-deep">&amp;</em> Accolades

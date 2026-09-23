@@ -242,7 +242,7 @@ export function MenuList() {
             <div className="border-b border-hs-gold/25 pb-4 md:pb-6">
               <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
                 <div>
-                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.32em] text-hs-green-mid">
+                  <p className="eyebrow">
                     High Spirits Menu
                   </p>
                   <h2

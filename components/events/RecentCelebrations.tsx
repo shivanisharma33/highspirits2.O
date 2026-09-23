@@ -139,16 +139,15 @@ export function RecentCelebrations() {
         {/* ─── SECTION MASTHEAD ─── */}
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between border-b border-hs-gold/15 pb-12">
           <div className="max-w-2xl">
-            <motion.div
+            <motion.p
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2.5 rounded-full border border-hs-gold/30 bg-hs-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.26em] text-hs-gold-pale backdrop-blur-md"
+              className="eyebrow mb-4"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-hs-gold animate-pulse" />
-              <span>EXPERIENCES &amp; OCCASIONS</span>
-            </motion.div>
+              Experiences &amp; Occasions
+            </motion.p>
 
             <motion.h2
               id="moments-title"

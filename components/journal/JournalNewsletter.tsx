@@ -33,9 +33,9 @@ export function JournalNewsletter() {
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             {/* Editorial Copy */}
             <div className="lg:col-span-7">
-              <span className="inline-flex items-center gap-2 rounded-full border border-hs-gold/30 bg-hs-gold/10 px-3.5 py-1 text-[0.62rem] font-bold uppercase tracking-[0.24em] text-hs-gold">
-                ✦ High Spirits Blog
-              </span>
+              <p className="eyebrow mb-5">
+                High Spirits Blog
+              </p>
               <h2
                 id="dispatch-title"
                 className="font-display mt-5 text-3xl sm:text-4xl text-hs-cream leading-tight"

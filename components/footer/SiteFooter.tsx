@@ -48,16 +48,9 @@ export function SiteFooter() {
             ========================================================================= */}
         <div className="pb-16 border-b border-hs-cream/10">
           <FadeUp className="max-w-3xl">
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-hs-gold/30 bg-hs-gold/10 px-3.5 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-hs-gold mb-6 shadow-sm shadow-hs-gold/10">
-              <Image
-                src="/logo-mark.png"
-                alt=""
-                width={16}
-                height={28}
-                className="h-3.5 w-auto object-contain"
-              />
-              <span>Victoria Street, Bunbury</span>
-            </div>
+            <p className="eyebrow mb-6">
+              Victoria Street, Bunbury
+            </p>
 
             <h2
               id="footer-title"

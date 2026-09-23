@@ -159,3 +159,9 @@ export const Trash = (p: IconProps) => (
   </svg>
 );
 
+export const ChevronDown = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="m6 9 6 6 6-6" />
+  </svg>
+);
+

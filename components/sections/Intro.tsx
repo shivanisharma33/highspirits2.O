@@ -20,14 +20,9 @@ export function Intro() {
 
       <div className="shell relative z-10">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          {/* Eyebrow Badge */}
-          <FadeUp delay={0.08} duration={0.7}>
-            <span className="inline-flex items-center gap-2 rounded-full border border-hs-gold/45 bg-hs-cream/90 px-4 py-1 shadow-xs backdrop-blur-md">
-              <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-hs-gold animate-pulse" />
-              <span className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-hs-gold-deep">
-                Since day one · 1/57 Victoria Street
-              </span>
-            </span>
+          {/* Eyebrow Highlight */}
+          <FadeUp as="p" className="eyebrow justify-center mb-2" delay={0.08} duration={0.7}>
+            Since day one · 1/57 Victoria Street
           </FadeUp>
 
           {/* Grand Centered Title */}

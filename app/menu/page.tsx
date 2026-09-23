@@ -104,7 +104,7 @@ export default function MenuPage() {
 
         <div className="shell relative">
           <div className="mx-auto max-w-2xl text-center">
-            <FadeUp as="p" className="eyebrow">
+            <FadeUp as="p" className="eyebrow justify-center">
               Nightly from {buffet.starts}
             </FadeUp>
             <TextReveal as="h2" id="buffet-title" className="font-display mt-6 text-h2" lines={["The Lavish", <em key="b">Buffet</em>]} />
