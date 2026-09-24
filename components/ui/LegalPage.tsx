@@ -7,7 +7,7 @@ export type LegalSection = { title: string; intro?: string; items?: string[]; bo
 const d = (s: number) => ({ "--d": `${s}s` }) as CSSProperties;
 
 /** Quiet, highly legible layout for policy pages. */
-export function LegalPage({ eyebrow, title, sections }: { eyebrow: string; title: string; sections: LegalSection[] }) {
+export function LegalPage({ eyebrow, title, lastUpdated, sections }: { eyebrow: string; title: string; lastUpdated?: string; sections: LegalSection[] }) {
   return (
     <>
       <section aria-labelledby="legal-title" className="grain bg-hs-green-deep pb-16 pt-[calc(var(--header-h)+5rem)]">
@@ -16,6 +16,11 @@ export function LegalPage({ eyebrow, title, sections }: { eyebrow: string; title
             {eyebrow}
           </p>
           <IntroLines as="h1" id="legal-title" className="font-display mt-8 text-h1" lines={[title]} start={0.2} />
+          {lastUpdated && (
+            <p className="mt-4 text-sm text-hs-cream/60 tracking-wide intro-rise" style={d(0.3)}>
+              Last updated: {lastUpdated}
+            </p>
+          )}
         </div>
       </section>
 

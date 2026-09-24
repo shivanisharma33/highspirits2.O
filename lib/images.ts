@@ -32,6 +32,19 @@ import dishPrawnCurry from "@/assets/images/dish-prawn-curry.jpg";
 import dishOnionBhaji from "@/assets/images/dish-onion-bhaji.jpg";
 import dishChickenKorma from "@/assets/images/dish-chicken-korma.jpg";
 import dishGoatCurry from "@/assets/images/dish-goat-curry.jpg";
+import dishButterNaan from "@/assets/images/dish-butter-naan.jpg";
+import dishChilliPaneer from "@/assets/images/dish-chilli-paneer.jpg";
+import dishFishCurry from "@/assets/images/dish-fish-curry.jpg";
+import dishGulabJamun from "@/assets/images/dish-gulab-jamun.jpg";
+import dishHakkaNoodles from "@/assets/images/dish-hakka-noodles.jpg";
+import dishMangoLassi from "@/assets/images/dish-mango-lassi.jpg";
+import dishMasalaChai from "@/assets/images/dish-masala-chai.jpg";
+import dishMasalaDosa from "@/assets/images/dish-masala-dosa.jpg";
+import dishMomos from "@/assets/images/dish-momos.jpg";
+import dishPaniPuri from "@/assets/images/dish-pani-puri.jpg";
+import dishPapadums from "@/assets/images/dish-papadums.jpg";
+import dishRaita from "@/assets/images/dish-raita.jpg";
+import dishSeekhKebab from "@/assets/images/dish-seekh-kebab.jpg";
 import chefAmardeep from "@/assets/images/chef-amardeep.jpg";
 import chefKitchen from "@/assets/images/chef-amardeep-kitchen.jpg";
 import partnerIshpreet from "@/assets/images/ishpreet bedi .avif";
@@ -188,6 +201,19 @@ export const media = {
   butterChicken: m(butterChickenAvif, "Rich and creamy butter chicken simmered in silky tomato, cashew and churned butter gravy"),
   platter: m(platterAvif, "Charcoal-fired tandoori mixed grill platter with seekh kebabs, chicken tikka, prawns and lamb cutlets"),
   innovation: m(innovationAvif, "Modern Indian culinary innovation and artistic contemporary presentation"),
+  dishButterNaan: m(dishButterNaan, "Warm golden tandoor-baked butter naan in a woven basket"),
+  dishChilliPaneer: m(dishChilliPaneer, "Indo-Chinese chilli paneer tossed with peppers and spring onions in soy-chilli glaze"),
+  dishFishCurry: m(dishFishCurry, "Authentic coastal fish curry simmered in golden spiced coconut gravy with curry leaves"),
+  dishGulabJamun: m(dishGulabJamun, "Warm golden gulab jamun in saffron rose cardamom syrup garnished with pistachios and silver varak"),
+  dishHakkaNoodles: m(dishHakkaNoodles, "Wok-tossed Indo-Chinese Hakka noodles with crisp julienned vegetables"),
+  dishMangoLassi: m(dishMangoLassi, "Chilled thick mango lassi garnished with saffron strands, crushed pistachios and fresh mint"),
+  dishMasalaChai: m(dishMasalaChai, "Freshly brewed spiced Indian masala chai with whole cinnamon, cardamom and star anise"),
+  dishMasalaDosa: m(dishMasalaDosa, "Golden crispy South Indian masala dosa served with coconut chutney and hot sambar"),
+  dishMomos: m(dishMomos, "Authentic steamed Himalayan momos dumplings served in bamboo steamer with fiery red chutney"),
+  dishPaniPuri: m(dishPaniPuri, "Crisp hollow puris filled with spiced potatoes and served with tangy mint water and tamarind chutney"),
+  dishPapadums: m(dishPapadums, "Crispy lentil papadums stacked with mango chutney, mixed pickles and cooling raita"),
+  dishRaita: m(dishRaita, "Cooling cucumber and mint spiced yoghurt raita in an artisanal pottery bowl"),
+  dishSeekhKebab: m(dishSeekhKebab, "Charcoal-grilled juicy lamb seekh kebabs on sizzler platter with charred lemon and mint chutney"),
   ingredientLentilsHd: m(ingredientLentilsAvif, "Slow-cooked black lentils dal makhani in a copper handi with butter and cream"),
   ingredientLambHd: m(ingredientLambAvif, "Tender Tasmanian lamb shank simmered in aromatic Kashmiri spices"),
   ingredientSpinachHd: m(ingredientSpinachAvif, "Fresh Victorian spinach simmered with paneer in a copper pot"),

@@ -37,6 +37,7 @@ const menuJsonLd = {
       name: i.name,
       description: i.description,
       offers: { "@type": "Offer", price: typeof i.price === "number" ? i.price.toFixed(2) : String(i.price), priceCurrency: "AUD" },
+      ...(i.image ? { image: absoluteUrl(i.image.src.src) } : {}),
       ...(i.diet?.includes("VG") ? { suitableForDiet: "https://schema.org/VeganDiet" } : i.diet?.includes("V") ? { suitableForDiet: "https://schema.org/VegetarianDiet" } : {}),
     })),
   })),

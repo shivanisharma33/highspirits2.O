@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { LegalContact, LegalPage } from "@/components/ui/LegalPage";
+import { LegalPage } from "@/components/ui/LegalPage";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Terms of Service",
-  description: "Reservation, cancellation, dining and payment terms for High Spirits, Bunbury.",
+  description:
+    "Reservation, cancellation, dining and payment terms for High Spirit, Bunbury.",
   path: "/terms",
 });
 
@@ -13,10 +14,12 @@ export default function TermsPage() {
     <LegalPage
       eyebrow="Legal"
       title="Terms of Service"
+      lastUpdated="9/24/2026"
       sections={[
         {
           title: "Reservation Policy",
-          intro: "By making a reservation at High Spirits, you agree to the following terms:",
+          intro:
+            "By making a reservation at High Spirit, you agree to the following terms:",
           items: [
             "Reservations are confirmed upon receipt of confirmation email",
             "A valid credit card may be required to secure bookings for large parties",
@@ -47,21 +50,38 @@ export default function TermsPage() {
         {
           title: "Payment Terms",
           intro:
-            "We accept all major credit cards, debit cards and cash. Gratuity is not included in menu prices and is at your discretion. For large parties and events, payment terms will be discussed during booking.",
+            "We accept all major credit cards, debit cards, and cash. Gratuity is not included in menu prices and is at your discretion. For large parties and events, payment terms will be discussed during booking.",
         },
         {
           title: "Liability",
           intro:
-            "While we take every care with food preparation and service, High Spirits cannot be held liable for allergic reactions or dietary issues not communicated to our staff. Please inform us of any allergies or dietary restrictions.",
+            "While we take every care with food preparation and service, High Spirit cannot be held liable for allergic reactions or dietary issues not communicated to our staff. Please inform us of any allergies or dietary restrictions.",
         },
         {
           title: "Changes to Terms",
-          intro: "High Spirits reserves the right to modify these terms at any time. Continued use of our services constitutes acceptance of any changes.",
+          intro:
+            "High Spirit reserves the right to modify these terms at any time. Continued use of our services constitutes acceptance of any changes.",
         },
         {
           title: "Contact",
-          intro: "For questions about these terms, please contact:",
-          body: <LegalContact />,
+          intro:
+            "For questions about these terms, please contact:",
+          body: (
+            <address className="not-italic">
+              Email:{" "}
+              <a
+                href="mailto:info@highspirit.com.au"
+                className="link-line text-hs-green"
+              >
+                info@highspirit.com.au
+              </a>
+              <br />
+              Phone:{" "}
+              <a href="tel:+61234567890" className="link-line text-hs-green">
+                +61 2 3456 7890
+              </a>
+            </address>
+          ),
         },
       ]}
     />

@@ -2457,6 +2457,39 @@ html.lenis body {
   }
 }
 
+@keyframes popupFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popupScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: popupFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scaleUp {
+  animation: popupScaleUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes shimmerGlint {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  45%, 100% { transform: translateX(250%) skewX(-20deg); }
+}
+
+.animate-shimmer {
+  animation: shimmerGlint 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
 @media (max-width: 767px) {
   :root {
     --reveal-distance: 24px;

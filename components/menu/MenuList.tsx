@@ -11,125 +11,177 @@ import { media, type Media } from "@/lib/images";
 /* ── Category fallback images ── */
 const categoryImages: Record<string, Media> = {
   entrees: media.dishSamosa,
-  platters: media.dishTandooriGrill,
+  platters: media.platter,
   vegetarian: media.dishPalakPaneerHd,
   chicken: media.dishButterChickenHd,
   meat: media.dishLambRoganJosh,
-  ocean: media.dishPrawnCurry,
+  ocean: media.dishFishCurry,
   "rice-biryanis": media.dishBiryaniHd,
-  breads: media.dishGarlicNaan,
-  sides: media.ingredientLentils,
-  "indo-chinese": media.foodSizzler,
-  specials: media.dishTandooriChicken,
-  dosas: media.heroDish2,
+  breads: media.dishButterNaan,
+  sides: media.dishRaita,
+  "indo-chinese": media.dishChilliPaneer,
+  specials: media.dishMomos,
+  dosas: media.dishMasalaDosa,
   kids: media.dishButterChicken,
-  desserts: media.heroDish3,
-  beverages: media.heroDiningHall,
+  desserts: media.dishGulabJamun,
+  beverages: media.dishMangoLassi,
 };
 
 /* ── Specific dish images ── */
 const itemImages: Record<string, Media> = {
-  "Papadums (5 pieces)": media.foodSizzler,
+  "Papadums (5 pieces)": media.dishPapadums,
   "Vegetable Samosas (3 pieces)": media.dishSamosa,
-  "Pani Puri (6 pieces)": media.dishSamosa,
+  "Pani Puri (6 pieces)": media.dishPaniPuri,
   "Onion Bhaji (5 pieces)": media.dishOnionBhaji,
-  "Aloo Chaat": media.dishSamosa,
+  "Dahi Puri (6 pieces)": media.dishPaniPuri,
+  "Aloo Chat": media.dishPaniPuri,
   "Aloo Tikki Chaat": media.dishSamosa,
   "Chicken Tikka (4 pieces)": media.dishTandooriChicken,
-  "Tandoori Chicken (4 pieces)": media.dishTandooriChicken,
+  "Tandoori Chicken (Half)": media.dishTandooriChicken,
+  "Tandoori Chicken (Full)": media.dishTandooriChicken,
   "Veg Platter": media.dishSamosa,
   "Mix Tandoori Grill Platter": media.platter,
-  "Butter Chicken": media.butterChicken,
+  "Butter Chicken": media.dishButterChickenHd,
   "Dhaba Butter Chicken": media.dishButterChicken,
   "Chicken Mushroom": media.foodCurry,
   "Chicken Kadhai": media.foodCurry,
   "Chicken Dhaba": media.foodCurry,
   "Chicken Chettinad": media.foodCurry,
   "Chicken Korma": media.dishChickenKorma,
-  "Chicken Vindaloo": media.foodCurry,
+  "Chicken Vindaloo": media.dishLamb,
   "Mango Chicken": media.dishChickenKorma,
   "Chicken Musibat": media.foodCurry,
   "Kerala Chicken Roast": media.foodCurry,
   "Lamb Rogan Josh": media.dishLambRoganJosh,
-  "Lamb Saag": media.ingredientLamb,
-  "Lamb Korma": media.dishLamb,
+  "Lamb Saag": media.dishPalakPaneerHd,
+  "Lamb Korma": media.dishChickenKorma,
   "Lamb Vindaloo": media.dishLamb,
-  "Lamb Madras": media.dishLambRoganJosh,
   "Goat Curry": media.dishGoatCurry,
-  "Goat Gongora": media.dishGoatCurry,
-  "Beef Fry": media.ingredientLamb,
-  "Pepper & Coconut Beef": media.ingredientLamb,
-  "Beef Hariyali Korma": media.ingredientLamb,
+  "Beef Fry": media.dishLamb,
+  "Pepper & Coconut Beef": media.dishLamb,
+  "Beef Hariyali Korma": media.dishPalakPaneer,
   "Beef Vindaloo": media.dishLamb,
-  "Beef Roast": media.ingredientLamb,
-  "Paneer Tikka Masala": media.dishPalakPaneer,
-  "Paneer Butter Masala": media.dishPalakPaneer,
-  "Paneer Lababdar": media.dishPalakPaneer,
+  "Beef Roast": media.dishLamb,
+  "Paneer Tikka Masala": media.heroDish1,
+  "Paneer Butter Masala": media.heroDish1,
+  "Paneer Lababdar": media.heroDish1,
   "Palak Paneer": media.dishPalakPaneerHd,
-  "Malai Kofta": media.dishPalakPaneer,
-  "Vegetable Korma": media.dishPalakPaneer,
+  "Malai Kofta": media.dishChickenKorma,
+  "Vegetable Korma": media.dishChickenKorma,
   "Dal Makhani": media.dishDalMakhaniHd,
-  "Chana Masala": media.dishDalSignature,
-  "Aloo Gobi": media.ingredientLentils,
+  "Dal Tadka (VGO)": media.dishDalSignature,
+  "Chana Masala (VGO)": media.foodCurry,
+  "Aloo Gobi (VGO)": media.foodCurry,
   "Saag Aloo (VGO)": media.dishPalakPaneerHd,
-  "Methi Malai Mutter Mushroom": media.ingredientSpinach,
-  "Mixed Vegetables": media.ingredientLentils,
-  "Masala Okra": media.ingredientLentils,
-  "Masala Aloo": media.ingredientLentils,
-  "Jeera Aloo": media.ingredientLentils,
-  "Goan Fish Curry": media.heroDish1,
-  "Kerala Fish Curry": media.heroDish1,
-  "Fish Malabar": media.heroDish1,
-  "Bombay Fish Curry": media.heroDish1,
+  "Goan Fish Curry": media.dishFishCurry,
+  "Kerala Fish Curry": media.dishFishCurry,
+  "Fish Malabar": media.dishFishCurry,
+  "Bombay Fish Curry": media.dishFishCurry,
   "Prawn Curry": media.dishPrawnCurry,
   "Chilli Prawns": media.dishPrawnCurry,
   "Prawn Tikka Masala": media.dishPrawnCurry,
-  "Prawn 65 (Royalla 65)": media.dishPrawnCurry,
-  "Lime and Coriander Prawns": media.dishPrawnCurry,
+  "Royalla Fry (Prawn Fry)": media.dishPrawnCurry,
+  "Royalla 65 (Prawn 65)": media.dishPrawnCurry,
+  "Lime & Coriander Prawns": media.dishPrawnCurry,
   "Steamed Basmati Rice": media.heroDish3,
   "Jeera Rice": media.heroDish3,
   "Jeera Peas Pulao": media.heroDish3,
   "Kashmiri Rice": media.heroDish3,
-  "Veg Biryani": media.foodBiryani,
+  "Curd Rice": media.dishRaita,
+  "Coconut Rice": media.heroDish3,
+  "Vegetable Pulao": media.foodBiryani,
+  "Mushroom Matar Pulao": media.foodBiryani,
+  "Vegetable Biryani": media.foodBiryani,
   "Chicken Biryani": media.dishBiryaniHd,
+  "Gongora Chicken Biryani": media.dishBiryaniHd,
   "Lamb Biryani": media.dishBiryaniRoyale,
-  "Beef Biryani": media.dishBiryaniRoyale,
   "Goat Biryani": media.dishBiryaniRoyale,
-  "Plain Naan": media.ingredientFlour,
-  "Butter Naan": media.ingredientFlour,
+  "Gongora Goat Biryani": media.dishBiryaniRoyale,
+  "Plain Naan": media.dishButterNaan,
+  "Butter Naan": media.dishButterNaan,
   "Garlic Naan": media.dishGarlicNaan,
-  "Cheese Naan": media.ingredientFlour,
-  "Cheese & Garlic Naan": media.dishGarlicNaan,
-  "Chilli Garlic Naan": media.dishGarlicNaan,
-  "Kashmiri Naan": media.ingredientFlour,
-  "Tandoori Roti": media.ingredientFlour,
-  "Gulab Jamun (2 Pieces)": media.heroDish3,
-  "Mango Kulfi": media.heroDish3,
-  "Pistachio Kulfi": media.heroDish3,
-  "Rasmalai (2 Pieces)": media.heroDish3,
-  "Indian Masala Chai": media.heroDiningHall,
-  "Mango Lassi": media.heroDiningHall,
+  "Cheese Naan": media.dishButterNaan,
+  "Chicken & Cheese Naan": media.dishGarlicNaan,
+  "Pizza Naan": media.dishButterNaan,
+  "Kashmiri Naan": media.dishButterNaan,
+  "Keema Naan": media.dishButterNaan,
+  "Roti": media.dishButterNaan,
+  "Lachha Paratha": media.dishButterNaan,
+  "Raita": media.dishRaita,
+  "Pickles & Chutneys": media.dishPapadums,
+  "Pickled Onion": media.dishRaita,
+  "Green Salad": media.dishRaita,
+  "Chilli Paneer": media.dishChilliPaneer,
+  "Gobi Manchurian": media.dishChilliPaneer,
+  "Veg Noodles": media.dishHakkaNoodles,
+  "Chicken Noodles": media.dishHakkaNoodles,
+  "Chilli Chicken": media.dishChilliPaneer,
+  "Veg Manchurian Noodles": media.dishHakkaNoodles,
+  "Veg Manchurian Fried Rice": media.foodBiryani,
+  "Szechuan Fried Rice": media.foodBiryani,
+  "Chicken Lollipop": media.foodSizzler,
+  "Chicken Fried Rice": media.foodBiryani,
+  "Seafood Fried Rice": media.foodBiryani,
+  "Chilli Momos (Veg/Non-Veg)": media.dishMomos,
+  "Jhol Momos (Veg/Non-Veg)": media.dishMomos,
+  "Steamed Momos (Veg/Non-Veg)": media.dishMomos,
+  "Fried Momos (Veg/Non-Veg)": media.dishMomos,
+  "Plain Dosa": media.dishMasalaDosa,
+  "Masala Dosa": media.dishMasalaDosa,
+  "Paneer Dosa": media.dishMasalaDosa,
+  "Ghee Roast Dosa": media.dishMasalaDosa,
+  "Chicken Tikka Dosa": media.dishMasalaDosa,
+  "Mini Butter Chicken": media.dishButterChicken,
+  "Mini Mango Chicken": media.dishChickenKorma,
+  "Mini Honey Chicken": media.dishChickenKorma,
+  "Mini Chicken Biryani": media.dishBiryaniHd,
+  "Premium Chicken Nuggets with Chips": media.dishOnionBhaji,
+  "Gulab Jamun (2 Pieces)": media.dishGulabJamun,
+  "Mango Kulfi": media.dishGulabJamun,
+  "Pistachio Kulfi": media.dishGulabJamun,
+  "Ras Malai": media.dishGulabJamun,
+  "Shahi Tukda (4 Pieces)": media.dishGulabJamun,
+  "Soft Drink cans": media.dishMangoLassi,
+  "Indian Masala Chai": media.dishMasalaChai,
+  "Still / Sparkling Water": media.dishMangoLassi,
+  "Sweet Lassi": media.dishMangoLassi,
+  "Salted Lassi": media.dishMangoLassi,
+  "Mango Lassi": media.dishMangoLassi,
+  "Rose Lassi": media.dishMangoLassi,
 };
 
-function getItemImage(itemName: string, categorySlug: string): Media {
-  if (itemImages[itemName]) return itemImages[itemName];
+function getItemImage(item: MenuItem, categorySlug: string): Media {
+  if (item.image) return item.image;
+  if (itemImages[item.name]) return itemImages[item.name];
 
-  const lower = itemName.toLowerCase();
+  const lower = item.name.toLowerCase();
   if (lower.includes("biryani")) return media.dishBiryaniHd;
-  if (lower.includes("naan") || lower.includes("roti")) return media.dishGarlicNaan;
+  if (lower.includes("garlic naan")) return media.dishGarlicNaan;
+  if (lower.includes("naan") || lower.includes("roti") || lower.includes("paratha")) return media.dishButterNaan;
   if (lower.includes("prawn")) return media.dishPrawnCurry;
-  if (lower.includes("fish")) return media.heroDish1;
+  if (lower.includes("fish")) return media.dishFishCurry;
+  if (lower.includes("palak") || lower.includes("saag")) return media.dishPalakPaneerHd;
   if (lower.includes("paneer")) return media.dishPalakPaneerHd;
-  if (lower.includes("dal")) return media.dishDalMakhaniHd;
-  if (lower.includes("tandoori") || lower.includes("tikka")) return media.dishTandooriChicken;
-  if (lower.includes("butter chicken")) return media.butterChicken;
-  if (lower.includes("lamb") || lower.includes("beef") || lower.includes("goat")) return media.dishLambRoganJosh;
+  if (lower.includes("dal makhani")) return media.dishDalMakhaniHd;
+  if (lower.includes("dal")) return media.dishDalSignature;
+  if (lower.includes("seekh") || lower.includes("cutlet")) return media.dishSeekhKebab;
+  if (lower.includes("tandoori") || lower.includes("tikka") || lower.includes("chaap")) return media.dishTandooriChicken;
+  if (lower.includes("butter chicken")) return media.dishButterChickenHd;
+  if (lower.includes("goat")) return media.dishGoatCurry;
+  if (lower.includes("lamb") || lower.includes("beef")) return media.dishLambRoganJosh;
   if (lower.includes("korma")) return media.dishChickenKorma;
-  if (lower.includes("momo") || lower.includes("manchurian") || lower.includes("noodle")) return media.foodSizzler;
-  if (lower.includes("dosa")) return media.heroDish2;
-  if (lower.includes("kulfi") || lower.includes("jamun") || lower.includes("rasmalai")) return media.heroDish3;
+  if (lower.includes("momo")) return media.dishMomos;
+  if (lower.includes("noodle") || lower.includes("chow")) return media.dishHakkaNoodles;
+  if (lower.includes("chilli paneer") || lower.includes("manchurian") || lower.includes("chilli chicken")) return media.dishChilliPaneer;
+  if (lower.includes("dosa")) return media.dishMasalaDosa;
+  if (lower.includes("papadum")) return media.dishPapadums;
+  if (lower.includes("puri") || lower.includes("chaat") || lower.includes("chat")) return media.dishPaniPuri;
+  if (lower.includes("raita") || lower.includes("salad")) return media.dishRaita;
+  if (lower.includes("chai") || lower.includes("tea")) return media.dishMasalaChai;
+  if (lower.includes("lassi")) return media.dishMangoLassi;
+  if (lower.includes("kulfi") || lower.includes("jamun") || lower.includes("ras malai") || lower.includes("shahi tukda")) return media.dishGulabJamun;
 
-  return categoryImages[categorySlug] ?? media.heroDish1;
+  return categoryImages[categorySlug] ?? media.dishButterChickenHd;
 }
 
 export function MenuList() {
@@ -266,7 +318,7 @@ export function MenuList() {
             {/* Menu Items — Horizontal Split Card (Left: Small Image, Right: Data) */}
             <div className="mt-6 md:mt-8 grid grid-cols-1 lg:grid-cols-2 gap-3.5 sm:gap-4 md:gap-5">
               {cat.items.map((item) => {
-                const img = getItemImage(item.name, cat.slug);
+                const img = getItemImage(item, cat.slug);
                 return (
                   <article
                     key={item.name}

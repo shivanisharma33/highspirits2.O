@@ -27,8 +27,8 @@ export const site = {
     "https://www.google.com/maps/dir/?api=1&destination=High+Spirits+1%2F57+Victoria+Street+Bunbury+WA+6230",
   mapEmbed: "https://www.google.com/maps?q=High+Spirits,+1%2F57+Victoria+Street,+Bunbury+WA+6230&output=embed",
   socials: {
-    instagram: "https://www.instagram.com/highspirits5",
-    facebook: "https://www.facebook.com/people/High-Spirits/61584455564451/",
+    instagram: "https://www.instagram.com/highspirits5?igsh=MTY3cG5pZHhtamxtYg%3D%3D",
+    facebook: "https://www.facebook.com/people/High-Spirits/61584455564451/?mibextid=wwXIfr&rdid=B3GSmEwP3hIywEgq&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EdfG3WJWN%2F%3Fmibextid%3DwwXIfr",
   },
   listings: {
     agfg: "https://www.agfg.com.au/restaurant/high-spirits-82604",

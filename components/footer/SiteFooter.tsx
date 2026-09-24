@@ -75,7 +75,7 @@ export function SiteFooter() {
           {/* Brand Col */}
           <FadeUp className="lg:col-span-4">
             <Link href="/" aria-label="High Spirits — Home" className="group inline-flex items-center gap-3.5 mb-2">
-              <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-hs-gold/25 via-hs-green-dark to-hs-green-deep p-2 border border-hs-gold/30 shadow-lg shadow-black/40 transition-transform duration-500 group-hover:scale-105">
+              <div className="relative flex h-14 w-14 shrink-0 items-center justify-center transition-transform duration-500 group-hover:scale-105">
                 <Image
                   src="/logo-mark.png"
                   alt="High Spirits Peacock Emblem"
@@ -178,69 +178,110 @@ export function SiteFooter() {
             <h4 className="text-xs font-bold uppercase tracking-[0.22em] text-hs-gold mb-5">
               Connect &amp; Portals
             </h4>
+
             <div className="grid gap-2.5">
+              {/* Instagram Card */}
               <a
                 href={site.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between rounded-xl border border-hs-cream/10 bg-white/[0.02] p-3 text-xs sm:text-sm text-hs-cream/80 transition-all duration-300 hover:border-hs-gold/40 hover:bg-hs-gold/10 hover:text-hs-gold group"
+                className="group relative flex items-center justify-between rounded-xl border border-hs-gold/15 bg-white/[0.02] p-3 text-xs sm:text-sm text-hs-cream transition-all duration-300 hover:border-hs-gold/50 hover:bg-hs-gold/[0.06] hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(0,0,0,0.4),0_0_15px_rgba(212,175,55,0.08)]"
               >
-                <div className="flex items-center gap-2.5">
-                  <Instagram size={16} className="text-pink-400 group-hover:scale-110 transition-transform" />
-                  <span>Instagram</span>
+                <div className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-hs-gold/10 border border-hs-gold/25 text-hs-gold transition-all duration-300 group-hover:bg-hs-gold group-hover:text-hs-green-deep group-hover:scale-105">
+                    <Instagram size={17} />
+                  </div>
+                  <div className="text-left">
+                    <span className="block font-semibold text-hs-cream text-xs sm:text-sm group-hover:text-hs-gold transition-colors">
+                      Instagram
+                    </span>
+                    <span className="block text-[10px] text-hs-cream/50 group-hover:text-hs-cream/80 transition-colors">
+                      Photos &amp; Stories
+                    </span>
+                  </div>
                 </div>
-                <span className="text-[0.7rem] text-hs-cream/50 group-hover:text-hs-gold flex items-center gap-0.5">
-                  @highspirits5 <ArrowUpRight size={12} />
-                </span>
+                <div className="flex items-center gap-1 rounded-full border border-hs-gold/20 bg-hs-gold/5 px-2.5 py-1 text-[11px] text-hs-cream/70 transition-all duration-300 group-hover:border-hs-gold/50 group-hover:bg-hs-gold/15 group-hover:text-hs-gold">
+                  <span>@highspirits5</span>
+                  <ArrowUpRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
               </a>
 
+              {/* Facebook Card */}
               <a
                 href={site.socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between rounded-xl border border-hs-cream/10 bg-white/[0.02] p-3 text-xs sm:text-sm text-hs-cream/80 transition-all duration-300 hover:border-hs-gold/40 hover:bg-hs-gold/10 hover:text-hs-gold group"
+                className="group relative flex items-center justify-between rounded-xl border border-hs-gold/15 bg-white/[0.02] p-3 text-xs sm:text-sm text-hs-cream transition-all duration-300 hover:border-hs-gold/50 hover:bg-hs-gold/[0.06] hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(0,0,0,0.4),0_0_15px_rgba(212,175,55,0.08)]"
               >
-                <div className="flex items-center gap-2.5">
-                  <Facebook size={16} className="text-blue-400 group-hover:scale-110 transition-transform" />
-                  <span>Facebook</span>
+                <div className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-hs-gold/10 border border-hs-gold/25 text-hs-gold transition-all duration-300 group-hover:bg-hs-gold group-hover:text-hs-green-deep group-hover:scale-105">
+                    <Facebook size={17} />
+                  </div>
+                  <div className="text-left">
+                    <span className="block font-semibold text-hs-cream text-xs sm:text-sm group-hover:text-hs-gold transition-colors">
+                      Facebook
+                    </span>
+                    <span className="block text-[10px] text-hs-cream/50 group-hover:text-hs-cream/80 transition-colors">
+                      Events &amp; Community
+                    </span>
+                  </div>
                 </div>
-                <span className="text-[0.7rem] text-hs-cream/50 group-hover:text-hs-gold flex items-center gap-0.5">
-                  Follow Us <ArrowUpRight size={12} />
-                </span>
+                <div className="flex items-center gap-1 rounded-full border border-hs-gold/20 bg-hs-gold/5 px-2.5 py-1 text-[11px] text-hs-cream/70 transition-all duration-300 group-hover:border-hs-gold/50 group-hover:bg-hs-gold/15 group-hover:text-hs-gold">
+                  <span>Follow Us</span>
+                  <ArrowUpRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
               </a>
 
+              {/* Tripadvisor Card */}
               <a
                 href={site.listings.tripadvisor}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between rounded-xl border border-hs-cream/10 bg-white/[0.02] p-3 text-xs sm:text-sm text-hs-cream/80 transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:text-emerald-300 group"
+                className="group relative flex items-center justify-between rounded-xl border border-hs-gold/15 bg-white/[0.02] p-3 text-xs sm:text-sm text-hs-cream transition-all duration-300 hover:border-hs-gold/50 hover:bg-hs-gold/[0.06] hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(0,0,0,0.4),0_0_15px_rgba(212,175,55,0.08)]"
               >
-                <div className="flex items-center gap-2.5">
-                  <div className="h-4 w-4 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
-                    ★
+                <div className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-hs-gold/10 border border-hs-gold/25 text-hs-gold transition-all duration-300 group-hover:bg-hs-gold group-hover:text-hs-green-deep group-hover:scale-105">
+                    <span className="text-sm font-black">★</span>
                   </div>
-                  <span>Tripadvisor</span>
+                  <div className="text-left">
+                    <span className="block font-semibold text-hs-cream text-xs sm:text-sm group-hover:text-hs-gold transition-colors">
+                      Tripadvisor
+                    </span>
+                    <span className="block text-[10px] text-hs-gold/80 font-medium group-hover:text-hs-gold transition-colors">
+                      ★★★★★ Top Rated
+                    </span>
+                  </div>
                 </div>
-                <span className="text-[0.7rem] text-emerald-400/80 group-hover:text-emerald-300 flex items-center gap-0.5">
-                  Reviews <ArrowUpRight size={12} />
-                </span>
+                <div className="flex items-center gap-1 rounded-full border border-hs-gold/20 bg-hs-gold/5 px-2.5 py-1 text-[11px] text-hs-cream/70 transition-all duration-300 group-hover:border-hs-gold/50 group-hover:bg-hs-gold/15 group-hover:text-hs-gold">
+                  <span>Reviews</span>
+                  <ArrowUpRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
               </a>
 
+              {/* Uber Eats Card */}
               <a
                 href={site.listings.uberEats}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between rounded-xl border border-hs-cream/10 bg-white/[0.02] p-3 text-xs sm:text-sm text-hs-cream/80 transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:text-emerald-300 group"
+                className="group relative flex items-center justify-between rounded-xl border border-hs-gold/15 bg-white/[0.02] p-3 text-xs sm:text-sm text-hs-cream transition-all duration-300 hover:border-hs-gold/50 hover:bg-hs-gold/[0.06] hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(0,0,0,0.4),0_0_15px_rgba(212,175,55,0.08)]"
               >
-                <div className="flex items-center gap-2.5">
-                  <div className="h-4 w-4 rounded-md bg-emerald-400 text-black flex items-center justify-center font-black text-[9px]">
-                    UE
+                <div className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-hs-gold/10 border border-hs-gold/25 text-hs-gold transition-all duration-300 group-hover:bg-hs-gold group-hover:text-hs-green-deep group-hover:scale-105">
+                    <span className="font-black text-[10px] tracking-tight">UE</span>
                   </div>
-                  <span>Uber Eats</span>
+                  <div className="text-left">
+                    <span className="block font-semibold text-hs-cream text-xs sm:text-sm group-hover:text-hs-gold transition-colors">
+                      Uber Eats
+                    </span>
+                    <span className="block text-[10px] text-hs-cream/50 group-hover:text-hs-cream/80 transition-colors">
+                      Order Delivery &amp; Pickup
+                    </span>
+                  </div>
                 </div>
-                <span className="text-[0.7rem] text-emerald-400/80 group-hover:text-emerald-300 flex items-center gap-0.5">
-                  Order Delivery <ArrowUpRight size={12} />
-                </span>
+                <div className="flex items-center gap-1 rounded-full border border-hs-gold/20 bg-hs-gold/5 px-2.5 py-1 text-[11px] text-hs-cream/70 transition-all duration-300 group-hover:border-hs-gold/50 group-hover:bg-hs-gold/15 group-hover:text-hs-gold">
+                  <span>Order Now</span>
+                  <ArrowUpRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
               </a>
             </div>
           </FadeUp>

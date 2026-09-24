@@ -10,6 +10,7 @@ import { ScrollToTop } from "@/components/navigation/ScrollToTop";
 import { SiteHeader } from "@/components/navigation/SiteHeader";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { restaurantJsonLd } from "@/lib/seo";
+import { ReservationScrollPopup } from "@/components/ui/ReservationScrollPopup";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </main>
           <SiteFooter />
           <CartDrawer />
+          <ReservationScrollPopup />
           <ScrollToTop />
           <SmoothScroll />
           <RevealRoot />
