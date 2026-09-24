@@ -79,24 +79,6 @@ export function ExperienceScroller() {
               Victoria Street.
             </p>
 
-            {/* Quick Experience Selector Pills */}
-            <div className="mt-4 hidden lg:flex flex-wrap gap-1.5">
-              {experiences.map((exp, i) => (
-                <button
-                  key={exp.slug}
-                  type="button"
-                  onClick={() => setActiveIndex(i)}
-                  className={cx(
-                    "text-[0.62rem] font-mono uppercase tracking-widest px-2.5 py-1 rounded-full border transition-all duration-300 cursor-pointer",
-                    activeIndex === i
-                      ? "border-hs-gold bg-hs-gold text-hs-green-deep font-bold"
-                      : "border-white/10 bg-white/[0.03] text-hs-cream/60 hover:border-hs-gold/40 hover:text-hs-gold"
-                  )}
-                >
-                  {String(i + 1).padStart(2, "0")} {exp.title.split(" ")[0]}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
 
