@@ -31,7 +31,7 @@ export function ArticleCard({ article, featured, className, headingLevel = "h3" 
   return (
     <article
       className={cx(
-        "group relative flex flex-col overflow-hidden rounded-[1.75rem] border border-hs-line/70 bg-white/70 backdrop-blur-xs transition-all duration-500 hover:-translate-y-1.5 hover:border-hs-gold-deep/50",
+        "group relative flex flex-col overflow-hidden rounded-2xl sm:rounded-[1.75rem] border border-hs-line/70 bg-white/70 backdrop-blur-xs transition-all duration-500 hover:-translate-y-1.5 hover:border-hs-gold-deep/50",
         featured && "lg:grid lg:grid-cols-12 lg:items-center lg:gap-10",
         className,
       )}
@@ -59,19 +59,19 @@ export function ArticleCard({ article, featured, className, headingLevel = "h3" 
         />
 
         {/* Floating Category Pill */}
-        <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 rounded-full border border-white/20 bg-[#03150D]/75 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-hs-gold backdrop-blur-md shadow-md">
+        <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-10 flex items-center gap-1.5 rounded-full border border-white/20 bg-[#03150D]/75 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-hs-gold backdrop-blur-md shadow-md">
           <span className="h-1.5 w-1.5 rounded-full bg-hs-gold" />
           <span>{article.category}</span>
         </div>
 
         {/* Reading Time Pill */}
-        <div className="absolute top-4 right-4 z-10 rounded-full border border-white/10 bg-black/50 px-2.5 py-1 text-[0.6rem] uppercase tracking-[0.16em] text-hs-cream/90 backdrop-blur-md">
+        <div className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10 rounded-full border border-white/10 bg-black/50 px-2.5 py-1 text-[0.6rem] uppercase tracking-[0.16em] text-hs-cream/90 backdrop-blur-md">
           {readingTime(article.content)}m read
         </div>
       </div>
 
       {/* Narrative Card Body */}
-      <div className={cx("flex flex-1 flex-col justify-between p-6 sm:p-8", featured && "lg:col-span-5")}>
+      <div className={cx("flex flex-1 flex-col justify-between p-5 sm:p-8", featured && "lg:col-span-5")}>
         <div>
           {/* Published Date */}
           <time dateTime={article.date} className="text-[0.65rem] font-medium uppercase tracking-[0.22em] text-hs-muted">

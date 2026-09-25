@@ -379,17 +379,17 @@ export function GalleryTeaser({ count }: { count?: number } = {}) {
         {/* Centered Master Information Card */}
         <div
           ref={centerContentRef}
-          className="relative z-30 max-w-2xl mx-auto text-center px-6 py-8 sm:px-10 sm:py-10 rounded-3xl bg-hs-cream/80 backdrop-blur-xl border border-hs-gold/35 flex flex-col items-center"
+          className="relative z-30 max-w-2xl mx-auto text-center px-5 py-6 sm:px-10 sm:py-10 rounded-2xl sm:rounded-3xl bg-hs-cream/85 backdrop-blur-xl border border-hs-gold/35 flex flex-col items-center shadow-lg"
         >
           {/* Unified Eyebrow */}
-          <p className="eyebrow justify-center mb-4 sm:mb-6">
+          <p className="eyebrow justify-center mb-3 sm:mb-6">
             The Gallery Archive
           </p>
 
           {/* Heading */}
           <h2
             id="gallery-teaser-title"
-            className="font-display text-3xl sm:text-5xl lg:text-6xl font-normal leading-[1.08] text-hs-green tracking-tight mb-4"
+            className="font-display text-2xl sm:text-5xl lg:text-6xl font-normal leading-[1.12] sm:leading-[1.08] text-hs-green tracking-tight mb-3 sm:mb-4"
           >
             Moments at{" "}
             <em className="font-serif italic font-normal text-hs-emerald underline decoration-hs-gold/40 decoration-1 underline-offset-8">
@@ -398,26 +398,26 @@ export function GalleryTeaser({ count }: { count?: number } = {}) {
           </h2>
 
           {/* Descriptive Copy */}
-          <p className="text-sm sm:text-base md:text-lg text-hs-muted max-w-xl mx-auto leading-relaxed mb-8">
+          <p className="text-xs sm:text-base md:text-lg text-hs-muted max-w-xl mx-auto leading-relaxed mb-5 sm:mb-8">
             Grand openings, quiet anniversaries, long tables of friends — a visual archive of evenings on Victoria Street.
           </p>
 
           {/* Actions & Badge */}
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row w-full sm:w-auto items-stretch sm:items-center justify-center gap-2.5 sm:gap-4">
             <ButtonLink
               href="/gallery"
               variant="dark"
               data-cursor="Explore"
-              className="shadow-lg shadow-hs-green/10"
+              className="shadow-lg shadow-hs-green/10 text-center justify-center"
             >
               Explore the gallery
             </ButtonLink>
 
             <Link
               href="/gallery"
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-hs-green-dark hover:text-hs-gold-deep transition-colors px-4 py-2.5 rounded-full bg-white/70 border border-hs-gold/25 hover:border-hs-gold/60 backdrop-blur-sm shadow-sm group"
+              className="inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-hs-green-dark hover:text-hs-gold-deep transition-colors px-4 py-2.5 rounded-full bg-white/70 border border-hs-gold/25 hover:border-hs-gold/60 backdrop-blur-sm shadow-sm group"
             >
-              <span className="font-bold text-hs-gold-deep">{count ?? 62}</span>
+              <span className="font-bold text-hs-gold-deep">62</span>
               <span>Photographs</span>
               <span className="text-hs-gold transition-transform duration-300 group-hover:translate-x-0.5">→</span>
             </Link>

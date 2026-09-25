@@ -146,16 +146,16 @@ export function HeroCarousel() {
         className="pointer-events-none absolute inset-0 z-20 bg-[radial-gradient(circle_at_50%_45%,hsl(42_78%_51%/0.12)_0%,transparent_60%)]"
       />
 
-      {/* Side Edge Navigation Chevrons */}
+      {/* Side Edge Navigation Chevrons - hidden on mobile to prevent blocking touch targets */}
       <button
         type="button"
         onClick={prevSlide}
         aria-label="Previous slide"
-        className="group absolute left-3 top-1/2 z-30 flex h-16 w-16 -translate-y-1/2 items-center justify-center text-white/50 transition-all duration-300 hover:scale-110 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hs-gold sm:left-6 md:left-8"
+        className="group absolute left-3 top-1/2 z-30 hidden sm:flex h-12 w-12 md:h-16 md:w-16 -translate-y-1/2 items-center justify-center text-white/50 transition-all duration-300 hover:scale-110 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hs-gold sm:left-4 md:left-8"
       >
         <span className="sr-only">Previous Slide</span>
         <svg
-          className="h-10 w-10 transition-transform duration-300 group-hover:-translate-x-1.5 sm:h-12 sm:w-12 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
+          className="h-8 w-8 transition-transform duration-300 group-hover:-translate-x-1.5 sm:h-10 sm:w-10 md:h-12 md:w-12 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -168,11 +168,11 @@ export function HeroCarousel() {
         type="button"
         onClick={nextSlide}
         aria-label="Next slide"
-        className="group absolute right-3 top-1/2 z-30 flex h-16 w-16 -translate-y-1/2 items-center justify-center text-white/50 transition-all duration-300 hover:scale-110 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hs-gold sm:right-6 md:right-8"
+        className="group absolute right-3 top-1/2 z-30 hidden sm:flex h-12 w-12 md:h-16 md:w-16 -translate-y-1/2 items-center justify-center text-white/50 transition-all duration-300 hover:scale-110 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hs-gold sm:right-4 md:right-8"
       >
         <span className="sr-only">Next Slide</span>
         <svg
-          className="h-10 w-10 transition-transform duration-300 group-hover:translate-x-1.5 sm:h-12 sm:w-12 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
+          className="h-8 w-8 transition-transform duration-300 group-hover:translate-x-1.5 sm:h-10 sm:w-10 md:h-12 md:w-12 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -182,7 +182,7 @@ export function HeroCarousel() {
       </button>
 
       {/* Subtle bottom indicator dots */}
-      <div className="absolute bottom-6 inset-x-0 z-30 flex items-center justify-center gap-2">
+      <div className="absolute bottom-4 sm:bottom-6 inset-x-0 z-30 flex items-center justify-center gap-2">
         {HERO_SLIDES.map((slide, idx) => {
           const isActive = idx === current;
           return (

@@ -86,18 +86,18 @@ export function Intro() {
           </FadeUp>
 
           {/* Streamlined Seal & CTA */}
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-5 sm:gap-6">
-            <ScaleReveal delay={0.52} duration={0.7} className="w-20 text-hs-gold-deep md:w-24">
+          <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+            <ScaleReveal delay={0.52} duration={0.7} className="w-16 sm:w-20 text-hs-gold-deep md:w-24 shrink-0">
               <RotatingBadge
                 text="Authentic Punjabi · Fine dining · Bunbury WA · "
                 className="relative grid w-full text-hs-gold-deep drop-shadow-xs"
               />
             </ScaleReveal>
 
-            <FadeUp delay={0.58} duration={0.7}>
+            <FadeUp delay={0.58} duration={0.7} className="w-full sm:w-auto flex justify-center">
               <Link
                 href="/about"
-                className="group inline-flex items-center gap-2.5 rounded-full border border-hs-green/40 bg-hs-green px-7 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-hs-cream shadow-sm transition-all duration-500 ease-luxe hover:border-hs-gold hover:bg-hs-green-deep hover:shadow-md hover:shadow-hs-green/20"
+                className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-hs-green/40 bg-hs-green px-6 sm:px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] sm:tracking-[0.2em] text-hs-cream shadow-sm transition-all duration-500 ease-luxe hover:border-hs-gold hover:bg-hs-green-deep hover:shadow-md hover:shadow-hs-green/20"
               >
                 <span>Discover our story</span>
                 <ArrowRight size={13} className="text-hs-gold transition-transform duration-300 ease-luxe group-hover:translate-x-1" />

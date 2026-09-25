@@ -15,11 +15,11 @@ export function PartnerStory({ className }: Props) {
         className,
       )}
     >
-      <div className="shell grid items-center gap-y-12 lg:grid-cols-12">
+      <div className="shell grid items-center gap-y-10 sm:gap-y-12 lg:grid-cols-12">
         {/* Left Side: Portrait & Inset Photo */}
-        <div className="relative lg:col-span-7 lg:col-start-1 lg:row-start-1">
+        <div className="relative mb-6 sm:mb-0 lg:col-span-7 lg:col-start-1 lg:row-start-1">
           <ClipReveal
-            className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] md:aspect-[5/6]"
+            className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl sm:rounded-[2.5rem] md:aspect-[5/6]"
             data-cursor="View"
           >
             <Image
@@ -37,7 +37,7 @@ export function PartnerStory({ className }: Props) {
           {partner.inset && (
             <ClipReveal
               delay={0.25}
-              className="absolute -bottom-8 left-4 w-[38%] max-w-[15rem] overflow-hidden rounded-[1.75rem] border-[6px] border-white md:-left-6 md:-bottom-10"
+              className="absolute -bottom-5 left-3 w-[36%] max-w-[15rem] overflow-hidden rounded-xl sm:rounded-[1.75rem] border-4 sm:border-[6px] border-white shadow-xl md:-left-6 md:-bottom-10"
             >
               <div className="relative aspect-[4/5]">
                 <Image
@@ -55,27 +55,27 @@ export function PartnerStory({ className }: Props) {
 
         {/* Right Side: Editorial Card Exactly Matching ChefStory */}
         <div className="relative z-10 lg:col-span-6 lg:col-start-7 lg:row-start-1 lg:-ml-12 xl:-ml-16">
-          <div className="relative rounded-[2.5rem] border border-white/80 bg-white/92 p-8 backdrop-blur-xl sm:p-12 lg:p-14">
+          <div className="relative rounded-2xl sm:rounded-[2.5rem] border border-white/80 bg-white/92 p-5 sm:p-10 lg:p-14 backdrop-blur-xl shadow-lg shadow-hs-green/5">
             {/* Top Eyebrow with gold dash */}
             <FadeUp as="div" className="flex items-center gap-3">
               <span className="h-px w-7 bg-hs-gold-deep" />
-              <span className="text-[0.68rem] font-bold uppercase tracking-[0.28em] text-hs-gold-deep">
+              <span className="text-[0.65rem] sm:text-[0.68rem] font-bold uppercase tracking-[0.24em] sm:tracking-[0.28em] text-hs-gold-deep">
                 LEADERSHIP &amp; HOSPITALITY
               </span>
             </FadeUp>
 
             {/* Main Headline: "Meet Our" in Green + "Business Partner" in Gold Italic */}
-            <FadeUp as="h2" id="partner-title" delay={0.08} className="font-display mt-5 text-[clamp(2.8rem,5.2vw,4.6rem)] font-normal leading-[1] tracking-tight">
+            <FadeUp as="h2" id="partner-title" delay={0.08} className="font-display mt-4 sm:mt-5 text-[clamp(2.1rem,5.2vw,4.6rem)] font-normal leading-[1] tracking-tight">
               <span className="block text-hs-green">Meet Our</span>
               <span className="block font-normal italic text-hs-gold-deep">Business Partner</span>
             </FadeUp>
 
             {/* Partner Identity */}
-            <FadeUp delay={0.14} className="mt-7">
-              <h3 className="font-display text-2xl font-bold uppercase tracking-[0.06em] text-hs-green sm:text-3xl">
+            <FadeUp delay={0.14} className="mt-5 sm:mt-7">
+              <h3 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold uppercase tracking-[0.06em] text-hs-green">
                 {partner.name}
               </h3>
-              <p className="mt-1 text-[0.68rem] font-bold uppercase tracking-[0.26em] text-hs-gold-deep">
+              <p className="mt-1 text-[0.65rem] sm:text-[0.68rem] font-bold uppercase tracking-[0.24em] sm:tracking-[0.26em] text-hs-gold-deep">
                 {partner.role}
               </p>
             </FadeUp>

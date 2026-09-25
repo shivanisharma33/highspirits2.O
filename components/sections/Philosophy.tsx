@@ -29,23 +29,23 @@ export function Philosophy() {
           </FadeUp>
         </div>
 
-        <ol className="mt-16 grid gap-6 md:mt-20 lg:grid-cols-3 lg:gap-8">
+        <ol className="mt-8 sm:mt-14 md:mt-20 grid gap-5 sm:gap-6 lg:grid-cols-3 lg:gap-8">
           {philosophy.map((chapter, i) => (
             <FadeUp as="li" key={chapter.word} delay={i * 0.1} className={lift[i]}>
-              <article className="glass glass-edge overflow-hidden h-full rounded-[1.75rem] p-3 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:block">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem]">
+              <article className="glass glass-edge overflow-hidden h-full rounded-2xl sm:rounded-[1.75rem] p-2.5 sm:p-3 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:block">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-xl sm:rounded-[1.25rem]">
                   <Image src={chapter.image.src} alt={chapter.image.alt} fill sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw" placeholder="blur" className="object-cover" />
                   <div aria-hidden className="absolute inset-0 bg-linear-to-t from-hs-green-deep/70 via-transparent to-transparent" />
-                  <span className="glass-chip absolute left-4 top-4">
+                  <span className="glass-chip absolute left-3 top-3 sm:left-4 sm:top-4 text-[0.6rem] sm:text-[0.625rem]">
                     <span className="text-hs-gold">{String(i + 1).padStart(2, "0")}</span> / {String(philosophy.length).padStart(2, "0")}
                   </span>
                 </div>
-                <div className="px-4 pb-6 pt-7 md:px-3 md:py-4 lg:px-6 lg:pb-8 lg:pt-8">
-                  <p className="font-display text-[clamp(2rem,3vw,3.2rem)] uppercase leading-none tracking-[-0.02em]">
+                <div className="px-3 pb-4 pt-5 sm:px-4 sm:pb-6 sm:pt-7 md:px-3 md:py-4 lg:px-6 lg:pb-8 lg:pt-8">
+                  <p className="font-display text-[clamp(1.75rem,3vw,3.2rem)] uppercase leading-none tracking-[-0.02em]">
                     {i === 1 ? <em className="text-gold-gradient normal-case">{chapter.word}</em> : chapter.word}
                   </p>
-                  <h3 className="font-display mt-5 text-xl italic text-hs-gold-pale">{chapter.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-hs-cream/75">{chapter.body}</p>
+                  <h3 className="font-display mt-3 sm:mt-5 text-lg sm:text-xl italic text-hs-gold-pale">{chapter.title}</h3>
+                  <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-hs-cream/75">{chapter.body}</p>
                 </div>
               </article>
             </FadeUp>

@@ -1558,10 +1558,10 @@ html.lenis body {
   .sc-title {
     width: fit-content;
     max-width: 100%;
-    margin-top: 1.6rem;
-    font-size: clamp(2.7rem, 11.5vw, 4.75rem);
+    margin-top: 1.2rem;
+    font-size: clamp(2.1rem, 8vw, 4.75rem);
     font-weight: 400;
-    line-height: 0.95;
+    line-height: 0.98;
     letter-spacing: -0.025em;
     color: var(--sc-ivory);
   }
@@ -1680,16 +1680,17 @@ html.lenis body {
     grid-area: art;
     position: relative;
     align-self: start;
-    margin: 3.25rem 0 0;
+    margin: 2rem auto 0;
     width: 100%;
+    max-width: 22rem;
     justify-self: center;
   }
 
   .sc-frame {
     position: relative;
     width: 100%;
-    height: min(64svh, 122vw);
-    min-height: 21rem;
+    height: min(48svh, 85vw);
+    min-height: 17rem;
     overflow: hidden;
     isolation: isolate;
     border-radius: 999px 999px 2px 2px;
@@ -1796,7 +1797,7 @@ html.lenis body {
   .sc-info {
     grid-area: info;
     position: relative;
-    margin-top: 2.75rem;
+    margin-top: 1.85rem;
   }
 
   .sc-panels {
@@ -1849,10 +1850,10 @@ html.lenis body {
   }
 
   .sc-dish {
-    margin-top: 0.85rem;
-    font-size: clamp(2.5rem, 10.5vw, 3.5rem);
+    margin-top: 0.65rem;
+    font-size: clamp(1.85rem, 7.5vw, 3.5rem);
     font-weight: 400;
-    line-height: 1.02;
+    line-height: 1.05;
     letter-spacing: -0.02em;
     color: var(--sc-ivory);
     text-wrap: balance;

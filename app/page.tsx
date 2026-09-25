@@ -32,7 +32,7 @@ export default function HomePage() {
   return (
     <>
       <HomeHero />
-      <Marquee items={taglines} label="High Spirits taglines" className="border-y border-hs-gold/20 bg-hs-green-deep py-6 text-hs-cream/90" />
+      <Marquee items={taglines} label="High Spirits taglines" className="border-y border-hs-gold/20 bg-hs-green-deep py-4 sm:py-6 text-hs-cream/90" />
       <Intro />
       <SignatureDishes />
       <ExperienceScroller />

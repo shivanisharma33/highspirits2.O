@@ -46,22 +46,22 @@ export function SiteFooter() {
         {/* =========================================================================
             Invitation Headline & Direct Actions
             ========================================================================= */}
-        <div className="pb-16 border-b border-hs-cream/10">
+        <div className="pb-10 sm:pb-16 border-b border-hs-cream/10">
           <FadeUp className="max-w-3xl">
-            <p className="eyebrow mb-6">
+            <p className="eyebrow mb-4 sm:mb-6">
               Victoria Street, Bunbury
             </p>
 
             <h2
               id="footer-title"
-              className="font-display text-[clamp(2.2rem,4vw,3.8rem)] leading-[1.05] tracking-tight text-hs-cream"
+              className="font-display text-[clamp(1.85rem,4vw,3.8rem)] leading-[1.08] sm:leading-[1.05] tracking-tight text-hs-cream"
             >
               Come for the flavours.
               <br />
               <em className="text-gold-gradient italic font-normal">Stay for the experience.</em>
             </h2>
 
-            <p className="mt-5 text-base sm:text-lg leading-relaxed text-hs-cream/80">
+            <p className="mt-3.5 sm:mt-5 text-sm sm:text-lg leading-relaxed text-hs-cream/80">
               Experience the soul of Punjab through time-honoured tandoor recipes, authentic gravies, and a lavish
               daily evening buffet in the heart of Bunbury.
             </p>

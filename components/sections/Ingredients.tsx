@@ -22,22 +22,22 @@ export function Ingredients() {
           </FadeUp>
         </div>
 
-        <ul className="mt-20 grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-8 sm:mt-14 md:mt-20 grid gap-x-6 gap-y-8 sm:gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
           {ingredients.map((item, i) => (
             <li key={item.name} className={`group ${offsets[i]}`}>
-              <ClipReveal delay={i * 0.08} className="media-zoom relative aspect-[3/4] overflow-hidden" data-cursor="View">
+              <ClipReveal delay={i * 0.08} className="media-zoom relative aspect-[3/4] overflow-hidden rounded-2xl" data-cursor="View">
                 <Image src={item.image.src} alt={item.image.alt} fill sizes="(min-width: 1024px) 23vw, (min-width: 640px) 46vw, 100vw" placeholder="blur" className="object-cover" />
                 <div aria-hidden className="absolute inset-0 bg-linear-to-t from-hs-green-deep/70 via-transparent to-transparent opacity-80 transition-opacity duration-700 group-hover:opacity-100" />
-                <span aria-hidden className="absolute inset-3 border border-hs-gold-pale/0 transition-colors duration-700 group-hover:border-hs-gold-pale/60" />
-                <p className="glass-chip absolute bottom-4 left-4">
+                <span aria-hidden className="absolute inset-3 border border-hs-gold-pale/0 transition-colors duration-700 group-hover:border-hs-gold-pale/60 rounded-xl" />
+                <p className="glass-chip absolute bottom-3.5 left-3.5 sm:bottom-4 sm:left-4 text-[0.6rem] sm:text-[0.625rem]">
                   <span className="h-px w-4 bg-hs-gold transition-[width] duration-700 group-hover:w-8" />
                   {item.origin}
                 </p>
               </ClipReveal>
-              <FadeUp delay={i * 0.08 + 0.1} className="mt-6">
-                <p className="font-display text-sm text-hs-gold-deep">{String(i + 1).padStart(2, "0")}</p>
-                <h3 className="font-display mt-1 text-2xl text-hs-green">{item.name}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-hs-muted">{item.description}</p>
+              <FadeUp delay={i * 0.08 + 0.1} className="mt-4 sm:mt-6">
+                <p className="font-display text-xs sm:text-sm text-hs-gold-deep">{String(i + 1).padStart(2, "0")}</p>
+                <h3 className="font-display mt-0.5 sm:mt-1 text-xl sm:text-2xl text-hs-green">{item.name}</h3>
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-hs-muted">{item.description}</p>
               </FadeUp>
             </li>
           ))}

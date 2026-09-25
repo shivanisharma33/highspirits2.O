@@ -28,31 +28,31 @@ export function ReservationCTA() {
         <TextReveal
           as="h2"
           id="cta-title"
-          className="font-display mt-8 text-display uppercase"
+          className="font-display mt-5 sm:mt-8 text-[clamp(2.2rem,7.5vw,5.5rem)] uppercase leading-[1.02] sm:leading-[0.92] tracking-tight"
           lines={["Your table", <em key="e" className="text-gold-gradient normal-case">awaits.</em>]}
         />
-        <FadeUp as="p" delay={0.2} className="font-display mx-auto mt-10 max-w-xl text-2xl italic text-hs-cream/85">
+        <FadeUp as="p" delay={0.2} className="font-display mx-auto mt-4 sm:mt-8 max-w-xl text-base sm:text-2xl italic text-hs-cream/85">
           Come for the flavours. Stay for the experience.
         </FadeUp>
-        <FadeUp delay={0.3} className="glass glass-edge mx-auto mt-12 flex w-fit max-w-full flex-wrap justify-center gap-2 rounded-[2rem] p-2 sm:rounded-full">
-          <ButtonLink href="/reservation">Reserve a Table</ButtonLink>
-          <ButtonLink href="/menu" variant="ghost">
+        <FadeUp delay={0.3} className="glass glass-edge mx-auto mt-7 sm:mt-12 flex w-full sm:w-fit max-w-xs sm:max-w-full flex-col sm:flex-row justify-center gap-2.5 sm:gap-2 rounded-2xl sm:rounded-full p-2.5 sm:p-2">
+          <ButtonLink href="/reservation" className="w-full sm:w-auto text-center justify-center">Reserve a Table</ButtonLink>
+          <ButtonLink href="/menu" variant="ghost" className="w-full sm:w-auto text-center justify-center">
             Explore Menu
           </ButtonLink>
         </FadeUp>
-        <FadeUp as="ul" delay={0.35} className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-2" aria-label="Opening hours">
+        <FadeUp as="ul" delay={0.35} className="mx-auto mt-6 sm:mt-8 flex max-w-3xl flex-wrap justify-center gap-2" aria-label="Opening hours">
           {hours.map((h) => (
-            <li key={h.label} className="glass-chip">
-              <Clock size={13} className="text-hs-gold" />
+            <li key={h.label} className="glass-chip text-[0.6rem] sm:text-[0.625rem]">
+              <Clock size={12} className="text-hs-gold" />
               {h.label} · {h.days} · {h.time}
             </li>
           ))}
-          <li className="glass-chip">
+          <li className="glass-chip text-[0.6rem] sm:text-[0.625rem]">
             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-hs-gold" />
             Buffet from {site.buffet.starts}
           </li>
         </FadeUp>
-        <FadeUp as="p" delay={0.4} className="mt-10 text-xs uppercase tracking-[0.24em] text-hs-cream/60">
+        <FadeUp as="p" delay={0.4} className="mt-7 sm:mt-10 text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.24em] text-hs-cream/60">
           Prefer to call?{" "}
           <a href={site.phone.href} className="link-line text-hs-gold">
             {site.phone.display}

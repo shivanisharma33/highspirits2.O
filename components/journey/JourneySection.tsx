@@ -279,7 +279,7 @@ export function JourneySection() {
         </header>
 
         {/* ── The timeline ─────────────────────────────────────────────────── */}
-        <div className="relative mt-16 md:col-span-7 md:mt-0 lg:col-span-8">
+        <div className="relative mt-10 sm:mt-16 md:col-span-7 md:mt-0 lg:col-span-8">
           <div className="relative">
             <span aria-hidden data-jn-rail className="jn-rail">
               <span data-jn-fill className="jn-rail-fill" />
@@ -299,16 +299,16 @@ export function JourneySection() {
             <p className="flex items-center gap-2 text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-hs-gold">
               <span aria-hidden>✦</span> Tradition
             </p>
-            <h3 className="font-display mt-4 text-[clamp(1.7rem,2.6vw,2.6rem)] font-normal leading-[1.1] text-hs-cream">
+            <h3 className="font-display mt-3.5 sm:mt-4 text-[clamp(1.5rem,2.6vw,2.6rem)] font-normal leading-[1.1] text-hs-cream">
               Be Part of Our <em className="whitespace-nowrap text-hs-gold-soft">Next Chapter</em>
             </h3>
             <div className="mt-3 gap-8 lg:flex lg:items-center lg:justify-between">
-              <p className="max-w-[30rem] text-[0.95rem] font-light leading-relaxed text-hs-cream/65">
+              <p className="max-w-[30rem] text-[0.88rem] sm:text-[0.95rem] font-light leading-relaxed text-hs-cream/65">
                 Join us for an unforgettable dining experience in Bunbury, WA.
               </p>
-              <div className="mt-7 flex flex-wrap gap-3 lg:mt-0 lg:shrink-0">
-                <ButtonLink href="/reservation">Reserve a Table</ButtonLink>
-                <ButtonLink href="/menu" variant="ghost" arrow={false}>
+              <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row w-full sm:w-auto items-stretch sm:items-center gap-3 lg:mt-0 lg:shrink-0">
+                <ButtonLink href="/reservation" className="w-full sm:w-auto text-center justify-center">Reserve a Table</ButtonLink>
+                <ButtonLink href="/menu" variant="ghost" arrow={false} className="w-full sm:w-auto text-center justify-center">
                   Explore Menu
                 </ButtonLink>
               </div>
